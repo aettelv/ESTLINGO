@@ -70,6 +70,38 @@ input{
     font-size: 10px;
 }
 
+.gamechoiceButton {
+    width: 180px;
+    height: 120px;
+    text-align: center;
+    margin-top: 90px;
+    margin-left: 20px;
+    float: left;
+    color: black;
+}
+
+.gamechoiceButton:hover {
+    color: #f5f5f5;
+}
+
+.gameHeader {
+    width: 400px;
+    min-height: 50px;
+    float: left;
+    color: black;
+    margin: 5px 0px 5px 250px;
+    text-align: center;
+}
+
+.gameArea {
+    width: 550px;
+    min-height: 290px;
+    float: left;
+    color: #f5f5f5;
+    margin: 5px 0px 10px 170px;
+    text-align: center; 
+}
+
 .blueBox{
     background-color: #4099FF;
     padding: 5px;
@@ -83,9 +115,70 @@ input{
 }
 
 .content{
-    margin: 5px 5px 5px 5px;
+    margin: 5px 0px 5px 0px;
     padding: 0px 5px 0px 5px;
     float: top;
+}
+
+.contentGame{
+    margin: 5px 0px 5px 250px;
+    padding: 0px 5px 0px 5px;
+    float: top;
+}
+
+.choice {
+    margin: 5px 0px 5px 0px;
+    color: black;  
+}
+
+.choice:hover {
+    color: #f5f5f5;
+}
+
+.answerLeft {
+    height: 200px;
+    width: 250px;
+    margin-left: 20px;
+    float: left;
+}
+
+.answerRight {
+    height: 200px;;
+    width: 250px;
+    margin-right: 20px;
+    float: right;
+}
+
+.nextGame {
+    margin-top: 20px;
+    margin-right: 0px;
+    float: right;
+    background-color: #4b4b4b;
+}
+
+.BackToGames {
+    margin-top: 100px;
+    margin-right: -200px;
+    float: left;
+    background-color: #4b4b4b;
+}
+
+
+.picture {
+    width:100px;
+    height:80px;
+}
+
+input[type=text] {
+    border-radius: 3px;
+    background-color: lightgray;
+}
+
+.check {
+   width: 100px;
+    margin-left: 230px;
+    background-color: #4b4b4b;
+    margin-top: 15px;
 }
 
 /*Menubar styles:*/
