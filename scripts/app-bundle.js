@@ -108,11 +108,23 @@ define('games/games',["exports"], function (exports) {
         }
     }
 
-    var games = exports.games = function games() {
-        _classCallCheck(this, games);
+    var games = exports.games = function () {
+        function games() {
+            _classCallCheck(this, games);
 
-        this.message = "Games go here! (page:games)";
-    };
+            this.message = "Games go here! (page:games)";
+        }
+
+        games.prototype.checkAnswer = function checkAnswer(choice) {
+            if (choice == 'Oun') {
+                this.answer = "True";
+            } else {
+                this.answer = "False";
+            }
+        };
+
+        return games;
+    }();
 });
 define('home/index',["exports"], function (exports) {
     "use strict";
@@ -144,6 +156,6 @@ define('resources/index',["exports"], function (exports) {
 });
 define('text!app.html', ['module'], function(module) { module.exports = "<template><router-view></router-view><div>------------------------------------------------------------------------------------------------------------<div>${message}<br>(page: app.html)</div><br><div>Different pages:<ul><li><a href=\"http://localhost:9000\"><b>Home:</b> http://localhost:9000</a></li><li><a href=\"http://localhost:9000/#/games\"><b>Games:</b> http://localhost:9000/#/games</a></li><li><a href=\"http://localhost:9000/#/about\"><b>About:</b> http://localhost:9000/#/about</a></li></ul></div>------------------------------------------------------------------------------------------------------------</div></template>"; });
 define('text!about/about.html', ['module'], function(module) { module.exports = "<template>${message}</template>"; });
-define('text!games/games.html', ['module'], function(module) { module.exports = "<template><div>${message}</div><br><div><b>Game 1:</b><div><img src=\"src/games/images/Apple.png\" alt=\"Error loading image! Image: Apple\" style=\"height:50px\"><br><button>Õun</button><br><button>Pirn</button><br><button>Banaan</button></div>${answer}</div><div></div></template>"; });
+define('text!games/games.html', ['module'], function(module) { module.exports = "<template><div>${message}</div><br><div><b>Game 1:</b><div><img src=\"src/games/images/Apple.png\" alt=\"Error loading image! Image: Apple\" style=\"height:50px\"><br><button click.trigger=\"checkAnswer('Oun')\">Õun</button><br><button click.trigger=\"checkAnswer('Pirn')\">Pirn</button><br><button click.trigger=\"checkAnswer('Banaan')\">Banaan</button></div>${answer}</div></template>"; });
 define('text!home/index.html', ['module'], function(module) { module.exports = "<template>${message}</template>"; });
 //# sourceMappingURL=app-bundle.js.map
