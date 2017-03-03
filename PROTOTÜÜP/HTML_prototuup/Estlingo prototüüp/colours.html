@@ -12,7 +12,7 @@
     </head>
     <body>
         <div class="header">
-            <input class="imageInput" type="image" src="images/EstlingoLogo.png" alt="Viga pildi laadimisel!" onclick=window.location.reload() width=150px>
+            <input class="imageInput" type="image" src="EstlingoLogo.png" alt="Viga pildi laadimisel!" onclick=window.location.reload() width=150px>
         </div>
         <div class="menuBar">
             <ul>
@@ -25,46 +25,57 @@
         </div>
         <div class="main">
             <div class="content">
-                <div class="greyBox BackToGames">
-                    <input type="button" value="Back to games" style="color:#f5f5f5; font-family: 'Open Sans', sans-serif;" Onclick="window.location.href='games.html'">
+                
+                <div class="greyBox BackToGames" style="color:#f5f5f5; font-family: 'Open Sans', sans-serif;" Onclick="window.location.href='games.html'">
+                    Back to games
                 </div>
+                
                 <div class="gameHeader">
                     <h2>Colours</h2>
                 </div>
+                
+                
                 <div class="gameArea"> 
-                    <div class="greyBox check">
-                        <input type="button" value="Check!" style="color:#f5f5f5; font-family: 'Open Sans', sans-serif;" Onclick="#">
-                </div>
+                    
+                    <div class="greyBox check" style="color:#f5f5f5; font-family: 'Open Sans', sans-serif;" onclick="colours()">
+                        Check!
+                    </div>
+                    
                     <div class="answerLeft">
                          <h3 id="correct" style="color:green; ">CORRECT</h3>
-                         <form style="color:black; " action="/action_page.php">
+                        
+                         <form style="color:black; ">
                              <label for="white">White &nbsp;</label>
-                             <input type="text" name="colour" id="white"><br>
+                             <input type="text" id="white"><br>
                              <label for="black">Black &nbsp;</label>
-                             <input type="text" name="colour" id="black"><br>
+                             <input type="text" id="black"><br>
                              <label for="red">Red &nbsp;</label>
-                             <input type="text" name="colour" id="red"><br>
+                             <input type="text" id="red"><br>
                              <label for="blue">Blue &nbsp;</label>
-                             <input type="text" name="colour" id="blue"><br>
+                             <input type="text" id="blue"><br>
                          </form> 
                     </div>
+                    
                     <div class="answerRight">
                         <h3 id="notCorrect" style="color:red; ">FALSE</h3>
-                        <form style="color:black; " action="/action_page.php">
+                        
+                        <form style="color:black; ">
                              <label for="green">Green &nbsp;</label>
-                             <input type="text" name="colour" id="green"><br>
+                             <input type="text" id="green"><br>
                              <label for="yellow">Yellow &nbsp;</label>
-                             <input type="text" name="colour" id="yellow"><br>
+                             <input type="text" id="yellow"><br>
                              <label for="brown">Brown &nbsp;</label>
-                             <input type="text" name="colour" id="brown"><br>
+                             <input type="text" id="brown"><br>
                              <label for="purple">Purple &nbsp;</label>
-                             <input type="text" name="colour" id="purple"><br>
+                             <input type="text" id="purple"><br>
                          </form> 
                     </div>
+                    
                 </div>
-                <div class="greyBox nextGame">
-                    <input type="button" value="To the next guess" style="color:#f5f5f5; font-family: 'Open Sans', sans-serif;" Onclick="#">
-                </div>
+                
+                <div class="greyBox nextGame" style="color:#f5f5f5; font-family: 'Open Sans', sans-serif;" Onclick="window.location.href='numbers.html'">
+                    To the next guess
+                </div>   
             </div>
         </div>
         <div class="footer">

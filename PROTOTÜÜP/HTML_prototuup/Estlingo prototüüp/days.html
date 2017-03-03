@@ -12,7 +12,7 @@
     </head>
     <body>
         <div class="header">
-            <input class="imageInput" type="image" src="images/EstlingoLogo.png" alt="Viga pildi laadimisel!" onclick=window.location.reload() width=150px>
+            <input class="imageInput" type="image" src="EstlingoLogo.png" alt="Viga pildi laadimisel!" onclick=window.location.reload() width=150px>
         </div>
         <div class="menuBar">
             <ul>
@@ -25,50 +25,55 @@
         </div>
         <div class="main">
             <div class="content">
+                
                 <div class="greyBox BackToGames" style="color:#f5f5f5; font-family: 'Open Sans', sans-serif;" Onclick="window.location.href='games.html'">
                     Back to games
                 </div>
+                
                 <div class="gameHeader">
-                    <h2>Numbers</h2>
+                    <h2>Days of the week</h2>
                 </div>
+                
+                
                 <div class="gameArea"> 
-                    <div class="greyBox check" style="color:#f5f5f5; font-family: 'Open Sans', sans-serif;" onclick="colours()">
+                    
+                    <div class="greyBox check" style="color:#f5f5f5; font-family: 'Open Sans', sans-serif;" onclick="days()">
                         Check!
                     </div>
+                    
                     <div class="answerLeft">
                          <h3 id="correct" style="color:green; ">CORRECT</h3>
+                        
                          <form style="color:black; ">
-                             <label for="one">One &nbsp;</label>
-                             <input type="text" id="one"><br>
-                             <label for="two">Two &nbsp;</label>
-                             <input type="text" id="two"><br>
-                             <label for="three">Three &nbsp;</label>
-                             <input type="text" id="three"><br>
-                             <label for="four">Four &nbsp;</label>
-                             <input type="text" id="four"><br>
-                             <label for="five">Five &nbsp;</label>
-                             <input type="text" id="five"><br>
+                             <label for="monday">Monday &nbsp;</label><br>
+                             <input type="text" id="monday"><br>
+                             <label for="tuesday">Tuesday &nbsp;</label><br>
+                             <input type="text" id="tuesday"><br>
+                             <label for="wednesday">Wednesday &nbsp;</label><br>
+                             <input type="text" id="wednesday"><br>
+                             <label for="thursday">Thursday &nbsp;</label><br>
+                             <input type="text" id="thursday"><br>
                          </form> 
                     </div>
+                    
                     <div class="answerRight">
                         <h3 id="notCorrect" style="color:red; ">FALSE</h3>
+                        
                         <form style="color:black; ">
-                             <label for="six">Six &nbsp;</label>
-                             <input type="text" id="six"><br>
-                             <label for="seven">Seven &nbsp;</label>
-                             <input type="text" id="seven"><br>
-                             <label for="eight">Eight &nbsp;</label>
-                             <input type="text" id="eight"><br>
-                             <label for="nine">Nine &nbsp;</label>
-                             <input type="text" id="nine"><br>
-                             <label for="ten">Ten &nbsp;</label>
-                             <input type="text" id="ten"><br>
+                             <label for="friday">Friday &nbsp;</label><br>
+                             <input type="text" id="friday"><br>
+                             <label for="saturday">Saturday &nbsp;</label><br>
+                             <input type="text" id="saturday"><br>
+                             <label for="sunday">Sunday &nbsp;</label><br>
+                             <input type="text" id="sunday"><br>
                          </form> 
                     </div>
+                    
                 </div>
-                <div class="greyBox nextGame" style="color:#f5f5f5; font-family: 'Open Sans', sans-serif;" Onclick="window.location.href='numbers.html'">
+                
+                <div class="greyBox nextGame" style="color:#f5f5f5; font-family: 'Open Sans', sans-serif;" Onclick="window.location.href='months.html'">
                     To the next guess
-                </div>
+                </div>   
             </div>
         </div>
         <div class="footer">
