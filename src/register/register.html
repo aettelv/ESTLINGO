@@ -1,5 +1,12 @@
 <template>
 
     ${message}
+    
+    <form id="userform" submit.delegate="addUser()">
+		<div><label for="username">Username:</label><input id="username" type="text" name="username" value.bind="userData.username"></div>
+		<div><label for="password">Password:</label><input id="password" type="password" name="password" value.bind="userData.password"></div>
+		<div><label for="eMail">E-mail:</label><input id="eMail" type="text" name="eMail" value.bind="userData.eMail"></div>
+		<input type="submit" name="Register user">
+    </form>
 
 </template>
