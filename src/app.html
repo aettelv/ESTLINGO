@@ -1,4 +1,20 @@
 <template>
-  <router-view></router-view>
-  <h1>${message}</h1>
+    <router-view></router-view>
+    
+    <div>
+        ------------------------------------------------------------------------------------------------------------
+        <div>
+            ${message}
+            <br>(page: app.html)
+        </div>
+        <br>
+        <div>
+            Different pages:
+            <ul>
+                <li>Home: http://localhost:9000</li>
+                <li>Games: http://localhost:9000/#/games</li>
+            </ul>
+        </div>
+        ------------------------------------------------------------------------------------------------------------
+    </div>
 </template>

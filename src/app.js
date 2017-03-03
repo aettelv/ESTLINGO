@@ -1,6 +1,6 @@
 export class App {
     constructor() {
-        this.message = 'Welcome to Estlingo!';
+        this.message = 'This is message from app.js! Website elements do NOT go here! ';
     }
 
     configureRouter(config, router) {
@@ -8,6 +8,7 @@ export class App {
         config.title = 'Estlingo';
         config.map([
             { route: ['', 'home'],       name: 'home',       moduleId: 'home/index' },
+            { route: 'games',            name: 'games',      moduleId: 'games/games',   nav: true },
             ]);
     }
 }

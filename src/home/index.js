@@ -1,6 +1,6 @@
 export class Home{
     
     constructor(){
-        this.message = "Check, check!"
+        this.message = "Welcome to Estlingo! (page: home)"
     }
 }
