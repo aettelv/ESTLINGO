@@ -76,17 +76,8 @@ define('main',['exports', './environment'], function (exports, _environment) {
     });
   }
 });
-define('resources/index',["exports"], function (exports) {
-  "use strict";
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.configure = configure;
-  function configure(config) {}
-});
-define('index',['exports'], function (exports) {
-    'use strict';
+define('games/games',["exports"], function (exports) {
+    "use strict";
 
     Object.defineProperty(exports, "__esModule", {
         value: true
@@ -98,10 +89,10 @@ define('index',['exports'], function (exports) {
         }
     }
 
-    var App = exports.App = function App() {
-        _classCallCheck(this, App);
+    var people = exports.people = function people() {
+        _classCallCheck(this, people);
 
-        this.message = 'Welcome to Estlingo!';
+        this.message = "Games go here! (page:games)";
     };
 });
 define('home/index',["exports"], function (exports) {
@@ -123,69 +114,16 @@ define('home/index',["exports"], function (exports) {
         this.message = "Welcome to Estlingo! (page: home)";
     };
 });
-define('people/people',["exports"], function (exports) {
-    "use strict";
+define('resources/index',["exports"], function (exports) {
+  "use strict";
 
-    Object.defineProperty(exports, "__esModule", {
-        value: true
-    });
-
-    function _classCallCheck(instance, Constructor) {
-        if (!(instance instanceof Constructor)) {
-            throw new TypeError("Cannot call a class as a function");
-        }
-    }
-
-    var people = exports.people = function people() {
-        _classCallCheck(this, people);
-
-        this.appName = "ESTLINGO";
-        this.count = 0;
-    };
-});
-define('games/people',["exports"], function (exports) {
-    "use strict";
-
-    Object.defineProperty(exports, "__esModule", {
-        value: true
-    });
-
-    function _classCallCheck(instance, Constructor) {
-        if (!(instance instanceof Constructor)) {
-            throw new TypeError("Cannot call a class as a function");
-        }
-    }
-
-    var people = exports.people = function people() {
-        _classCallCheck(this, people);
-
-        this.appName = "ESTLINGO";
-        this.count = 0;
-    };
-});
-define('games/games',["exports"], function (exports) {
-    "use strict";
-
-    Object.defineProperty(exports, "__esModule", {
-        value: true
-    });
-
-    function _classCallCheck(instance, Constructor) {
-        if (!(instance instanceof Constructor)) {
-            throw new TypeError("Cannot call a class as a function");
-        }
-    }
-
-    var people = exports.people = function people() {
-        _classCallCheck(this, people);
-
-        this.message = "Games go here! (page:games)";
-    };
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.configure = configure;
+  function configure(config) {}
 });
 define('text!app.html', ['module'], function(module) { module.exports = "<template><router-view></router-view><div>------------------------------------------------------------------------------------------------------------<div>${message}<br>(page: app.html)</div><br><div>Different pages:<ul><li>Home: http://localhost:9000</li><li>Games: http://localhost:9000/#/games</li></ul></div>------------------------------------------------------------------------------------------------------------</div></template>"; });
-define('text!index.html', ['module'], function(module) { module.exports = "<template><router-view></router-view><h1>${message}</h1></template>"; });
-define('text!home/index.html', ['module'], function(module) { module.exports = "<template>${message}</template>"; });
-define('text!people/people.html', ['module'], function(module) { module.exports = "<template><router-view></router-view><h1>Appname: ${appName}, kasutajaid: ${count}</h1></template>"; });
-define('text!games/people.html', ['module'], function(module) { module.exports = "<template><router-view></router-view><h1>Appname: ${appName}, kasutajaid: ${count}</h1></template>"; });
 define('text!games/games.html', ['module'], function(module) { module.exports = "<template>${message}</template>"; });
+define('text!home/index.html', ['module'], function(module) { module.exports = "<template>${message}</template>"; });
 //# sourceMappingURL=app-bundle.js.map
