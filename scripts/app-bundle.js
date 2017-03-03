@@ -76,6 +76,25 @@ define('main',['exports', './environment'], function (exports, _environment) {
     });
   }
 });
+define('about/about',["exports"], function (exports) {
+    "use strict";
+
+    Object.defineProperty(exports, "__esModule", {
+        value: true
+    });
+
+    function _classCallCheck(instance, Constructor) {
+        if (!(instance instanceof Constructor)) {
+            throw new TypeError("Cannot call a class as a function");
+        }
+    }
+
+    var about = exports.about = function about() {
+        _classCallCheck(this, about);
+
+        this.message = "Information about project! (page:about)";
+    };
+});
 define('games/games',["exports"], function (exports) {
     "use strict";
 
@@ -123,67 +142,8 @@ define('resources/index',["exports"], function (exports) {
   exports.configure = configure;
   function configure(config) {}
 });
-define('games - Copy/games',["exports"], function (exports) {
-    "use strict";
-
-    Object.defineProperty(exports, "__esModule", {
-        value: true
-    });
-
-    function _classCallCheck(instance, Constructor) {
-        if (!(instance instanceof Constructor)) {
-            throw new TypeError("Cannot call a class as a function");
-        }
-    }
-
-    var people = exports.people = function people() {
-        _classCallCheck(this, people);
-
-        this.message = "Games go here! (page:games)";
-    };
-});
-define('about/games',["exports"], function (exports) {
-    "use strict";
-
-    Object.defineProperty(exports, "__esModule", {
-        value: true
-    });
-
-    function _classCallCheck(instance, Constructor) {
-        if (!(instance instanceof Constructor)) {
-            throw new TypeError("Cannot call a class as a function");
-        }
-    }
-
-    var people = exports.people = function people() {
-        _classCallCheck(this, people);
-
-        this.message = "Games go here! (page:games)";
-    };
-});
-define('about/about',["exports"], function (exports) {
-    "use strict";
-
-    Object.defineProperty(exports, "__esModule", {
-        value: true
-    });
-
-    function _classCallCheck(instance, Constructor) {
-        if (!(instance instanceof Constructor)) {
-            throw new TypeError("Cannot call a class as a function");
-        }
-    }
-
-    var about = exports.about = function about() {
-        _classCallCheck(this, about);
-
-        this.message = "Information about project! (page:about)";
-    };
-});
-define('text!app.html', ['module'], function(module) { module.exports = "<template><router-view></router-view><div>------------------------------------------------------------------------------------------------------------<div>${message}<br>(page: app.html)</div><br><div>Different pages:<ul><li>Home: http://localhost:9000</li><li>Games: http://localhost:9000/#/games</li><li>Games: http://localhost:9000/#/about</li></ul></div>------------------------------------------------------------------------------------------------------------</div></template>"; });
-define('text!games/games.html', ['module'], function(module) { module.exports = "<template>${message}</template>"; });
-define('text!home/index.html', ['module'], function(module) { module.exports = "<template>${message}</template>"; });
-define('text!games - Copy/games.html', ['module'], function(module) { module.exports = "<template>${message}</template>"; });
-define('text!about/games.html', ['module'], function(module) { module.exports = "<template>${message}</template>"; });
+define('text!app.html', ['module'], function(module) { module.exports = "<template><router-view></router-view><div>------------------------------------------------------------------------------------------------------------<div>${message}<br>(page: app.html)</div><br><div>Different pages:<ul><li><a href=\"http://localhost:9000\"><b>Home:</b> http://localhost:9000</a></li><li><a href=\"http://localhost:9000/#/games\"><b>Games:</b> http://localhost:9000/#/games</a></li><li><a href=\"http://localhost:9000/#/about\"><b>About:</b> http://localhost:9000/#/about</a></li></ul></div>------------------------------------------------------------------------------------------------------------</div></template>"; });
 define('text!about/about.html', ['module'], function(module) { module.exports = "<template>${message}</template>"; });
+define('text!games/games.html', ['module'], function(module) { module.exports = "<template><div>${message}</div><br><div><b>Game 1:</b><div><img src=\"src/games/images/Apple.png\" alt=\"Error loading image! Image: Apple\" style=\"height:50px\"><br><button>Õun</button><br><button>Pirn</button><br><button>Banaan</button></div>${answer}</div><div></div></template>"; });
+define('text!home/index.html', ['module'], function(module) { module.exports = "<template>${message}</template>"; });
 //# sourceMappingURL=app-bundle.js.map
