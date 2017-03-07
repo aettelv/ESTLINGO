@@ -145,53 +145,6 @@ define('home/index',["exports"], function (exports) {
         this.message = "Welcome to Estlingo! (page: home)";
     };
 });
-define('resources/index',["exports"], function (exports) {
-  "use strict";
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.configure = configure;
-  function configure(config) {}
-});
-define('home - Copy/index',["exports"], function (exports) {
-    "use strict";
-
-    Object.defineProperty(exports, "__esModule", {
-        value: true
-    });
-
-    function _classCallCheck(instance, Constructor) {
-        if (!(instance instanceof Constructor)) {
-            throw new TypeError("Cannot call a class as a function");
-        }
-    }
-
-    var Home = exports.Home = function Home() {
-        _classCallCheck(this, Home);
-
-        this.message = "Welcome to Estlingo! (page: home)";
-    };
-});
-define('register/index',["exports"], function (exports) {
-    "use strict";
-
-    Object.defineProperty(exports, "__esModule", {
-        value: true
-    });
-
-    function _classCallCheck(instance, Constructor) {
-        if (!(instance instanceof Constructor)) {
-            throw new TypeError("Cannot call a class as a function");
-        }
-    }
-
-    var Register = exports.Register = function Register() {
-        _classCallCheck(this, Register);
-
-        this.message = "Register user here! (page: register)";
-    };
-});
 define('register/register',["exports", "aurelia-fetch-client"], function (exports, _aureliaFetchClient) {
     "use strict";
 
@@ -210,17 +163,14 @@ define('register/register',["exports", "aurelia-fetch-client"], function (export
         function Register() {
             _classCallCheck(this, Register);
 
+            this.userData = {};
+
             this.message = "Register user here! (page: register)";
         }
 
         Register.prototype.addUser = function addUser() {
             var client = new _aureliaFetchClient.HttpClient();
 
-            client.fetch('http://localhost:8080/users/add', {}).then(function (response) {
-                return response.json();
-            }).then(function (data) {
-                console.log(data.description);
-            });
 
             console.log("addUser method executed!");
         };
@@ -228,11 +178,18 @@ define('register/register',["exports", "aurelia-fetch-client"], function (export
         return Register;
     }();
 });
+define('resources/index',["exports"], function (exports) {
+  "use strict";
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.configure = configure;
+  function configure(config) {}
+});
 define('text!app.html', ['module'], function(module) { module.exports = "<template><router-view></router-view><div>------------------------------------------------------------------------------------------------------------<div>${message}<br>(page: app.html)</div><br><div>Different pages:<ul><li><a href=\"http://localhost:9000\"><b>Home:</b> http://localhost:9000</a></li><li><a href=\"http://localhost:9000/#/games\"><b>Games:</b> http://localhost:9000/#/games</a></li><li><a href=\"http://localhost:9000/#/about\"><b>About:</b> http://localhost:9000/#/about</a></li><li><a href=\"http://localhost:9000/#/register\"><b>Register user:</b> http://localhost:9000/#/register</a></li></ul></div>------------------------------------------------------------------------------------------------------------</div></template>"; });
 define('text!about/about.html', ['module'], function(module) { module.exports = "<template>${message}</template>"; });
 define('text!games/games.html', ['module'], function(module) { module.exports = "<template><div>${message}</div><br><div><b>Game 1:</b><div><img src=\"src/games/images/Apple.png\" alt=\"Error loading image! Image: Apple\" style=\"height:50px\"><br><button click.trigger=\"checkAnswer('Oun')\">Õun</button><br><button click.trigger=\"checkAnswer('Pirn')\">Pirn</button><br><button click.trigger=\"checkAnswer('Banaan')\">Banaan</button></div>${answer}</div></template>"; });
 define('text!home/index.html', ['module'], function(module) { module.exports = "<template>${message}</template>"; });
-define('text!home - Copy/index.html', ['module'], function(module) { module.exports = "<template>${message}</template>"; });
-define('text!register/index.html', ['module'], function(module) { module.exports = "<template>${message}</template>"; });
-define('text!register/register.html', ['module'], function(module) { module.exports = "<template>${message}<form id=\"userform\" submit.delegate=\"addUser()\"><div><label for=\"username\">Username:</label><input id=\"username\" type=\"text\" name=\"username\" value.bind=\"userData.username\"></div><div><label for=\"password\">Password:</label><input id=\"password\" type=\"password\" name=\"password\" value.bind=\"userData.password\"></div><div><label for=\"eMail\">E-mail:</label><input id=\"eMail\" type=\"text\" name=\"eMail\" value.bind=\"userData.eMail\"></div><input type=\"submit\" name=\"Register user\"></form></template>"; });
+define('text!register/register.html', ['module'], function(module) { module.exports = "<template>${message}<form id=\"userform\" submit.delegate=\"addUser()\"><div><label for=\"username\">Username:</label><input id=\"username\" type=\"text\" name=\"username\" value.bind=\"userData.username\"></div><div><label for=\"password\">Password:</label><input id=\"password\" type=\"password\" name=\"password\" value.bind=\"userData.password\"></div><div><label for=\"eMail\">E-mail:</label><input id=\"eMail\" type=\"text\" name=\"eMail\" value.bind=\"userData.eMail\"></div><input type=\"submit\" name=\"RegisterUserSubmit\" value=\"Register user\"></form></template>"; });
 //# sourceMappingURL=app-bundle.js.map

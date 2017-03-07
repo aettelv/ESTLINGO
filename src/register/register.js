@@ -10,7 +10,7 @@ export class Register{
     
     addUser(){
         let client = new HttpClient();
-        client.fetch('http://localhost:8080/users/add', {
+        client.fetch('http://localhost:8080/users/add', {  //Siia peab vist kunagi lisama serveri aadressi
             "method": "POST",
             "body": json{this.userData}
         })
