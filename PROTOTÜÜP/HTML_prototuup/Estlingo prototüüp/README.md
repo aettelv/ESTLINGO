@@ -1,2 +1,0 @@
-# ESTLINGO
-Tarkvaratehnika projekt
