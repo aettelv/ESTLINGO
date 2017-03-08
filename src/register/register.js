@@ -8,7 +8,7 @@ export class Register{
         this.message = "Register user here! (page: register)"
     }
     
-    addUser(){
+    /*addUser(){
         let client = new HttpClient();
         client.fetch('http://localhost:8080/users/add', {  //Siia peab vist kunagi lisama serveri aadressi
             "method": "POST",
@@ -20,5 +20,5 @@ export class Register{
         });
         
         console.log("addUser method executed!")
-    }
+    }*/
 }
