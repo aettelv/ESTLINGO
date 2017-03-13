@@ -145,15 +145,6 @@ define('home/index',["exports"], function (exports) {
         this.message = "Welcome to Estlingo! (page: home)";
     };
 });
-define('resources/index',["exports"], function (exports) {
-  "use strict";
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.configure = configure;
-  function configure(config) {}
-});
 define('register/register',["exports", "aurelia-fetch-client"], function (exports, _aureliaFetchClient) {
     "use strict";
 
@@ -175,6 +166,15 @@ define('register/register',["exports", "aurelia-fetch-client"], function (export
 
         this.message = "Register user here! (page: register)";
     };
+});
+define('resources/index',["exports"], function (exports) {
+  "use strict";
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.configure = configure;
+  function configure(config) {}
 });
 define('text!app.html', ['module'], function(module) { module.exports = "<template><router-view></router-view><div>------------------------------------------------------------------------------------------------------------<div>${message}<br>(page: app.html)</div><br><div>Different pages:<ul><li><a href=\"http://localhost:9000\"><b>Home:</b> http://localhost:9000</a></li><li><a href=\"http://localhost:9000/#/games\"><b>Games:</b> http://localhost:9000/#/games</a></li><li><a href=\"http://localhost:9000/#/about\"><b>About:</b> http://localhost:9000/#/about</a></li><li><a href=\"http://localhost:9000/#/register\"><b>Register user:</b> http://localhost:9000/#/register</a></li></ul></div>------------------------------------------------------------------------------------------------------------</div></template>"; });
 define('text!about/about.html', ['module'], function(module) { module.exports = "<template>${message}</template>"; });
