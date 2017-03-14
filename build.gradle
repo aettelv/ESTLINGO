@@ -12,6 +12,7 @@ buildscript {
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
+apply plugin: 'application'
 apply plugin: 'org.springframework.boot'
 
 jar {
@@ -36,4 +37,4 @@ dependencies {
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
-bootRepackage.enabled = false
+mainClassName = "org.gradle.app.App"
