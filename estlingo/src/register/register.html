@@ -1,16 +1,12 @@
 <template>
-<require from="app.css"></require>
-<div class="body">
-<div><br>    <br></div>
-
-			${message}
-
-			 <div class="indexMain">
+    <require from="app.css"></require>
+    <div class="body">
+        ${message}
+        <div class="indexMain">
             <div class="welcomeText blueBox">
                 <h1>Welcome to Estlingo!</h1>
                 <div>
                     Learn Estonian in a playful way!<br>
-        <br>(page: app.html)<br>   <br>
                 </div>
             </div>
             <div class="loginScreen blueBox">
@@ -24,13 +20,12 @@
                             <input name="password" placeholder="Password" type="password">
                         </div>
                         <div class="greyBox" style="float: right;">
-                            <input type="button" value="Log in" Onclick="window.location.href='http://localhost:9000/'">
+                            <input type="button" value="Log in" Onclick="window.location.href='http://localhost:9000/#/home'">
                         </div>
                     </div>
                     <br>
                     <br>
                     <div>
-
                         <form id="userform" submit.delegate="addUser()">
 							<div class="greyBox">
 								<input name="username" placeholder="Username" value.bind="userData.username">
@@ -45,7 +40,6 @@
                             	<input type="submit" value="Register user" Onclick="window.location.href='http://localhost:9000/#/register'">
                         	</div>
     					</form>
-
                     </div>
                 </div>
                 <br>
@@ -55,7 +49,5 @@
                 </div>
             </div>
         </div>
-
-
-</div>
+    </div>
 </template>
