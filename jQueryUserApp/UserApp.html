@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script type="text/javascript">
+	$( document ).ready(function() {
+		console.log( "ready!" );
+		$('#userform').on('submit', function(e){
+    		$.ajax({
+			    type: "POST",
+			    url: "http://localhost:8080/users/add",
+			    data: JSON.stringify({
+			    	username: $('#username').val(),
+			    	password: $('#password').val(),
+			    	eMail: $('#eMail').val()
+			    }),
+			    contentType: "application/json; charset=utf-8",
+			    dataType: "json",
+			    success: function(data){$('#databox').html("Successfully added user: " + data.username + data.password + data.eMail)},
+			    failure: function(errMsg) {
+			        alert(errMsg);
+			    }
+			});
+			e.preventDefault();
+		})
+	});
+
+	</script>
+	<title>Our user application</title>
+</head>
+<body>
+	<form id="userform" method="POST" action="http://localhost:8080/users/add">
+		<div><label for="username">username</label><input id="username" type="text" name="username"></div>
+		<div><label for="password">password</label><input id="password" type="text" name="password"></div>
+		<div><label for="eMail">eMail</label><input id="eMail" type="text" name="eMail"></div>
+		<input type="submit" name="Lisa kasutaja">
+	</form>
+
+	<p id="databox"></p>
+</body>
+<html>

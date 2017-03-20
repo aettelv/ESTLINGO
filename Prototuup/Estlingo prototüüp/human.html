@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link rel="stylesheet" type="text/css" href="desktop.css">
+        <!--<link rel="stylesheet" type="text/css" media="screen and (max-width: 480px)" href="mobile.css">-->
+        <style>
+            @import "https://fonts.googleapis.com/css?family=Open+Sans";
+        </style>
+        <title>Estlingo</title>
+    </head>
+    <body>
+        <div class="header">
+            <input class="imageInput" type="image" src="images/EstlingoLogo.png" alt="Viga pildi laadimisel!" onclick=window.location.reload() width=150px>
+        </div>
+        <div class="menuBar">
+            <ul>
+                <li><a href="main.html">Home</a></li>
+                <li><a class="active" href="games.html">Games</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="about.html">About</a></li>
+                <li style="float:right"><a href="index.html">Log out</a></li>
+            </ul>
+        </div>
+        <div class="main2">
+            <div class="content">
+                
+                <div class="greyBox BackToGames" style="color:#f5f5f5; font-family: 'Open Sans', sans-serif;" Onclick="window.location.href='games.html'">
+                    Back to games
+                </div>
+                
+                <div class="gameHeader">
+                    <h2>Human body</h2>
+                </div>
+                
+                
+                <div class="gameArea"> 
+                    
+                    <div class="greyBox check" style="color:#f5f5f5; font-family: 'Open Sans', sans-serif;" onclick="human()">
+                        Check!
+                    </div>
+                    
+                    <div class="answerLeft">
+                         <h3 id="correct" style="color:green; ">CORRECT</h3>
+                        
+                         <form style="color:black; ">
+                             <label for="head">Head &nbsp;</label><br>
+                             <input type="text" id="head"><br>
+                             <label for="hand">Hand &nbsp;</label><br>
+                             <input type="text" id="hand"><br>
+                             <label for="leg">Leg &nbsp;</label><br>
+                             <input type="text" id="leg"><br>
+                             <label for="mouth">Mouth &nbsp;</label><br>
+                             <input type="text" id="mouth"><br>
+                             <label for="nose">Nose &nbsp;</label><br>
+                             <input type="text" id="nose"><br>
+                             <label for="ear">Ear &nbsp;</label><br>
+                             <input type="text" id="ear"><br>
+                         </form> 
+                    </div>
+                    
+                    <div class="answerRight">
+                        <h3 id="notCorrect" style="color:red; ">FALSE</h3>
+                        
+                        <form style="color:black; ">
+                             <label for="knee">Knee &nbsp;</label><br>
+                             <input type="text" id="knee"><br>
+                             <label for="finger">Finger &nbsp;</label><br>
+                             <input type="text" id="finger"><br>
+                             <label for="tongue">Tongue &nbsp;</label><br>
+                             <input type="text" id="tongue"><br>
+                             <label for="hair">Hair &nbsp;</label><br>
+                             <input type="text" id="hair"><br>
+                             <label for="chest">Chest &nbsp;</label><br>
+                             <input type="text" id="chest"><br>
+                             <label for="back">Back &nbsp;</label><br>
+                             <input type="text" id="back"><br>
+                         </form> 
+                    </div>
+                    
+                </div>
+                
+                <div class="greyBox nextGame" style="color:#f5f5f5; font-family: 'Open Sans', sans-serif;" Onclick="window.location.href='kitchen.html'">
+                    To the next guess
+                </div>   
+            </div>
+        </div>
+        <div class="footer">
+            Powered by the Estlingo group - Aet Telvik, Tauri Türkson, Sven Veskijärv
+        </div>
+        <script src = "scripts/app.js"></script>
+    </body>
+</html>
