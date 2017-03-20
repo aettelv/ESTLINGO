@@ -1,0 +1,8 @@
+spring:
+   datasource:
+      url: jdbc:mariadb://localhost/tarkvaratehnika
+      username: root
+      password: tarkvaratehnika
+   jpa:
+      hibernate:
+         ddl-auto: update
