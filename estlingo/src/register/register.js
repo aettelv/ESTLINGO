@@ -27,12 +27,14 @@ export class Register{
         console.log("getUser() started");
         var username = document.getElementById("username").value;
         var password = document.getElementById("password").value;
+        console.log("inserted username: " +username);
+        console.log("inserted password: " + password);
         
         let client = new HttpClient();
         client.fetch("http://localhost:8080/users/" + username)
             .then (response => response.json())
             .then (data => {
-                if (JSON.stringify(data.password) === password){
+                if (JSON.stringify(data.password) === '"' + password + '"'){
                     window.location.href = "http://localhost:9000/#/home";
                 }else{
                     alert("No such user or password exists!")

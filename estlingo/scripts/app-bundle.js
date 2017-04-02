@@ -178,12 +178,15 @@ define('register/register',["exports", "aurelia-fetch-client"], function (export
             console.log("getUser() started");
             var username = document.getElementById("username").value;
             var password = document.getElementById("password").value;
+            console.log("inserted username: " + username);
+            console.log("inserted password: " + password);
 
             var client = new _aureliaFetchClient.HttpClient();
             client.fetch("http://localhost:8080/users/" + username).then(function (response) {
                 return response.json();
             }).then(function (data) {
-                if (JSON.stringify(data.password) === password) {
+                console.log("database responded: " + JSON.stringify(data.password));
+                if (JSON.stringify(data.password) === '"' + password + '"') {
                     window.location.href = "http://localhost:9000/#/home";
                 } else {
                     alert("No such user or password exists!");
