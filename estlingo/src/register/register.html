@@ -13,20 +13,22 @@
                 <div>
                     <div>
                         Log in:
-                        <div class="greyBox">
-                            <input name="username" placeholder="Username">
-                        </div>
-                        <div class="greyBox">
-                            <input name="password" placeholder="Password" type="password">
-                        </div>
-                        <div class="greyBox" style="float: right;">
-                            <input type="button" value="Log in" Onclick="window.location.href='http://localhost:9000/#/home'">
-                        </div>
+                        <form id="loginform" submit.delegate="getUser()">
+                            <div class="greyBox">
+                                <input name="username" placeholder="Username">
+                            </div>
+                            <div class="greyBox">
+                                <input name="password" placeholder="Password" type="password">
+                            </div>
+                            <div class="greyBox" style="float: right;">
+                                <input type="submit" value="Log in">
+                            </div>
+                        </form>
                     </div>
                     <br>
                     <br>
                     <div>
-                        <form id="userform" submit.delegate="addUser()">
+                        <form id="registerform" submit.delegate="addUser()">
 							<div class="greyBox">
 								<input name="username" placeholder="Username" value.bind="userData.username">
 							</div>
@@ -34,10 +36,10 @@
 								<input type="password" name="password" placeholder="Password" value.bind="userData.password">
 							</div>
 							<div class="greyBox">
-								<input name="eMail" placeholder="E-mail" value.bind="userData.eMail">
+								<input name="e_mail" placeholder="E-mail" value.bind="userData.e_mail">
 							</div>
 							<div class="greyBox" style="float: right;">
-                            	<input type="submit" value="Register user" Onclick="window.location.href='http://localhost:9000/#/register'">
+                            	<input type="submit" value="Register user">
                         	</div>
     					</form>
                     </div>

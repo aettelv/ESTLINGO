@@ -12,7 +12,7 @@
 			    data: JSON.stringify({
 			    	username: $('#username').val(),
 			    	password: $('#password').val(),
-			    	eMail: $('#eMail').val()
+			    	e_mail: $('#e_mail').val()
 			    }),
 			    contentType: "application/json; charset=utf-8",
 			    dataType: "json",
@@ -32,7 +32,7 @@
 	<form id="userform" method="POST" action="http://localhost:8080/users/add">
 		<div><label for="username">username</label><input id="username" type="text" name="username"></div>
 		<div><label for="password">password</label><input id="password" type="text" name="password"></div>
-		<div><label for="eMail">eMail</label><input id="eMail" type="text" name="eMail"></div>
+		<div><label for="e_mail">e_mail</label><input id="eMail" type="text" name="eMail"></div>
 		<input type="submit" name="Lisa kasutaja">
 	</form>
 
