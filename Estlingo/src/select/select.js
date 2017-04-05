@@ -2,5 +2,6 @@ export class select{
     
     constructor(){
         this.messsage = "Test-test-test"
+        this.h1 = "Select equivalent"
     }
 }
