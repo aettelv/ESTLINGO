@@ -30,6 +30,16 @@ export class Register{
         console.log("inserted username: " +username);
         console.log("inserted password: " + password);
         
+        if (username == ""){
+            console.log("Username field enpty!");
+            return;
+        }
+        
+        if (password == ""){
+            console.log("Password field enpty!");
+            return;
+        }
+        
         let client = new HttpClient();
         client.fetch("http://localhost:8080/users/" + username)
             .then (response => response.json())
