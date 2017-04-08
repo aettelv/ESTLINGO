@@ -7,6 +7,23 @@ export class Register{
     
     addUser() {
         console.log("addUser() started");
+    
+        if(this.userData.username == undefined){
+            console.log("Registered username field empty");
+            alert("Please enter a username!");
+            return;
+        }
+        if(this.userData.password == undefined){
+            console.log("Registered password field empty");
+            alert("Please enter a password!");
+            return;
+        }
+        if(this.userData.e_mail == undefined){
+            console.log("Registered email field empty");
+            alert("Please enter a e-mail!");
+            return;
+        }
+        
         let client = new HttpClient();
         client.fetch("http://localhost:8080/users/add", {
             'method': "POST",
@@ -16,6 +33,8 @@ export class Register{
             .then(data => {
                 console.log("Server saatis " + data.username + data.password + data.e_mail);
         });
+        
+        window.location.href = "http://localhost:9000/#/home";
         
         AureliaCookie.set('isLoggedIn', true , {
             expiry: 1,
@@ -36,11 +55,13 @@ export class Register{
         
         if (username == ""){
             console.log("Username field enpty!");
+            alert("Please enter a username!");
             return;
         }
         
         if (password == ""){
-            console.log("Password field enpty!");
+            console.log("Password field empty!");
+            alert("Please enter a password!");
             return;
         }
         
