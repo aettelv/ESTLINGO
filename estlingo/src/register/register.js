@@ -1,5 +1,5 @@
 import {HttpClient, json} from "aurelia-fetch-client";
-import {Cookie} from 'aurelia-cookie';
+import {AureliaCookie} from 'aurelia-cookie';
 
 export class Register{
     
@@ -41,7 +41,7 @@ export class Register{
             return;
         }
         
-        Cookie.set('isLoggedIn', true , {
+        AureliaCookie.set('isLoggedIn', true , {
             expiry: 1,
             path: '',
             domain: '',
