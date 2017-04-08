@@ -5,10 +5,6 @@ export class Register{
     
     userData = {}
     
-    constructor(){
-        this.message = "Register user here! (page: register)"
-    }
-    
     addUser() {
         console.log("addUser() started");
         let client = new HttpClient();
@@ -19,6 +15,13 @@ export class Register{
             .then(response => response.json())
             .then(data => {
                 console.log("Server saatis " + data.username + data.password + data.e_mail);
+        });
+        
+        AureliaCookie.set('isLoggedIn', true , {
+            expiry: 1,
+            path: '',
+            domain: '',
+            secure: false
         });
         
         console.log("addUser() finished");

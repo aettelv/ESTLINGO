@@ -26,4 +26,9 @@ export class App {
             { route: 'select',           name: 'select',         moduleId: 'select/select', nav: true },
             ]);
     }
+
+    logOut(){
+        AureliaCookie.delete('isLoggedIn');
+        window.location.href = "http://localhost:9000/#/register";
+    }
 }

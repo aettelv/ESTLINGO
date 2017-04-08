@@ -10,7 +10,11 @@
                 <li><a class="active" href="http://localhost:9000/#/home">Home</a></li>
                 <li><a href="http://localhost:9000/#/games">Games</a></li>
                 <li><a href="http://localhost:9000/#/about">About</a></li>
-                <li style="float:right"><a href="http://localhost:9000/#/register">Log out</a></li>
+                <form id="logOutform" submit.delegate="logOut()">
+                    <div style="float: right;">
+                        <input type="submit" value="Log out">
+                    </div>
+                </form>
             </ul>
         </div>
         <div class="footer">
