@@ -27583,4 +27583,111 @@ define('aurelia-testing/wait',['exports'], function (exports) {
     }, options);
   }
 });
-function _aureliaConfigureModuleLoader(){requirejs.config({"baseUrl":"src/","paths":{"aurelia-bootstrapper":"..\\node_modules\\aurelia-bootstrapper\\dist\\amd\\aurelia-bootstrapper","aurelia-binding":"..\\node_modules\\aurelia-binding\\dist\\amd\\aurelia-binding","aurelia-event-aggregator":"..\\node_modules\\aurelia-event-aggregator\\dist\\amd\\aurelia-event-aggregator","aurelia-framework":"..\\node_modules\\aurelia-framework\\dist\\amd\\aurelia-framework","aurelia-fetch-client":"..\\node_modules\\aurelia-fetch-client\\dist\\amd\\aurelia-fetch-client","aurelia-dependency-injection":"..\\node_modules\\aurelia-dependency-injection\\dist\\amd\\aurelia-dependency-injection","aurelia-history":"..\\node_modules\\aurelia-history\\dist\\amd\\aurelia-history","aurelia-loader":"..\\node_modules\\aurelia-loader\\dist\\amd\\aurelia-loader","aurelia-history-browser":"..\\node_modules\\aurelia-history-browser\\dist\\amd\\aurelia-history-browser","aurelia-loader-default":"..\\node_modules\\aurelia-loader-default\\dist\\amd\\aurelia-loader-default","aurelia-logging":"..\\node_modules\\aurelia-logging\\dist\\amd\\aurelia-logging","aurelia-logging-console":"..\\node_modules\\aurelia-logging-console\\dist\\amd\\aurelia-logging-console","aurelia-metadata":"..\\node_modules\\aurelia-metadata\\dist\\amd\\aurelia-metadata","aurelia-pal":"..\\node_modules\\aurelia-pal\\dist\\amd\\aurelia-pal","aurelia-pal-browser":"..\\node_modules\\aurelia-pal-browser\\dist\\amd\\aurelia-pal-browser","aurelia-path":"..\\node_modules\\aurelia-path\\dist\\amd\\aurelia-path","aurelia-polyfills":"..\\node_modules\\aurelia-polyfills\\dist\\amd\\aurelia-polyfills","aurelia-route-recognizer":"..\\node_modules\\aurelia-route-recognizer\\dist\\amd\\aurelia-route-recognizer","aurelia-router":"..\\node_modules\\aurelia-router\\dist\\amd\\aurelia-router","aurelia-task-queue":"..\\node_modules\\aurelia-task-queue\\dist\\amd\\aurelia-task-queue","aurelia-templating-binding":"..\\node_modules\\aurelia-templating-binding\\dist\\amd\\aurelia-templating-binding","aurelia-templating":"..\\node_modules\\aurelia-templating\\dist\\amd\\aurelia-templating","text":"..\\node_modules\\text\\text","app-bundle":"../scripts/app-bundle"},"packages":[{"name":"aurelia-templating-resources","location":"../node_modules/aurelia-templating-resources/dist/amd","main":"aurelia-templating-resources"},{"name":"aurelia-templating-router","location":"../node_modules/aurelia-templating-router/dist/amd","main":"aurelia-templating-router"},{"name":"aurelia-testing","location":"../node_modules/aurelia-testing/dist/amd","main":"aurelia-testing"}],"stubModules":["text"],"shim":{},"bundles":{"app-bundle":["app","environment","main","about/about","games/games","home/home","register/register","resources/index","select/select","nav-bar","TypeEquivalent/TypeEquivalent"]}})}
+define('aurelia-cookie/index',["require", "exports", "./aurelia-cookie"], function (require, exports, aurelia_cookie_1) {
+    "use strict";
+    exports.AureliaCookie = aurelia_cookie_1.AureliaCookie;
+    function configure(aurelia) {
+        aurelia.container.registerSingleton(aurelia_cookie_1.AureliaCookie, aurelia_cookie_1.AureliaCookie);
+    }
+    exports.configure = configure;
+});
+;define('aurelia-cookie', ['aurelia-cookie/index'], function (main) { return main; });
+
+define('aurelia-cookie/aurelia-cookie',["require", "exports"], function (require, exports) {
+    "use strict";
+    var AureliaCookie = (function () {
+        function AureliaCookie() {
+        }
+        /**
+        *
+        * Get a cookie by its name
+        */
+        AureliaCookie.get = function (name) {
+            var cookies = this.all();
+            if (cookies && cookies[name]) {
+                return cookies[name];
+            }
+            return null;
+        };
+        /**
+        * Set a cookie
+        */
+        AureliaCookie.set = function (name, value, options) {
+            var str = this.encode(name) + "=" + this.encode(value);
+            if (value === null) {
+                options.expiry = -1;
+            }
+            /**
+            * Expiry date in hours
+            */
+            if (options.expiry >= 0 && !options.expires) {
+                var expires = new Date();
+                expires.setHours(expires.getHours() + options.expiry);
+                options.expires = expires;
+            }
+            if (options.path) {
+                str += "; path=" + options.path;
+            }
+            if (options.domain) {
+                str += "; domain=" + options.domain;
+            }
+            if (options.expires) {
+                str += "; expires=" + options.expires.toUTCString();
+            }
+            if (options.secure) {
+                str += '; secure';
+            }
+            document.cookie = str;
+        };
+        /**
+        * Deletes a cookie by setting its expiry date in the past
+        */
+        AureliaCookie.delete = function (name, domain) {
+            if (domain === void 0) { domain = null; }
+            var cookieString = name + " =;expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+            if (domain) {
+                cookieString += "; domain=" + domain;
+            }
+            document.cookie = cookieString;
+        };
+        /**
+        * Get all set cookies and return an array
+        */
+        AureliaCookie.all = function () {
+            return this.parse(document.cookie);
+        };
+        AureliaCookie.parse = function (str) {
+            var obj = {};
+            var pairs = str.split(/ *; */);
+            var pair;
+            if (pairs[0] === '') {
+                return obj;
+            }
+            for (var i = 0; i < pairs.length; ++i) {
+                pair = pairs[i].split('=');
+                obj[this.decode(pair[0])] = this.decode(pair[1]);
+            }
+            return obj;
+        };
+        AureliaCookie.encode = function (value) {
+            try {
+                return encodeURIComponent(value);
+            }
+            catch (e) {
+                return null;
+            }
+        };
+        AureliaCookie.decode = function (value) {
+            try {
+                return decodeURIComponent(value);
+            }
+            catch (e) {
+                return null;
+            }
+        };
+        return AureliaCookie;
+    }());
+    exports.AureliaCookie = AureliaCookie;
+});
+
+function _aureliaConfigureModuleLoader(){requirejs.config({"baseUrl":"src/","paths":{"aurelia-bootstrapper":"..\\node_modules\\aurelia-bootstrapper\\dist\\amd\\aurelia-bootstrapper","aurelia-binding":"..\\node_modules\\aurelia-binding\\dist\\amd\\aurelia-binding","aurelia-dependency-injection":"..\\node_modules\\aurelia-dependency-injection\\dist\\amd\\aurelia-dependency-injection","aurelia-event-aggregator":"..\\node_modules\\aurelia-event-aggregator\\dist\\amd\\aurelia-event-aggregator","aurelia-fetch-client":"..\\node_modules\\aurelia-fetch-client\\dist\\amd\\aurelia-fetch-client","aurelia-history":"..\\node_modules\\aurelia-history\\dist\\amd\\aurelia-history","aurelia-framework":"..\\node_modules\\aurelia-framework\\dist\\amd\\aurelia-framework","aurelia-history-browser":"..\\node_modules\\aurelia-history-browser\\dist\\amd\\aurelia-history-browser","aurelia-loader":"..\\node_modules\\aurelia-loader\\dist\\amd\\aurelia-loader","aurelia-loader-default":"..\\node_modules\\aurelia-loader-default\\dist\\amd\\aurelia-loader-default","aurelia-logging":"..\\node_modules\\aurelia-logging\\dist\\amd\\aurelia-logging","aurelia-logging-console":"..\\node_modules\\aurelia-logging-console\\dist\\amd\\aurelia-logging-console","aurelia-metadata":"..\\node_modules\\aurelia-metadata\\dist\\amd\\aurelia-metadata","aurelia-path":"..\\node_modules\\aurelia-path\\dist\\amd\\aurelia-path","aurelia-pal":"..\\node_modules\\aurelia-pal\\dist\\amd\\aurelia-pal","aurelia-pal-browser":"..\\node_modules\\aurelia-pal-browser\\dist\\amd\\aurelia-pal-browser","aurelia-route-recognizer":"..\\node_modules\\aurelia-route-recognizer\\dist\\amd\\aurelia-route-recognizer","aurelia-polyfills":"..\\node_modules\\aurelia-polyfills\\dist\\amd\\aurelia-polyfills","aurelia-task-queue":"..\\node_modules\\aurelia-task-queue\\dist\\amd\\aurelia-task-queue","aurelia-router":"..\\node_modules\\aurelia-router\\dist\\amd\\aurelia-router","aurelia-templating":"..\\node_modules\\aurelia-templating\\dist\\amd\\aurelia-templating","aurelia-templating-binding":"..\\node_modules\\aurelia-templating-binding\\dist\\amd\\aurelia-templating-binding","text":"..\\node_modules\\text\\text","app-bundle":"../scripts/app-bundle"},"packages":[{"name":"aurelia-templating-resources","location":"../node_modules/aurelia-templating-resources/dist/amd","main":"aurelia-templating-resources"},{"name":"aurelia-templating-router","location":"../node_modules/aurelia-templating-router/dist/amd","main":"aurelia-templating-router"},{"name":"aurelia-testing","location":"../node_modules/aurelia-testing/dist/amd","main":"aurelia-testing"},{"name":"aurelia-cookie","location":"../node_modules/aurelia-cookie/dist/amd","main":"index"}],"stubModules":["text"],"shim":{},"bundles":{"app-bundle":["app","environment","main","about/about","games/games","home/home","register/register","resources/index","select/select","nav-bar","TypeEquivalent/TypeEquivalent"]}})}
