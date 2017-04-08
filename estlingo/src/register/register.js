@@ -1,4 +1,5 @@
-import {HttpClient, json} from "aurelia-fetch-client"
+import {HttpClient, json} from "aurelia-fetch-client";
+import {Cookie} from 'aurelia-cookie';
 
 export class Register{
     
@@ -39,6 +40,13 @@ export class Register{
             console.log("Password field enpty!");
             return;
         }
+        
+        Cookie.set('isLoggedIn', true , {
+            expiry: 1,
+            path: '',
+            domain: '',
+            secure: false
+        });
         
         let client = new HttpClient();
         client.fetch("http://localhost:8080/users/" + username)

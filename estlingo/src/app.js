@@ -1,4 +1,18 @@
+import {Cookie} from 'aurelia-cookie';
+
 export class App {
+    
+    isLoggedIn = false;
+    
+    constructor(){
+        /*if (Cookie.get('isLoggedIn')==true){
+            this.isLoggedIn = Cookie.get('isLoggedIn'); console.log("isLoggedIn: " + this.isLoggedIn);
+        }else if(Cookie.get('isLoggedIn')==false){
+            console.log("isLoggedIn: " + this.isLoggedIn);
+        }else{
+            console.log("isLoggedIn: not defiend");
+        }*/
+    }
 
     configureRouter(config, router) {
         this.router = router;

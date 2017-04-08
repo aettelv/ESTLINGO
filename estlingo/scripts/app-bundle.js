@@ -1,9 +1,10 @@
-define('app',['exports'], function (exports) {
+define('app',['exports', 'aurelia-cookie'], function (exports, _aureliaCookie) {
     'use strict';
 
     Object.defineProperty(exports, "__esModule", {
         value: true
     });
+    exports.App = undefined;
 
     function _classCallCheck(instance, Constructor) {
         if (!(instance instanceof Constructor)) {
@@ -14,6 +15,8 @@ define('app',['exports'], function (exports) {
     var App = exports.App = function () {
         function App() {
             _classCallCheck(this, App);
+
+            this.isLoggedIn = false;
         }
 
         App.prototype.configureRouter = function configureRouter(config, router) {
@@ -24,6 +27,104 @@ define('app',['exports'], function (exports) {
 
         return App;
     }();
+});
+define('aurelia-plugins-cookies',['exports'], function (exports) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  var Cookies = function () {
+    function Cookies() {
+      _classCallCheck(this, Cookies);
+    }
+
+    Cookies.get = function get(key) {
+      var cookies = this.getAll();
+      if (cookies && cookies[key]) return cookies[key];
+      return null;
+    };
+
+    Cookies.getAll = function getAll() {
+      return this.parse(document.cookie);
+    };
+
+    Cookies.getObject = function getObject(key) {
+      var value = this.get(key);
+      return value ? JSON.parse(value) : value;
+    };
+
+    Cookies.remove = function remove(key) {
+      var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+      this.put(key, null, options);
+    };
+
+    Cookies.removeAll = function removeAll() {
+      var _this = this;
+
+      var cookies = this.getAll();
+      Object.keys(cookies).forEach(function (key) {
+        _this.remove(key);
+      });
+    };
+
+    Cookies.put = function put(key, value, options) {
+      var expires = options.expires;
+      if (value == null) expires = 'Thu, 01 Jan 1970 00:00:01 GMT';
+      if (typeof expires === 'string') expires = new Date(expires);
+      var str = this.encode(key) + '=' + (value != null ? this.encode(value) : '');
+      if (options.path) str += '; path=' + options.path;
+      if (options.domain) str += '; domain=' + options.domain;
+      if (options.expires) str += '; expires=' + expires.toUTCString();
+      if (options.secure) str += '; secure';
+      document.cookie = str;
+    };
+
+    Cookies.putObject = function putObject(key, value) {
+      var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+
+      this.put(key, JSON.stringify(value), options);
+    };
+
+    Cookies.decode = function decode(value) {
+      try {
+        return decodeURIComponent(value);
+      } catch (e) {
+        return null;
+      }
+    };
+
+    Cookies.encode = function encode(value) {
+      try {
+        return encodeURIComponent(value);
+      } catch (e) {
+        return null;
+      }
+    };
+
+    Cookies.parse = function parse(str) {
+      var obj = {};
+      var pairs = str.split(/ *; */);
+      if (pairs[0] === '') return obj;
+      for (var i = 0, j = pairs.length; i < j; i += 1) {
+        var pair = pairs[i].split('=');
+        obj[this.decode(pair[0])] = this.decode(pair[1]);
+      }
+      return obj;
+    };
+
+    return Cookies;
+  }();
+
+  exports.default = Cookies;
 });
 define('environment',["exports"], function (exports) {
   "use strict";
@@ -59,7 +160,7 @@ define('main',['exports', './environment'], function (exports, _environment) {
   });
 
   function configure(aurelia) {
-    aurelia.use.standardConfiguration().feature('resources');
+    aurelia.use.standardConfiguration().plugin('aurelia-cookie').feature('resources');
 
     if (_environment2.default.debug) {
       aurelia.use.developmentLogging();
@@ -136,7 +237,7 @@ define('home/home',["exports"], function (exports) {
         this.message = "Welcome to Estlingo! (page: home)";
     };
 });
-define('register/register',["exports", "aurelia-fetch-client"], function (exports, _aureliaFetchClient) {
+define('register/register',["exports", "aurelia-fetch-client", "aurelia-cookie"], function (exports, _aureliaFetchClient, _aureliaCookie) {
     "use strict";
 
     Object.defineProperty(exports, "__esModule", {
@@ -191,6 +292,13 @@ define('register/register',["exports", "aurelia-fetch-client"], function (export
                 return;
             }
 
+            _aureliaCookie.Cookie.set('isLoggedIn', true, {
+                expiry: 1,
+                path: '',
+                domain: '',
+                secure: false
+            });
+
             var client = new _aureliaFetchClient.HttpClient();
             client.fetch("http://localhost:8080/users/" + username).then(function (response) {
                 return response.json();
@@ -237,8 +345,105 @@ define('select/select',["exports"], function (exports) {
         this.h1 = "Select equivalent";
     };
 });
+define('aurelia-cookie/aurelia-cookie',["require", "exports"], function (require, exports) {
+    "use strict";
+    var AureliaCookie = (function () {
+        function AureliaCookie() {
+        }
+        /**
+        *
+        * Get a cookie by its name
+        */
+        AureliaCookie.get = function (name) {
+            var cookies = this.all();
+            if (cookies && cookies[name]) {
+                return cookies[name];
+            }
+            return null;
+        };
+        /**
+        * Set a cookie
+        */
+        AureliaCookie.set = function (name, value, options) {
+            var str = this.encode(name) + "=" + this.encode(value);
+            if (value === null) {
+                options.expiry = -1;
+            }
+            /**
+            * Expiry date in hours
+            */
+            if (options.expiry >= 0 && !options.expires) {
+                var expires = new Date();
+                expires.setHours(expires.getHours() + options.expiry);
+                options.expires = expires;
+            }
+            if (options.path) {
+                str += "; path=" + options.path;
+            }
+            if (options.domain) {
+                str += "; domain=" + options.domain;
+            }
+            if (options.expires) {
+                str += "; expires=" + options.expires.toUTCString();
+            }
+            if (options.secure) {
+                str += '; secure';
+            }
+            document.cookie = str;
+        };
+        /**
+        * Deletes a cookie by setting its expiry date in the past
+        */
+        AureliaCookie.delete = function (name, domain) {
+            if (domain === void 0) { domain = null; }
+            var cookieString = name + " =;expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+            if (domain) {
+                cookieString += "; domain=" + domain;
+            }
+            document.cookie = cookieString;
+        };
+        /**
+        * Get all set cookies and return an array
+        */
+        AureliaCookie.all = function () {
+            return this.parse(document.cookie);
+        };
+        AureliaCookie.parse = function (str) {
+            var obj = {};
+            var pairs = str.split(/ *; */);
+            var pair;
+            if (pairs[0] === '') {
+                return obj;
+            }
+            for (var i = 0; i < pairs.length; ++i) {
+                pair = pairs[i].split('=');
+                obj[this.decode(pair[0])] = this.decode(pair[1]);
+            }
+            return obj;
+        };
+        AureliaCookie.encode = function (value) {
+            try {
+                return encodeURIComponent(value);
+            }
+            catch (e) {
+                return null;
+            }
+        };
+        AureliaCookie.decode = function (value) {
+            try {
+                return decodeURIComponent(value);
+            }
+            catch (e) {
+                return null;
+            }
+        };
+        return AureliaCookie;
+    }());
+    exports.AureliaCookie = AureliaCookie;
+});
+
 define('text!app.css', ['module'], function(module) { module.exports = ".body{\r\n    font-family: 'Open Sans', sans-serif;\r\n    font-size: 15px;\r\n    background-color: #f5f5f5;\r\n    height: 100%;\r\n    margin: 0px 0px 0px 0px;\r\n    padding: 0px 0px 0px 0px;\r\n}\r\n\r\na{\r\n    text-decoration: none;\r\n}\r\n\r\ninput{\r\n    border: none;\r\n    outline: none;\r\n    background-color: transparent;\r\n    cursor: pointer;\r\n    font-size: 15px;\r\n}\r\n\r\n.header{\r\n    width: 100%;\r\n    background-color: #4099FF;\r\n    color: #f5f5f5;\r\n    padding: 5px 5px 0px 5px;\r\n    margin: 0px 0px 0px 0px;\r\n    box-sizing: border-box;\r\n    position: fixed;\r\n    top: 0;\r\n}\r\n\r\n.indexMain{\r\n    width: 900px;\r\n    height: auto;\r\n    margin: 25px auto 0px auto;\r\n    padding-top: 45px;\r\n}\r\n\r\n.main{\r\n    width: 900px;\r\n    min-height: 400px;\r\n    margin: 105px auto 0px auto;\r\n    padding: 10px 10px 10px 10px;\r\n    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.3), 0 8px 20px 0 rgba(0, 0, 0, 0.2);\r\n    background-color: #f5f5f5;\r\n}\r\n\r\n.main2{\r\n    width: 900px;\r\n    min-height: 470px;\r\n    margin: 105px auto 0px auto;\r\n    padding: 10px 0px 0px 0px;\r\n    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.3), 0 8px 20px 0 rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.welcomeText{\r\n    width: 550px;\r\n    min-height: 400px;\r\n    float: left;\r\n    color: #f5f5f5;\r\n    margin: 10px 0px 10px 0px;\r\n    text-align: center;\r\n}\r\n\r\n.loginScreen{\r\n    width: 315px;\r\n    min-height: 400px;\r\n    float: right;\r\n    margin: 10px 0px 10px 0px;\r\n}\r\n\r\n.footer{\r\n    width: 100%;\r\n    background-color: #4099FF;\r\n    color: #f5f5f5;\r\n    padding: 9px 10px 9px 10px;\r\n    box-sizing: border-box;\r\n    margin: auto 0px 0px 0px;\r\n    position: fixed;\r\n    bottom: 0;\r\n    white-space: nowrap;\r\n    font-size: 10px;\r\n}\r\n\r\n.gamechoiceButton {\r\n    width: 125px;\r\n    height: 25px;\r\n    text-align: center;\r\n    margin: 5px 5px 5px 5px;\r\n    color: #f5f5f5;\r\n}\r\n\r\n.gamechoiceButton:hover {\r\n    color: #bababa;\r\n}\r\n\r\n.gameHeader {\r\n    width: 400px;\r\n    min-height: 50px;\r\n    float: left;\r\n    color: black;\r\n    margin: 5px 0px 5px 250px;\r\n    text-align: center;\r\n}\r\n\r\n.gameArea {\r\n    width: 550px;\r\n    min-height: 90px;\r\n    float: left;\r\n    color: #f5f5f5;\r\n    margin: 5px 0px 10px 170px;\r\n    text-align: center; \r\n}\r\n\r\n.blueBox{\r\n    background-color: #4099FF;\r\n    padding: 5px;\r\n}\r\n\r\n.greyBox{\r\n    width: auto;\r\n    background-color: #f5f5f5;\r\n    padding: 5px;\r\n    margin: 3px 3px 3px 3px;\r\n}\r\n\r\n.content{\r\n    margin: 5px 0px 5px 0px;\r\n    padding: 0px 5px 0px 5px;\r\n    float: top;\r\n    background-color: #f5f5f5;\r\n}\r\n\r\n.contentGame{\r\n    margin: 5px 0px 5px 250px;\r\n    padding: 0px 5px 0px 5px;\r\n    float: top;\r\n}\r\n\r\n.choice {\r\n    margin: 5px 0px 5px 0px;\r\n    color: black;\r\n    cursor: pointer;\r\n}\r\n\r\n.choice:hover {\r\n    color: #f5f5f5;\r\n    font-weight: bold;\r\n}\r\n\r\n.answerLeft {\r\n    height: 200px;\r\n    width: 250px;\r\n    margin-left: 20px;\r\n    float: left;\r\n}\r\n\r\n.answerRight {\r\n    height: 200px;;\r\n    width: 250px;\r\n    margin-right: 20px;\r\n    float: right;\r\n}\r\n\r\n.nextGame {\r\n    margin-top: 20px;\r\n    margin-right: 0px;\r\n    float: right;\r\n    background-color: #4b4b4b;\r\n    cursor: pointer;\r\n}\r\n\r\n.BackToGames {\r\n    margin-top: 100px;\r\n    margin-right: -200px;\r\n    float: left;\r\n    background-color: #4b4b4b;\r\n    cursor: pointer;\r\n}\r\n\r\n\r\n.picture {\r\n    width:100px;\r\n    height:80px;\r\n}\r\n\r\ninput[type=text] {\r\n    border-radius: 3px;\r\n    background-color: lightgray;\r\n}\r\n\r\n.check {\r\n    width: 100px;\r\n    margin-left: 230px;\r\n    background-color: #4b4b4b;\r\n    margin-top: 15px;\r\n    cursor: pointer;\r\n}\r\n\r\n\r\n/*Menubar styles:*/\r\n.menuBar{\r\n    position: fixed;\r\n    top: 45px;\r\n}\r\n\r\nul {\r\n    list-style-type: none;\r\n    margin: 0px;\r\n    padding: 0px;\r\n    overflow: hidden;\r\n    background-color: #4099FF;\r\n    position: fixed;\r\n    width: 100%;\r\n}\r\n\r\nli {\r\n    float: left;\r\n}\r\n\r\nli a {\r\n    display: block;\r\n    color: white;\r\n    text-align: center;\r\n    padding: 14px 16px;\r\n    text-decoration: none;\r\n}\r\n\r\nli a:hover:not(.active) {\r\n    background-color: #55a4ff;\r\n}\r\n    \r\n.active {\r\n    background-color: #4b4b4b;\r\n}"; });
-define('text!app.html', ['module'], function(module) { module.exports = "<template><router-view></router-view><require from=\"app.css\"></require><div class=\"body\"><div class=\"header\"><img class=\"imageInput\" src=\"src/images/EstlingoLogo.png\" alt=\"Error loading image!\" width=\"150px\"></div><div class=\"menuBar\"><ul><li><a class=\"active\" href=\"http://localhost:9000/#/home\">Home</a></li><li><a href=\"http://localhost:9000/#/games\">Games</a></li><li><a href=\"http://localhost:9000/#/about\">About</a></li><li style=\"float:right\"><a href=\"http://localhost:9000/#/register\">Log out</a></li></ul></div><div class=\"footer\">Powered by the Estlingo group - Aet Telvik, Tauri Türkson, Sven Veskijärv</div></div></template>"; });
+define('text!app.html', ['module'], function(module) { module.exports = "<template><router-view></router-view><require from=\"app.css\"></require><div class=\"body\"><div class=\"header\"><img class=\"imageInput\" src=\"src/images/EstlingoLogo.png\" alt=\"Error loading image!\" width=\"150px\"></div><div class=\"menuBar\" if.bind=\"isLoggedIn\"><ul><li><a class=\"active\" href=\"http://localhost:9000/#/home\">Home</a></li><li><a href=\"http://localhost:9000/#/games\">Games</a></li><li><a href=\"http://localhost:9000/#/about\">About</a></li><li style=\"float:right\"><a href=\"http://localhost:9000/#/register\">Log out</a></li></ul></div><div class=\"footer\">Powered by the Estlingo group - Aet Telvik, Tauri Türkson, Sven Veskijärv</div></div></template>"; });
 define('text!nav-bar.html', ['module'], function(module) { module.exports = "<template bindable=\"router\" class=\"nav\"><p><a repeat.for=\"item of router.navigation\" href.bind=\"item.href\">${item.title}</a></p></template>"; });
 define('text!about/about.html', ['module'], function(module) { module.exports = "<template><div class=\"body\"><div class=\"main\"><div class=\"content\">${message}<br><br><img style=\"vertical-align:middle;padding:5px\" src=\"src/images/easy.png\" alt=\"Easy\" height=\"42\" width=\"42\">${easy}<br><img style=\"vertical-align:middle;padding:5px\" src=\"src/images/fast.png\" alt=\"Fast\" height=\"42\" width=\"42\">${fast}<br><img style=\"vertical-align:middle;padding:5px\" src=\"src/images/family.png\" alt=\"Family\" height=\"42\" width=\"42\">${family}<br><img style=\"vertical-align:middle;padding:5px\" src=\"src/images/game.png\" alt=\"Game\" height=\"42\" width=\"42\">${game}</div></div></div></template>"; });
 define('text!games/games.html', ['module'], function(module) { module.exports = "<template><div class=\"main\"><b>Select gametype:</b> <a href=\"http://localhost:9000/#/select\"><div class=\"gamechoiceButton blueBox\">${h1}</div></a><a href=\"http://localhost:9000/#/games/#/TypeEquivalent\"><div class=\"gamechoiceButton blueBox\">${h2}</div></a></div></template>"; });
