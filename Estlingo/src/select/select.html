@@ -9,9 +9,8 @@
                     <h2>Select the right Estonian equivalent!</h2>
                 </div>
                 <div class="gameArea"> 
-                    <div>
-                        <img src="src/images/Apple.png" alt="Apple" style="width:100px;height:50;">
-                    </div>
+                     <img src="src/images/apple.png" alt="Apple" style="width:100px;height:50;">
+                </div>
                     <div class="answerLeft">
                          <h3 id="correct" style="color:green;" if.bind="isTrue">CORRECT</h3>
                              <div id="click" class="blueBox choice" click.delegate="Right()">
@@ -21,28 +20,27 @@
                                 Banaan
                             </div>
                              <div class="blueBox choice" click.delegate="NotRight()">
-                                Sibul
+                                Aprikoos
                             </div>
                              <div class="blueBox choice" click.delegate="NotRight()">
-                                Kaalikas
+                                Avokaado
                             </div>
                     </div>
                     <div class="answerRight">
                         <h3 id="notCorrect" style="color:red;" if.bind="isFalse">FALSE</h3>
                              <div class="blueBox choice" click.delegate="NotRight()">
-                                Pirn
+                                Kirss
                             </div>
                              <div class="blueBox choice" click.delegate="NotRight()">
-                                Apelsin
+                                Murakas
                             </div>
                              <div class="blueBox choice" click.delegate="NotRight()">
-                                Sidrun
+                                Mustikas
                             </div>
                              <div class="blueBox choice" click.delegate="NotRight()">
-                                Peet
+                                Mustsõstar
                             </div>
                     </div>
-                </div>
                 <div class="greyBox nextGame">
                     <input type="button" value="To the next guess" style="color:#f5f5f5; font-family: 'Open Sans', sans-serif;" Onclick="window.location.href='SelectEquivalent1.html'">
                 </div>
