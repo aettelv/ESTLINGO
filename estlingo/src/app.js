@@ -23,6 +23,7 @@ export class App {
             { route: 'home',             name: 'home',           moduleId: 'home/home',     nav: true },
             { route: 'selectEquivalent1',           name: 'selectEquivalent1',         moduleId: 'selectEquivalent1/selectEquivalent1', nav: true },
             { route: 'selectEquivalent2',           name: 'selectEquivalent2',         moduleId: 'selectEquivalent2/selectEquivalent2', nav: true },
+            { route: 'typeEquivalent1',           name: 'typeEquivalent1',         moduleId: 'typeEquivalent1/typeEquivalent1', nav: true },
             ]);
     }
 
