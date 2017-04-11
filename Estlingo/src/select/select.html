@@ -10,35 +10,35 @@
                 </div>
                 <div class="gameArea"> 
                     <div>
-                        <img src="images/apple.jpg" alt="Apple" style="width:100px;height:50;">
+                        <img src="src/images/Apple.png" alt="Apple" style="width:100px;height:50;">
                     </div>
                     <div class="answerLeft">
-                         <h3 id="correct" style="color:green;">CORRECT</h3>
-                             <div id="click" class="blueBox choice" onclick="Right()">
+                         <h3 id="correct" style="color:green;" if.bind="isTrue">CORRECT</h3>
+                             <div id="click" class="blueBox choice" click.delegate="Right()">
                                 Õun
                             </div>
-                             <div class="blueBox choice" onclick="NotRight()">
+                             <div class="blueBox choice" click.delegate="NotRight()">
                                 Banaan
                             </div>
-                             <div class="blueBox choice" onclick="NotRight()">
+                             <div class="blueBox choice" click.delegate="NotRight()">
                                 Sibul
                             </div>
-                             <div class="blueBox choice" onclick="NotRight()">
+                             <div class="blueBox choice" click.delegate="NotRight()">
                                 Kaalikas
                             </div>
                     </div>
                     <div class="answerRight">
-                        <h3 id="notCorrect" style="color:red;">FALSE</h3>
-                             <div class="blueBox choice" onclick="NotRight()">
+                        <h3 id="notCorrect" style="color:red;" if.bind="isFalse">FALSE</h3>
+                             <div class="blueBox choice" click.delegate="NotRight()">
                                 Pirn
                             </div>
-                             <div class="blueBox choice" onclick="NotRight()">
+                             <div class="blueBox choice" click.delegate="NotRight()">
                                 Apelsin
                             </div>
-                             <div class="blueBox choice" onclick="NotRight()">
+                             <div class="blueBox choice" click.delegate="NotRight()">
                                 Sidrun
                             </div>
-                             <div class="blueBox choice" onclick="NotRight()">
+                             <div class="blueBox choice" click.delegate="NotRight()">
                                 Peet
                             </div>
                     </div>

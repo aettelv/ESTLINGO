@@ -1,7 +1,18 @@
 export class select{
     
+    isTrue;
+    isFalse;
+    
     constructor(){
-        this.messsage = "Test-test-test"
-        this.h1 = "Select equivalent"
+    }
+    
+    Right(){
+        this.isTrue = true;
+        this.isFalse = false;
+    }
+    
+    NotRight(){
+        this.isFalse = true;
+        this.isTrue = false;
     }
 }
