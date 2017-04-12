@@ -16,7 +16,7 @@
 			    }),
 			    contentType: "application/json; charset=utf-8",
 			    dataType: "json",
-			    success: function(data){$('#databox').html("Successfully added user: " + data.username + data.password + data.eMail)},
+			    success: function(data){$('#databox').html("Successfully added user: " + data.username + data.password + data.e_mail)},
 			    failure: function(errMsg) {
 			        alert(errMsg);
 			    }
@@ -32,7 +32,7 @@
 	<form id="userform" method="POST" action="http://localhost:8080/users/add">
 		<div><label for="username">username</label><input id="username" type="text" name="username"></div>
 		<div><label for="password">password</label><input id="password" type="text" name="password"></div>
-		<div><label for="e_mail">e_mail</label><input id="eMail" type="text" name="eMail"></div>
+		<div><label for="e_mail">e_mail</label><input id="e_mail" type="text" name="e_mail"></div>
 		<input type="submit" name="Lisa kasutaja">
 	</form>
 
