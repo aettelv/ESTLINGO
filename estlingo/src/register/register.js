@@ -42,7 +42,7 @@ export class Register{
             domain: '',
             secure: false
         });
-        
+        alert("Account created!");
         console.log("addUser() finished");
     }
 

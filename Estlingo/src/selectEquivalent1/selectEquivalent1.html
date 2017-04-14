@@ -12,8 +12,9 @@
                     <div>
                         <img src="src/images/Apple.png" alt="Apple" style="width:100px;height:50;">
                     </div>
+                    <h3 style="color:green;" if.bind="isTrue">CORRECT</h3>
+                    <h3 style="color:red;" if.bind="isFalse">FALSE</h3>
                     <div class="answerLeft">
-                         <h3 id="correct" style="color:green;" if.bind="isTrue">CORRECT</h3>
                              <div id="click" class="blueBox choice" click.delegate="Right()">
                                 Õun
                             </div>
@@ -28,7 +29,6 @@
                             </div>
                     </div>
                     <div class="answerRight">
-                        <h3 id="notCorrect" style="color:red;" if.bind="isFalse">FALSE</h3>
                              <div class="blueBox choice" click.delegate="NotRight()">
                                 Pirn
                             </div>
