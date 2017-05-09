@@ -1,66 +1,59 @@
 import {HttpClient, json} from "aurelia-fetch-client";
 import {AureliaCookie} from 'aurelia-cookie';
 
-export class Colours{
-    colours() {
+export class Days{
+    days() {
 
-    	if(this.white == undefined &
-        	this.black == undefined &
-        	this.red == undefined &
-        	this.blue == undefined &
-        	this.green == undefined &
-        	this.yellow == undefined &
-        	this.brown == undefined &
-        	this.purple == undefined){
+    	if(this.monday == undefined &
+        	this.tuesday == undefined &
+        	this.wednesday == undefined &
+        	this.thursday == undefined &
+        	this.friday == undefined &
+        	this.saturday == undefined &
+        	this.sunday == undefined){
             alert("You must fill the blanks before checking!");
             return;
         } else {
-	    	if(this.white.toLowerCase() == "valge"){
+	    	if(this.monday.toLowerCase() == "esmaspäev"){
 	            this.backgroundColor1 = "background-color:lightgreen;";
 	        } else {
 	        	this.backgroundColor1 = "background-color:lightcoral;";
 	        }
 	        
-	        if(this.black.toLowerCase() == "must"){
+	        if(this.tuesday.toLowerCase() == "teisipäev"){
 	            this.backgroundColor2 = "background-color:lightgreen;";
 	        } else {
 	        	this.backgroundColor2 = "background-color:lightcoral;";
 	        }
 
-	        if(this.red.toLowerCase() == "punane"){
+	        if(this.wednesday.toLowerCase() == "kolmapäev"){
 	            this.backgroundColor3 = "background-color:lightgreen;";
 	        } else {
 	        	this.backgroundColor3 = "background-color:lightcoral;";
 	        }
 
-	        if(this.blue.toLowerCase() == "sinine"){
+	        if(this.thursday.toLowerCase() == "neljapäev"){
 	            this.backgroundColor4 = "background-color:lightgreen;";
 	        } else {
 	        	this.backgroundColor4 = "background-color:lightcoral;";
 	        }
 
-	        if(this.green.toLowerCase() == "roheline"){
+	        if(this.friday.toLowerCase() == "reede"){
 	            this.backgroundColor5 = "background-color:lightgreen;";
 	        } else {
 	        	this.backgroundColor5 = "background-color:lightcoral;";
 	        }
 
-	        if(this.yellow.toLowerCase() == "kollane"){
+	        if(this.saturday.toLowerCase() == "laupäev"){
 	            this.backgroundColor6 = "background-color:lightgreen;";
 	        } else {
 	        	this.backgroundColor6 = "background-color:lightcoral;";
 	        }
 
-	        if(this.brown.toLowerCase() == "pruun"){
+	        if(this.sunday.toLowerCase() == "pühapäev"){
 	            this.backgroundColor7 = "background-color:lightgreen;";
 	        } else {
 	        	this.backgroundColor7 = "background-color:lightcoral;";
-	        }
-
-	        if(this.purple.toLowerCase() == "lilla"){
-	            this.backgroundColor8 = "background-color:lightgreen;";
-	        } else {
-	        	this.backgroundColor8 = "background-color:lightcoral;";
 	        }
     	}
     }

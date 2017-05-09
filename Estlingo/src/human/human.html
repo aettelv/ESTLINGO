@@ -1,0 +1,52 @@
+<template>
+    <div class="main">
+        <div class="content">
+            <div class="greyBox BackToGames">
+                <input type="button" value="Back to selection" style="color:#f5f5f5; font-family: 'Open Sans', sans-serif;" onclick="window.location.href='http://localhost:9000/#/typeEquivalent'">
+            </div>
+            <div class="gameHeader">
+                <h2>Human body</h2>
+            </div>
+            <div class="gameArea"> 
+                <div class="greyBox check" style="color:#f5f5f5; font-family: 'Open Sans', sans-serif;" click.delegate="human()">
+                        Check!
+                    </div>
+                    <div class="answerLeft"><br>                       
+                         <form style="color:black;">
+                             <label>Head &nbsp;</label><br>
+                             <input type="text" value.bind="head" style.bind="backgroundColor1"><br>
+                             <label>Hand &nbsp;</label><br>
+                             <input type="text" value.bind="hand" style.bind="backgroundColor2"><br>
+                             <label>Leg &nbsp;</label><br>
+                             <input type="text" value.bind="leg" style.bind="backgroundColor3"><br>
+                             <label>Mouth &nbsp;</label><br>
+                             <input type="text" value.bind="mouth" style.bind="backgroundColor4"><br>
+                             <label>Nose &nbsp;</label><br>
+                             <input type="text" value.bind="nose" style.bind="backgroundColor5"><br>
+                             <label>Ear &nbsp;</label><br>
+                             <input type="text" value.bind="ear" style.bind="backgroundColor6"><br>
+                         </form> 
+                    </div>
+                    <div class="answerRight"><br>                        
+                        <form style="color:black; ">
+                             <label>Knee &nbsp;</label><br>
+                             <input type="text" value.bind="knee" style.bind="backgroundColor7"><br>
+                             <label>Finger &nbsp;</label><br>
+                             <input type="text" value.bind="finger" style.bind="backgroundColor8"><br>
+                             <label>Tongue &nbsp;</label><br>
+                             <input type="text" value.bind="tongue" style.bind="backgroundColor9"><br>
+                             <label>Hair &nbsp;</label><br>
+                             <input type="text" value.bind="hair" style.bind="backgroundColor10"><br>
+                             <label>Chest &nbsp;</label><br>
+                             <input type="text" value.bind="chest" style.bind="backgroundColor11"><br>
+                             <label>Back &nbsp;</label><br>
+                             <input type="text" value.bind="back" style.bind="backgroundColor12"><br>
+                         </form> 
+                    </div>
+            </div>
+            <div class="greyBox nextGame">
+                <input type="button" value="To the next guess" style="color:#f5f5f5; font-family: 'Open Sans', sans-serif;" onclick="window.location.href='http://localhost:9000/#/kitchen'">
+            </div>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,42 @@
+<template>
+    <div class="main">
+        <div class="content">
+            <div class="greyBox BackToGames">
+                <input type="button" value="Back to selection" style="color:#f5f5f5; font-family: 'Open Sans', sans-serif;" onclick="window.location.href='http://localhost:9000/#/typeEquivalent'">
+            </div>
+            <div class="gameHeader">
+                <h2>Days of the week</h2>
+            </div>
+            <div class="gameArea"> 
+                <div class="greyBox check" style="color:#f5f5f5; font-family: 'Open Sans', sans-serif;" click.delegate="days()">
+                        Check!
+                    </div>
+                    <div class="answerLeft"><br>                       
+                         <form style="color:black;">
+                             <label>Monday &nbsp;</label><br>
+                             <input type="text" value.bind="monday" style.bind="backgroundColor1"><br>
+                             <label>Tuesday &nbsp;</label><br>
+                             <input type="text" value.bind="tuesday" style.bind="backgroundColor2"><br>
+                             <label>Wednesday &nbsp;</label><br>
+                             <input type="text" value.bind="wednesday" style.bind="backgroundColor3"><br>
+                             <label>Thursday &nbsp;</label><br>
+                             <input type="text" value.bind="thursday" style.bind="backgroundColor4"><br>
+                         </form> 
+                    </div>
+                    <div class="answerRight"><br>                        
+                        <form style="color:black; ">
+                             <label>Friday &nbsp;</label><br>
+                             <input type="text" value.bind="friday" style.bind="backgroundColor5"><br>
+                             <label>Saturday &nbsp;</label><br>
+                             <input type="text" value.bind="saturday" style.bind="backgroundColor6"><br>
+                             <label>Sunday &nbsp;</label><br>
+                             <input type="text" value.bind="sunday" style.bind="backgroundColor7"><br>
+                         </form> 
+                    </div>
+            </div>
+            <div class="greyBox nextGame">
+                <input type="button" value="To the next guess" style="color:#f5f5f5; font-family: 'Open Sans', sans-serif;" onclick="window.location.href='http://localhost:9000/#/months'">
+            </div>
+        </div>
+    </div>
+</template>

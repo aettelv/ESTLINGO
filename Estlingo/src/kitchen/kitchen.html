@@ -1,0 +1,50 @@
+<template>
+    <div class="main">
+        <div class="content">
+            <div class="greyBox BackToGames">
+                <input type="button" value="Back to selection" style="color:#f5f5f5; font-family: 'Open Sans', sans-serif;" onclick="window.location.href='http://localhost:9000/#/typeEquivalent'">
+            </div>
+            <div class="gameHeader">
+                <h2>Kitchen</h2>
+            </div>
+            <div class="gameArea"> 
+                <div class="greyBox check" style="color:#f5f5f5; font-family: 'Open Sans', sans-serif;" click.delegate="kitchen()">
+                        Check!
+                    </div>
+                    <div class="answerLeft"><br>                       
+                         <form style="color:black;">
+                             <label>Sink &nbsp;</label><br>
+                             <input type="text" value.bind="sink" style.bind="backgroundColor1"><br>
+                             <label>Plate &nbsp;</label><br>
+                             <input type="text" value.bind="plate" style.bind="backgroundColor2"><br>
+                             <label>Bowl &nbsp;</label><br>
+                             <input type="text" value.bind="bowl" style.bind="backgroundColor3"><br>
+                             <label>Glass &nbsp;</label><br>
+                             <input type="text" value.bind="glass" style.bind="backgroundColor4"><br>
+                             <label>Cup &nbsp;</label><br>
+                             <input type="text" value.bind="cup" style.bind="backgroundColor5"><br>
+                             <label>Fridge &nbsp;</label><br>
+                             <input type="text" value.bind="fridge" style.bind="backgroundColor6"><br>
+                         </form> 
+                    </div>
+                    <div class="answerRight"><br>                        
+                        <form style="color:black; ">
+                             <label>Knife &nbsp;</label><br>
+                             <input type="text" value.bind="knife" style.bind="backgroundColor7"><br>
+                             <label>Fork &nbsp;</label><br>
+                             <input type="text" value.bind="fork" style.bind="backgroundColor8"><br>
+                             <label>Spoon &nbsp;</label><br>
+                             <input type="text" value.bind="spoon" style.bind="backgroundColor9"><br>
+                             <label>Oven &nbsp;</label><br>
+                             <input type="text" value.bind="oven" style.bind="backgroundColor10"><br>
+                             <label>Stove &nbsp;</label><br>
+                             <input type="text" value.bind="stove" style.bind="backgroundColor11"><br>
+                             <label>Sponge &nbsp;</label><br>
+                             <input type="text" value.bind="sponge" style.bind="backgroundColor12"><br>
+                         </form> 
+                    </div>
+            </div>
+            
+        </div>
+    </div>
+</template>
