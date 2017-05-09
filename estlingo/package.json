@@ -8,6 +8,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "testCompile": "com.codeborne:selenide:4.4.1",
     "aurelia-animator-css": "^1.0.0",
     "aurelia-bootstrapper": "^1.0.0",
     "aurelia-plugins-cookies": "^2.0.0",
