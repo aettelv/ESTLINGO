@@ -21,6 +21,7 @@ export class App {
             { route: 'games',            name: 'games',          moduleId: 'games/games',   nav: true },
             { route: 'about',            name: 'about',          moduleId: 'about/about',   nav: true },
             { route: 'home',             name: 'home',           moduleId: 'home/home',     nav: true },
+            { route: 'selectEquivalent',           name: 'selectEquivalent',         moduleId: 'selectEquivalent/selectEquivalent', nav: true },
             { route: 'selectEquivalent1',           name: 'selectEquivalent1',         moduleId: 'selectEquivalent1/selectEquivalent1', nav: true },
             { route: 'selectEquivalent2',           name: 'selectEquivalent2',         moduleId: 'selectEquivalent2/selectEquivalent2', nav: true },
             { route: 'selectEquivalent3',           name: 'selectEquivalent3',         moduleId: 'selectEquivalent3/selectEquivalent3', nav: true },

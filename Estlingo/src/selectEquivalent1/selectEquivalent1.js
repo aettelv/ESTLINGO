@@ -15,4 +15,6 @@ export class select{
         this.isFalse = true;
         this.isTrue = false;
     }
+    
+    
 }
