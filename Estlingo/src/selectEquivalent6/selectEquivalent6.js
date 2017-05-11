@@ -2,6 +2,7 @@ export class select{
     
     isTrue;
     isFalse;
+    gameCompleted;
     
     constructor(){
     }
@@ -9,6 +10,7 @@ export class select{
     Right(){
         this.isTrue = true;
         this.isFalse = false;
+        this.gameCompleted = true;
     }
     
     NotRight(){
