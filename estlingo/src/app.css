@@ -159,6 +159,22 @@ input{
     float: right;
 }
 
+.answerLeft2 {
+    height: 200px;
+    width: 250px;
+    margin-left: 20px;
+    float: left;
+    text-align: right;
+}
+
+.answerRight2 {
+    height: 200px;;
+    width: 250px;
+    margin-right: 20px;
+    float: right;
+    text-align: right;
+}
+
 .nextGame {
     margin-top: 20px;
     margin-right: 0px;
