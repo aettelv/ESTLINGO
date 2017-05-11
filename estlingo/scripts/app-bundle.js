@@ -133,7 +133,7 @@ define('colours/colours',["exports", "aurelia-fetch-client", "aurelia-cookie"], 
 
 		Colours.prototype.colours = function colours() {
 
-			if (this.white == undefined & this.black == undefined & this.red == undefined & this.blue == undefined & this.green == undefined & this.yellow == undefined & this.brown == undefined & this.purple == undefined) {
+			if (this.white == undefined || this.black == undefined || this.red == undefined || this.blue == undefined || this.green == undefined || this.yellow == undefined || this.brown == undefined || this.purple == undefined) {
 				alert("You must fill the blanks before checking!");
 				return;
 			} else {
@@ -211,7 +211,7 @@ define('days/days',["exports", "aurelia-fetch-client", "aurelia-cookie"], functi
 
 		Days.prototype.days = function days() {
 
-			if (this.monday == undefined & this.tuesday == undefined & this.wednesday == undefined & this.thursday == undefined & this.friday == undefined & this.saturday == undefined & this.sunday == undefined) {
+			if (this.monday == undefined || this.tuesday == undefined || this.wednesday == undefined || this.thursday == undefined || this.friday == undefined || this.saturday == undefined || this.sunday == undefined) {
 				alert("You must fill the blanks before checking!");
 				return;
 			} else {
@@ -322,7 +322,7 @@ define('human/human',["exports", "aurelia-fetch-client", "aurelia-cookie"], func
 
 		Human.prototype.human = function human() {
 
-			if (this.head == undefined & this.hand == undefined & this.leg == undefined & this.mouth == undefined & this.nose == undefined & this.ear == undefined & this.knee == undefined & this.finger == undefined & this.tongue == undefined & this.hair == undefined & this.chest == undefined & this.back == undefined) {
+			if (this.head == undefined || this.hand == undefined || this.leg == undefined || this.mouth == undefined || this.nose == undefined || this.ear == undefined || this.knee == undefined || this.finger == undefined || this.tongue == undefined || this.hair == undefined || this.chest == undefined || this.back == undefined) {
 				alert("You must fill the blanks before checking!");
 				return;
 			} else {
@@ -424,7 +424,7 @@ define('kitchen/kitchen',["exports", "aurelia-fetch-client", "aurelia-cookie"], 
 
 		Kitchen.prototype.kitchen = function kitchen() {
 
-			if (this.sink == undefined & this.plate == undefined & this.bowl == undefined & this.glass == undefined & this.cup == undefined & this.fridge == undefined & this.knife == undefined & this.fork == undefined & this.spoon == undefined & this.oven == undefined & this.stove == undefined & this.sponge == undefined) {
+			if (this.sink == undefined || this.plate == undefined || this.bowl == undefined || this.glass == undefined || this.cup == undefined || this.fridge == undefined || this.knife == undefined || this.fork == undefined || this.spoon == undefined || this.oven == undefined || this.stove == undefined || this.sponge == undefined) {
 				alert("You must fill the blanks before checking!");
 				return;
 			} else {
@@ -526,7 +526,7 @@ define('months/months',["exports", "aurelia-fetch-client", "aurelia-cookie"], fu
 
 		Months.prototype.months = function months() {
 
-			if (this.january == undefined & this.february == undefined & this.march == undefined & this.april == undefined & this.may == undefined & this.june == undefined & this.july == undefined & this.august == undefined & this.september == undefined & this.october == undefined & this.november == undefined & this.december == undefined) {
+			if (this.january == undefined || this.february == undefined || this.march == undefined || this.april == undefined || this.may == undefined || this.june == undefined || this.july == undefined || this.august == undefined || this.september == undefined || this.october == undefined || this.november == undefined || this.december == undefined) {
 				alert("You must fill the blanks before checking!");
 				return;
 			} else {
@@ -628,7 +628,7 @@ define('numbers/numbers',["exports", "aurelia-fetch-client", "aurelia-cookie"], 
 
 		Numbers.prototype.numbers = function numbers() {
 
-			if (this.one == undefined & this.two == undefined & this.three == undefined & this.four == undefined & this.five == undefined & this.six == undefined & this.seven == undefined & this.eight == undefined & this.nine == undefined & this.ten == undefined) {
+			if (this.one == undefined || this.two == undefined || this.three == undefined || this.four == undefined || this.five == undefined || this.six == undefined || this.seven == undefined || this.eight == undefined || this.nine == undefined || this.ten == undefined) {
 				alert("You must fill the blanks before checking!");
 				return;
 			} else {

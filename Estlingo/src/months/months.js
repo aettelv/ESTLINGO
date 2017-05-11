@@ -4,17 +4,17 @@ import {AureliaCookie} from 'aurelia-cookie';
 export class Months{
     months() {
 
-    	if(this.january == undefined &
-        	this.february == undefined &
-        	this.march == undefined &
-        	this.april == undefined &
-        	this.may == undefined &
-        	this.june == undefined &
-        	this.july == undefined &
-        	this.august == undefined &
-        	this.september == undefined &
-        	this.october == undefined &
-        	this.november == undefined &
+    	if(this.january == undefined ||
+        	this.february == undefined ||
+        	this.march == undefined ||
+        	this.april == undefined ||
+        	this.may == undefined ||
+        	this.june == undefined ||
+        	this.july == undefined ||
+        	this.august == undefined ||
+        	this.september == undefined ||
+        	this.october == undefined ||
+        	this.november == undefined ||
         	this.december == undefined){
             alert("You must fill the blanks before checking!");
             return;

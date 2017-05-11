@@ -4,13 +4,13 @@ import {AureliaCookie} from 'aurelia-cookie';
 export class Colours{
     colours() {
 
-    	if(this.white == undefined &
-        	this.black == undefined &
-        	this.red == undefined &
-        	this.blue == undefined &
-        	this.green == undefined &
-        	this.yellow == undefined &
-        	this.brown == undefined &
+    	if(this.white == undefined ||
+        	this.black == undefined ||
+        	this.red == undefined ||
+        	this.blue == undefined ||
+        	this.green == undefined ||
+        	this.yellow == undefined ||
+        	this.brown == undefined ||
         	this.purple == undefined){
             alert("You must fill the blanks before checking!");
             return;
