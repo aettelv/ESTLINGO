@@ -590,7 +590,7 @@ define('months/months',["exports", "aurelia-fetch-client", "aurelia-cookie"], fu
 					this.backgroundColor10 = "background-color:lightcoral;";
 				}
 
-				if (this.november.toLowerCase() == "novmber") {
+				if (this.november.toLowerCase() == "november") {
 					this.backgroundColor11 = "background-color:lightgreen;";
 				} else {
 					this.backgroundColor11 = "background-color:lightcoral;";
