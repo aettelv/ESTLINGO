@@ -24,6 +24,10 @@ define('app',['exports', 'aurelia-cookie'], function (exports, _aureliaCookie) {
                 console.log("isLoggedIn: not defiend");
                 window.location.href = "http://localhost:9000/#/register";
             }
+
+            if (!(_aureliaCookie.AureliaCookie.get('username') == null)) {
+                this.usernameFromCookie = _aureliaCookie.AureliaCookie.get('username');
+            }
         }
 
         App.prototype.configureRouter = function configureRouter(config, router) {
@@ -34,6 +38,7 @@ define('app',['exports', 'aurelia-cookie'], function (exports, _aureliaCookie) {
 
         App.prototype.logOut = function logOut() {
             _aureliaCookie.AureliaCookie.delete('isLoggedIn');
+            _aureliaCookie.AureliaCookie.delete('username');
             window.location.href = "http://localhost:9000/#/register";
         };
 
@@ -766,6 +771,7 @@ define('register/register',["exports", "aurelia-fetch-client", "aurelia-cookie"]
                 domain: '',
                 secure: false
             });
+
             alert("Account created!");
             console.log("addUser() finished");
         };
@@ -790,6 +796,13 @@ define('register/register',["exports", "aurelia-fetch-client", "aurelia-cookie"]
             }
 
             _aureliaCookie.AureliaCookie.set('isLoggedIn', true, {
+                expiry: 1,
+                path: '',
+                domain: '',
+                secure: false
+            });
+
+            _aureliaCookie.AureliaCookie.set('username', username, {
                 expiry: 1,
                 path: '',
                 domain: '',
@@ -1087,7 +1100,7 @@ define('typeEquivalent/typeEquivalent',["exports"], function (exports) {
     var type = exports.type = function type() {
         _classCallCheck(this, type);
 
-        this.h1 = "Colours";
+        this.h1 = "Colors";
         this.h2 = "Numbers";
         this.h3 = "Days of the week";
         this.h4 = "Months";
@@ -1192,7 +1205,7 @@ define('aurelia-cookie/aurelia-cookie',["require", "exports"], function (require
     exports.AureliaCookie = AureliaCookie;
 });
 
-define('text!app.html', ['module'], function(module) { module.exports = "<template><router-view></router-view><require from=\"app.css\"></require><div class=\"body\"><div class=\"header\"><img class=\"imageInput\" src=\"src/images/EstlingoLogo.png\" alt=\"Error loading image!\" width=\"150px\"></div><div class=\"menuBar\" if.bind=\"isLoggedIn\"><ul><li><a class=\"active\" href=\"http://localhost:9000/#/home\">Home</a></li><li><a href=\"http://localhost:9000/#/games\">Games</a></li><li><a href=\"http://localhost:9000/#/about\">About</a></li><form id=\"logOutform\" submit.delegate=\"logOut()\"><div id=\"logOut\"><input style=\"float:right;margin:10px 10px 0 0;color:#f5f5f5\" type=\"submit\" value=\"Log out\"></div></form></ul></div><div class=\"footer\">Powered by the Estlingo group - Aet Telvik, Tauri Türkson, Sven Veskijärv</div></div></template>"; });
+define('text!app.html', ['module'], function(module) { module.exports = "<template><router-view></router-view><require from=\"app.css\"></require><div class=\"body\"><div class=\"header\"><img class=\"imageInput\" src=\"src/images/EstlingoLogo.png\" alt=\"Error loading image!\" width=\"150px\"></div><div class=\"menuBar\" if.bind=\"isLoggedIn\"><ul><li><a href=\"http://localhost:9000/#/home\">Home</a></li><li><a href=\"http://localhost:9000/#/games\">Games</a></li><li><a href=\"http://localhost:9000/#/about\">About</a></li><li><a href=\"http://localhost:9000/#/home\">Logged in as: ${usernameFromCookie}</a></li><form id=\"logOutform\" submit.delegate=\"logOut()\"><div id=\"logOut\"><input style=\"float:right;margin:10px 10px 0 0;color:#f5f5f5\" type=\"submit\" value=\"Log out\"></div></form></ul></div><div class=\"footer\">Powered by the Estlingo group - Aet Telvik, Tauri Türkson, Sven Veskijärv</div></div></template>"; });
 define('text!app.css', ['module'], function(module) { module.exports = "html, body{\r\n    font-family: 'Open Sans', sans-serif;\r\n    font-size: 15px;\r\n    background-color: #f5f5f5;\r\n    height: 100%;\r\n    margin: 0;\r\n    padding: 0;\r\n}\r\n\r\ninput{\r\n    border: none;\r\n    outline: none;\r\n    background-color: transparent;\r\n    cursor: pointer;\r\n    font-size: 15px;\r\n}\r\n\r\n.header{\r\n    width: 100%;\r\n    background-color: #4099FF;\r\n    color: #f5f5f5;\r\n    padding: 5px 5px 0px 5px;\r\n    margin: 0px 0px 0px 0px;\r\n    box-sizing: border-box;\r\n    position: fixed;\r\n    top: 0;\r\n}\r\n\r\n.indexMain{\r\n    width: 900px;\r\n    height: auto;\r\n    margin: 0px auto 0px auto;\r\n    padding-top: 45px;\r\n}\r\n\r\n.main{\r\n    width: 900px;\r\n    min-height: 400px;\r\n    margin: 105px auto 0px auto;\r\n    padding: 10px 0px 0px 0px;\r\n    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.3), 0 8px 20px 0 rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.main2{\r\n    width: 900px;\r\n    min-height: 470px;\r\n    margin: 105px auto 0px auto;\r\n    padding: 10px 0px 0px 0px;\r\n    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.3), 0 8px 20px 0 rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.welcomeText{\r\n    width: 550px;\r\n    min-height: 400px;\r\n    float: left;\r\n    color: #f5f5f5;\r\n    margin: 10px 0px 10px 0px;\r\n    text-align: center;\r\n}\r\n\r\n.loginScreen{\r\n    width: 315px;\r\n    min-height: 400px;\r\n    float: right;\r\n    margin: 10px 0px 10px 0px;\r\n}\r\n\r\n.footer{\r\n    width: 100%;\r\n    background-color: #4099FF;\r\n    color: #f5f5f5;\r\n    padding: 9px 10px 9px 10px;\r\n    box-sizing: border-box;\r\n    margin: auto 0px 0px 0px;\r\n    position: fixed;\r\n    bottom: 0;\r\n    white-space: nowrap;\r\n    font-size: 10px;\r\n}\r\n\r\n.gamechoiceButton {\r\n    width: 180px;\r\n    height: 120px;\r\n    text-align: center;\r\n    margin-top: 90px;\r\n    margin-left: 20px;\r\n    float: left;\r\n    color: black;\r\n}\r\n\r\n.gamechoiceButton:hover {\r\n    color: #f5f5f5;\r\n}\r\n\r\n.gameHeader {\r\n    width: 400px;\r\n    min-height: 50px;\r\n    float: left;\r\n    color: black;\r\n    margin: 5px 0px 5px 250px;\r\n    text-align: center;\r\n}\r\n\r\n.gameArea {\r\n    width: 550px;\r\n    min-height: 90px;\r\n    float: left;\r\n    color: #f5f5f5;\r\n    margin: 5px 0px 10px 170px;\r\n    text-align: center; \r\n}\r\n\r\n.blueBox{\r\n    background-color: #4099FF;\r\n    padding: 5px;\r\n}\r\n\r\n.greyBox{\r\n    width: auto;\r\n    background-color: #f5f5f5;\r\n    padding: 5px;\r\n    margin: 3px 3px 3px 3px;\r\n}\r\n\r\n.content{\r\n    margin: 5px 0px 5px 0px;\r\n    padding: 0px 5px 0px 5px;\r\n    float: top;\r\n}\r\n\r\n.contentGame{\r\n    margin: 5px 0px 5px 250px;\r\n    padding: 0px 5px 0px 5px;\r\n    float: top;\r\n}\r\n\r\n.choice {\r\n    margin: 5px 0px 5px 0px;\r\n    color: black;\r\n    cursor: pointer;\r\n}\r\n\r\n.choice:hover {\r\n    color: #f5f5f5;\r\n    font-weight: bold;\r\n}\r\n\r\n.answerLeft {\r\n    height: 200px;\r\n    width: 250px;\r\n    margin-left: 20px;\r\n    float: left;\r\n}\r\n\r\n.answerRight {\r\n    height: 200px;;\r\n    width: 250px;\r\n    margin-right: 20px;\r\n    float: right;\r\n}\r\n\r\n.answerLeft2 {\r\n    height: 200px;\r\n    width: 250px;\r\n    margin-left: 20px;\r\n    float: left;\r\n    text-align: right;\r\n}\r\n\r\n.answerRight2 {\r\n    height: 200px;;\r\n    width: 250px;\r\n    margin-right: 20px;\r\n    float: right;\r\n    text-align: right;\r\n}\r\n\r\n.nextGame {\r\n    margin-top: 20px;\r\n    margin-right: 0px;\r\n    float: right;\r\n    background-color: #4b4b4b;\r\n    cursor: pointer;\r\n}\r\n\r\n.BackToGames {\r\n    margin-top: 100px;\r\n    margin-right: -200px;\r\n    float: left;\r\n    background-color: #4b4b4b;\r\n    cursor: pointer;\r\n}\r\n\r\n\r\n.picture {\r\n    width:100px;\r\n    height:80px;\r\n}\r\n\r\ninput[type=text] {\r\n    border-radius: 3px;\r\n    background-color: lightgray;\r\n}\r\n\r\n.check {\r\n    width: 100px;\r\n    margin-left: 230px;\r\n    background-color: #4b4b4b;\r\n    margin-top: 15px;\r\n    cursor: pointer;\r\n}\r\n\r\n\r\n/*Menubar styles:*/\r\n.menuBar{\r\n    position: fixed;\r\n    top: 45px;\r\n}\r\n\r\nul {\r\n    list-style-type: none;\r\n    margin: 0px;\r\n    padding: 0px;\r\n    overflow: hidden;\r\n    background-color: #4099FF;\r\n    position: fixed;\r\n    width: 100%;\r\n}\r\n\r\nli {\r\n    float: left;\r\n}\r\n\r\nli a {\r\n    display: block;\r\n    color: white;\r\n    text-align: center;\r\n    padding: 14px 16px;\r\n    text-decoration: none;\r\n}\r\n\r\nli a:hover:not(.active) {\r\n    background-color: #55a4ff;\r\n}\r\n    \r\n.active {\r\n    background-color: #4b4b4b;\r\n}"; });
 define('text!nav-bar.html', ['module'], function(module) { module.exports = "<template bindable=\"router\" class=\"nav\"><p><a repeat.for=\"item of router.navigation\" href.bind=\"item.href\">${item.title}</a></p></template>"; });
 define('text!about/about.html', ['module'], function(module) { module.exports = "<template><div class=\"body\"><div class=\"main\"><div class=\"content\">${message}<br><br><img style=\"vertical-align:middle;padding:5px\" src=\"src/images/easy.png\" alt=\"Easy\" height=\"42\" width=\"42\">${easy}<br><img style=\"vertical-align:middle;padding:5px\" src=\"src/images/fast.png\" alt=\"Fast\" height=\"42\" width=\"42\">${fast}<br><img style=\"vertical-align:middle;padding:5px\" src=\"src/images/family.png\" alt=\"Family\" height=\"42\" width=\"42\">${family}<br><img style=\"vertical-align:middle;padding:5px\" src=\"src/images/game.png\" alt=\"Game\" height=\"42\" width=\"42\">${game}</div></div></div></template>"; });

@@ -42,6 +42,7 @@ export class Register{
             domain: '',
             secure: false
         });
+        
         alert("Account created!");
         console.log("addUser() finished");
     }
@@ -66,6 +67,13 @@ export class Register{
         }
         
         AureliaCookie.set('isLoggedIn', true , {
+            expiry: 1,
+            path: '',
+            domain: '',
+            secure: false
+        });
+        
+        AureliaCookie.set('username', username , {
             expiry: 1,
             path: '',
             domain: '',

@@ -2,6 +2,7 @@ import {AureliaCookie} from 'aurelia-cookie';
 
 export class App {
     
+    usernameFromCooke;
     isLoggedIn=false;
     
     constructor(){
@@ -10,6 +11,10 @@ export class App {
         }else{
             console.log("isLoggedIn: not defiend");
             window.location.href = "http://localhost:9000/#/register";
+        }
+        
+        if(!(AureliaCookie.get('username') == null)){
+            this.usernameFromCookie = AureliaCookie.get('username');
         }
     }
 
@@ -41,6 +46,7 @@ export class App {
 
     logOut(){
         AureliaCookie.delete('isLoggedIn');
+        AureliaCookie.delete('username');
         window.location.href = "http://localhost:9000/#/register";
     }
 }
