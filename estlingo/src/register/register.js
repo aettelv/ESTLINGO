@@ -43,6 +43,13 @@ export class Register{
             secure: false
         });
         
+        AureliaCookie.set('username', username , {
+            expiry: 1,
+            path: '',
+            domain: '',
+            secure: false
+        });
+        
         alert("Account created!");
         console.log("addUser() finished");
     }

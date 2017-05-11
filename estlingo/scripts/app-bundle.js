@@ -772,6 +772,13 @@ define('register/register',["exports", "aurelia-fetch-client", "aurelia-cookie"]
                 secure: false
             });
 
+            _aureliaCookie.AureliaCookie.set('username', username, {
+                expiry: 1,
+                path: '',
+                domain: '',
+                secure: false
+            });
+
             alert("Account created!");
             console.log("addUser() finished");
         };
