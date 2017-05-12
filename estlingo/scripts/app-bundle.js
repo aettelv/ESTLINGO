@@ -40,6 +40,7 @@ define('app',['exports', 'aurelia-cookie'], function (exports, _aureliaCookie) {
             _aureliaCookie.AureliaCookie.delete('isLoggedIn');
             _aureliaCookie.AureliaCookie.delete('username');
             window.location.href = "http://localhost:9000/#/register";
+            window.location.reload();
         };
 
         return App;
@@ -788,8 +789,8 @@ define('register/register',["exports", "aurelia-fetch-client", "aurelia-cookie"]
             });
 
             window.location.href = "http://localhost:9000/#/home";
+            window.location.reload();
 
-            alert("Account created!");
             console.log("addUser() finished");
         };
 
@@ -832,6 +833,7 @@ define('register/register',["exports", "aurelia-fetch-client", "aurelia-cookie"]
             }).then(function (data) {
                 if (JSON.stringify(data.password) === '"' + password + '"') {
                     window.location.href = "http://localhost:9000/#/home";
+                    window.location.reload();
                 } else {
                     alert("No such user or password exists!");
                 }

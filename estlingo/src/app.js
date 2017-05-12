@@ -48,5 +48,6 @@ export class App {
         AureliaCookie.delete('isLoggedIn');
         AureliaCookie.delete('username');
         window.location.href = "http://localhost:9000/#/register";
+        window.location.reload();
     }
 }

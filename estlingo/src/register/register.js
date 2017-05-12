@@ -59,8 +59,8 @@ export class Register{
         });
         
         window.location.href = "http://localhost:9000/#/home";
+        window.location.reload();
         
-        alert("Account created!");
         console.log("addUser() finished");
     }
 
@@ -103,6 +103,7 @@ export class Register{
             .then (data => {
                 if (JSON.stringify(data.password) === '"' + password + '"'){
                     window.location.href = "http://localhost:9000/#/home";
+                    window.location.reload();
                 }else{
                     alert("No such user or password exists!")
                 }
