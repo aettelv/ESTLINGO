@@ -4,17 +4,17 @@ import {AureliaCookie} from 'aurelia-cookie';
 export class Kitchen{
     kitchen() {
 
-    	if(this.sink == undefined &
-        	this.plate == undefined &
-        	this.bowl == undefined &
-        	this.glass == undefined &
-        	this.cup == undefined &
-        	this.fridge == undefined &
-        	this.knife == undefined &
-        	this.fork == undefined &
-        	this.spoon == undefined &
-        	this.oven == undefined &
-        	this.stove == undefined &
+    	if(this.sink == undefined ||
+        	this.plate == undefined ||
+        	this.bowl == undefined ||
+        	this.glass == undefined ||
+        	this.cup == undefined ||
+        	this.fridge == undefined ||
+        	this.knife == undefined ||
+        	this.fork == undefined ||
+        	this.spoon == undefined ||
+        	this.oven == undefined ||
+        	this.stove == undefined ||
         	this.sponge == undefined){
             alert("You must fill the blanks before checking!");
             return;

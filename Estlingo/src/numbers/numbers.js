@@ -4,15 +4,15 @@ import {AureliaCookie} from 'aurelia-cookie';
 export class Numbers{
     numbers() {
 
-    	if(this.one == undefined &
-        	this.two == undefined &
-        	this.three == undefined &
-        	this.four == undefined &
-        	this.five == undefined &
-        	this.six == undefined &
-        	this.seven == undefined &
-        	this.eight == undefined &
-        	this.nine == undefined &
+    	if(this.one == undefined ||
+        	this.two == undefined ||
+        	this.three == undefined ||
+        	this.four == undefined ||
+        	this.five == undefined ||
+        	this.six == undefined ||
+        	this.seven == undefined ||
+        	this.eight == undefined ||
+        	this.nine == undefined ||
         	this.ten == undefined){
             alert("You must fill the blanks before checking!");
             return;

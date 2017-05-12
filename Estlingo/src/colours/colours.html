@@ -5,13 +5,13 @@
                 <input type="button" value="Back to selection" style="color:#f5f5f5; font-family: 'Open Sans', sans-serif;" onclick="window.location.href='http://localhost:9000/#/typeEquivalent'">
             </div>
             <div class="gameHeader">
-                <h2>Colours</h2>
+                <h2>Colors</h2>
             </div>
             <div class="gameArea"> 
                 <div class="greyBox check" style="color:#f5f5f5; font-family: 'Open Sans', sans-serif;" click.delegate="colours()">
                         Check!
                     </div>
-                    <div class="answerLeft"><br>                       
+                    <div class="answerLeft2"><br>
                          <form style="color:black;">
                              <label>White &nbsp;</label>
                              <input type="text" value.bind="white" style.bind="backgroundColor1"><br>
@@ -23,7 +23,7 @@
                              <input type="text" value.bind="blue" style.bind="backgroundColor4"><br>
                          </form> 
                     </div>
-                    <div class="answerRight"><br>                        
+                    <div class="answerRight3"><br>
                         <form style="color:black; ">
                              <label>Green &nbsp;</label>
                              <input type="text" value.bind="green" style.bind="backgroundColor5"><br>
@@ -36,7 +36,7 @@
                          </form> 
                     </div>
             </div>
-            <div class="greyBox nextGame">
+            <div class="greyBox nextGame" if.bind="isCompleted">
                 <input type="button" value="To the next guess" style="color:#f5f5f5; font-family: 'Open Sans', sans-serif;" onclick="window.location.href='http://localhost:9000/#/numbers'">
             </div>
         </div>

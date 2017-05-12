@@ -4,17 +4,17 @@ import {AureliaCookie} from 'aurelia-cookie';
 export class Human{
     human() {
 
-    	if(this.head == undefined &
-        	this.hand == undefined &
-        	this.leg == undefined &
-        	this.mouth == undefined &
-        	this.nose == undefined &
-        	this.ear == undefined &
-        	this.knee == undefined &
-        	this.finger == undefined &
-        	this.tongue == undefined &
-        	this.hair == undefined &
-        	this.chest == undefined &
+    	if(this.head == undefined ||
+        	this.hand == undefined ||
+        	this.leg == undefined ||
+        	this.mouth == undefined ||
+        	this.nose == undefined ||
+        	this.ear == undefined ||
+        	this.knee == undefined ||
+        	this.finger == undefined ||
+        	this.tongue == undefined ||
+        	this.hair == undefined ||
+        	this.chest == undefined ||
         	this.back == undefined){
             alert("You must fill the blanks before checking!");
             return;

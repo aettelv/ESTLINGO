@@ -2,6 +2,7 @@ import {AureliaCookie} from 'aurelia-cookie';
 
 export class App {
     
+    usernameFromCooke;
     isLoggedIn=false;
     
     constructor(){
@@ -10,6 +11,10 @@ export class App {
         }else{
             console.log("isLoggedIn: not defiend");
             window.location.href = "http://localhost:9000/#/register";
+        }
+        
+        if(!(AureliaCookie.get('username') == null)){
+            this.usernameFromCookie = AureliaCookie.get('username');
         }
     }
 
@@ -21,6 +26,7 @@ export class App {
             { route: 'games',            name: 'games',          moduleId: 'games/games',   nav: true },
             { route: 'about',            name: 'about',          moduleId: 'about/about',   nav: true },
             { route: 'home',             name: 'home',           moduleId: 'home/home',     nav: true },
+            { route: 'selectEquivalent',           name: 'selectEquivalent',         moduleId: 'selectEquivalent/selectEquivalent', nav: true },
             { route: 'selectEquivalent1',           name: 'selectEquivalent1',         moduleId: 'selectEquivalent1/selectEquivalent1', nav: true },
             { route: 'selectEquivalent2',           name: 'selectEquivalent2',         moduleId: 'selectEquivalent2/selectEquivalent2', nav: true },
             { route: 'selectEquivalent3',           name: 'selectEquivalent3',         moduleId: 'selectEquivalent3/selectEquivalent3', nav: true },
@@ -40,6 +46,8 @@ export class App {
 
     logOut(){
         AureliaCookie.delete('isLoggedIn');
+        AureliaCookie.delete('username');
         window.location.href = "http://localhost:9000/#/register";
+        window.location.reload();
     }
 }

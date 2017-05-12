@@ -4,17 +4,17 @@ import {AureliaCookie} from 'aurelia-cookie';
 export class Months{
     months() {
 
-    	if(this.january == undefined &
-        	this.february == undefined &
-        	this.march == undefined &
-        	this.april == undefined &
-        	this.may == undefined &
-        	this.june == undefined &
-        	this.july == undefined &
-        	this.august == undefined &
-        	this.september == undefined &
-        	this.october == undefined &
-        	this.november == undefined &
+    	if(this.january == undefined ||
+        	this.february == undefined ||
+        	this.march == undefined ||
+        	this.april == undefined ||
+        	this.may == undefined ||
+        	this.june == undefined ||
+        	this.july == undefined ||
+        	this.august == undefined ||
+        	this.september == undefined ||
+        	this.october == undefined ||
+        	this.november == undefined ||
         	this.december == undefined){
             alert("You must fill the blanks before checking!");
             return;
@@ -79,7 +79,7 @@ export class Months{
 	        	this.backgroundColor10 = "background-color:lightcoral;";
 	        }
 
-	        if(this.november.toLowerCase() == "novmber"){
+	        if(this.november.toLowerCase() == "november"){
 	            this.backgroundColor11 = "background-color:lightgreen;";
 	        } else {
 	        	this.backgroundColor11 = "background-color:lightcoral;";

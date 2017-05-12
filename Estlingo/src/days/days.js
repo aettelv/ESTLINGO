@@ -4,12 +4,12 @@ import {AureliaCookie} from 'aurelia-cookie';
 export class Days{
     days() {
 
-    	if(this.monday == undefined &
-        	this.tuesday == undefined &
-        	this.wednesday == undefined &
-        	this.thursday == undefined &
-        	this.friday == undefined &
-        	this.saturday == undefined &
+    	if(this.monday == undefined ||
+        	this.tuesday == undefined ||
+        	this.wednesday == undefined ||
+        	this.thursday == undefined ||
+        	this.friday == undefined ||
+        	this.saturday == undefined ||
         	this.sunday == undefined){
             alert("You must fill the blanks before checking!");
             return;

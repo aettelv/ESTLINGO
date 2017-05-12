@@ -79,11 +79,10 @@ input{
 }
 
 .gamechoiceButton {
-    width: 180px;
-    height: 120px;
+    width: 100px;
+    height: 70px;
     text-align: center;
-    margin-top: 90px;
-    margin-left: 20px;
+    margin: 0px 10px 0px 0px;
     float: left;
     color: black;
 }
@@ -134,6 +133,12 @@ input{
     float: top;
 }
 
+.gameChoice{
+    margin: 25px 25px 25px 25px;
+    padding: 0px 5px 0px 5px;
+    float: top;
+}
+
 .choice {
     margin: 5px 0px 5px 0px;
     color: black;
@@ -157,6 +162,22 @@ input{
     width: 250px;
     margin-right: 20px;
     float: right;
+}
+
+.answerLeft2 {
+    height: 200px;
+    width: 250px;
+    margin-left: 20px;
+    float: left;
+    text-align: right;
+}
+
+.answerRight2 {
+    height: 200px;;
+    width: 250px;
+    margin-right: 20px;
+    float: right;
+    text-align: right;
 }
 
 .nextGame {
@@ -228,5 +249,5 @@ li a:hover:not(.active) {
 }
     
 .active {
-    background-color: #4b4b4b;
+    background-color: #3584de;
 }

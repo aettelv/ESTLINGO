@@ -1,7 +1,7 @@
 export class type{
     
     constructor(){
-    	this.h1 = "Colours"
+    	this.h1 = "Colors"
     	this.h2 = "Numbers"
     	this.h3 = "Days of the week"
     	this.h4 = "Months"

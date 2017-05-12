@@ -2,7 +2,7 @@
     <div class="main">
         <div class="content">
             <div class="greyBox BackToGames">
-                <input type="button" value="Back to games" style="color:#f5f5f5; font-family: 'Open Sans', sans-serif;" onclick="window.location.href='http://localhost:9000/#/games'">
+                <input type="button" value="Back to selection" style="color:#f5f5f5; font-family: 'Open Sans', sans-serif;" onclick="window.location.href='http://localhost:9000/#/selectEquivalent'">
             </div>
             <div class="gameHeader">
                 <h2>Select the right Estonian equivalent!</h2>
@@ -11,7 +11,7 @@
                 <div>
                     <img src="src/images/fork.png" alt="Fork" style="width:100px;height:50;">
                 </div>
-                <h3 tyle="color:green;" if.bind="isTrue">CORRECT</h3>
+                <h3 style="color:green;" if.bind="isTrue">CORRECT</h3>
                 <h3 style="color:red;" if.bind="isFalse">FALSE</h3>
                 <div class="answerLeft">
                         <div class="blueBox choice" click.delegate="NotRight()">
@@ -36,7 +36,7 @@
                         </div>
                         <div class="blueBox choice" click.delegate="NotRight()">
                             Külmkapp
-                        </div>       
+                        </div>
                         <div class="blueBox choice" click.delegate="NotRight()">
                             Röster
                         </div>
