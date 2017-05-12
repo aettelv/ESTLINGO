@@ -23,6 +23,16 @@ export class Register{
             alert("Please enter a e-mail!");
             return;
         }
+        if(this.userData.e_mail.indexOf('@') <= -1){
+            console.log("Email must contain '@' symbol!");
+            alert("Email must contain '@' symbol!");
+            return;
+        }
+        if(this.userData.e_mail.indexOf('.') <= -1){
+            console.log("Email must contain '.' symbol!");
+            alert("Email must contain '.' symbol!");
+            return;
+        }
         
         let client = new HttpClient();
         client.fetch("http://localhost:8080/users/add", {
@@ -34,8 +44,6 @@ export class Register{
                 console.log("Server saatis " + data.username + data.password + data.e_mail);
         });
         
-        window.location.href = "http://localhost:9000/#/home";
-        
         AureliaCookie.set('isLoggedIn', true , {
             expiry: 1,
             path: '',
@@ -43,12 +51,14 @@ export class Register{
             secure: false
         });
         
-        AureliaCookie.set('username', username , {
+        AureliaCookie.set('username', this.userData.username , {
             expiry: 1,
             path: '',
             domain: '',
             secure: false
         });
+        
+        window.location.href = "http://localhost:9000/#/home";
         
         alert("Account created!");
         console.log("addUser() finished");
@@ -58,7 +68,7 @@ export class Register{
         console.log("getUser() started");
         var username = document.getElementById("username").value;
         var password = document.getElementById("password").value;
-        console.log("inserted username: " +username);
+        console.log("inserted username: " + username);
         console.log("inserted password: " + password);
         
         if (username == ""){
