@@ -20,4 +20,5 @@ public class User {
 	String username;
 	String password;
 	String e_mail;
+	Integer score;
 }
