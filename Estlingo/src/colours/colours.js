@@ -75,7 +75,7 @@ export class Colours{
 	        	this.backgroundColor7 = "background-color:lightcoral;";
 	        }
 
-	        if(this.purple.toLowerCase() == "lilla"){
+	        if(this.purple.toLowerCase() == "lilla" || this.purple.toLowerCase() == "purpur" || this.purple.toLowerCase() == "violetne"){
 	            this.backgroundColor8 = "background-color:lightgreen;";
                 this.purpleCorrect = true;
 	        } else {

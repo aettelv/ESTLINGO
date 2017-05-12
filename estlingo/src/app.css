@@ -79,11 +79,10 @@ input{
 }
 
 .gamechoiceButton {
-    width: 180px;
-    height: 120px;
+    width: 100px;
+    height: 70px;
     text-align: center;
-    margin-top: 90px;
-    margin-left: 20px;
+    margin: 0px 10px 0px 0px;
     float: left;
     color: black;
 }
@@ -130,6 +129,12 @@ input{
 
 .contentGame{
     margin: 5px 0px 5px 250px;
+    padding: 0px 5px 0px 5px;
+    float: top;
+}
+
+.gameChoice{
+    margin: 25px 25px 25px 25px;
     padding: 0px 5px 0px 5px;
     float: top;
 }
