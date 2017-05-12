@@ -812,8 +812,6 @@ define('register/register',["exports", "aurelia-fetch-client", "aurelia-cookie"]
             console.log("getUser() started");
             var username = document.getElementById("username").value;
             var password = document.getElementById("password").value;
-            console.log("inserted username: " + username);
-            console.log("inserted password: " + password);
 
             if (username == "") {
                 console.log("Username field enpty!");
@@ -846,6 +844,14 @@ define('register/register',["exports", "aurelia-fetch-client", "aurelia-cookie"]
                 return response.json();
             }).then(function (data) {
                 if (JSON.stringify(data.password) === '"' + password + '"') {
+
+                    _aureliaCookie.AureliaCookie.set('score', data.score, {
+                        expiry: 1,
+                        path: '',
+                        domain: '',
+                        secure: false
+                    });
+
                     window.location.href = "http://localhost:9000/#/home";
                     window.location.reload();
                 } else {

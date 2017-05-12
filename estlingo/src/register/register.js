@@ -77,8 +77,6 @@ export class Register{
         console.log("getUser() started");
         var username = document.getElementById("username").value;
         var password = document.getElementById("password").value;
-        console.log("inserted username: " + username);
-        console.log("inserted password: " + password);
         
         if (username == ""){
             console.log("Username field enpty!");
@@ -111,6 +109,14 @@ export class Register{
             .then (response => response.json())
             .then (data => {
                 if (JSON.stringify(data.password) === '"' + password + '"'){
+                    
+                    AureliaCookie.set('score', data.score, {
+                        expiry: 1,
+                        path: '',
+                        domain: '',
+                        secure: false
+                    });
+                    
                     window.location.href = "http://localhost:9000/#/home";
                     window.location.reload();
                 }else{
