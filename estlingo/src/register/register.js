@@ -34,6 +34,8 @@ export class Register{
             return;
         }
         
+        this.userData.score = 0;
+        
         let client = new HttpClient();
         client.fetch("http://localhost:8080/users/add", {
             'method': "POST",
@@ -52,6 +54,13 @@ export class Register{
         });
         
         AureliaCookie.set('username', this.userData.username , {
+            expiry: 1,
+            path: '',
+            domain: '',
+            secure: false
+        });
+        
+        AureliaCookie.set('score', this.userData.score , {
             expiry: 1,
             path: '',
             domain: '',

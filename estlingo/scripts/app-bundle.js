@@ -279,12 +279,13 @@ define('days/days',["exports", "aurelia-fetch-client", "aurelia-cookie"], functi
 		return Days;
 	}();
 });
-define('games/games',["exports"], function (exports) {
+define('games/games',["exports", "aurelia-cookie"], function (exports, _aureliaCookie) {
     "use strict";
 
     Object.defineProperty(exports, "__esModule", {
         value: true
     });
+    exports.games = undefined;
 
     function _classCallCheck(instance, Constructor) {
         if (!(instance instanceof Constructor)) {
@@ -297,6 +298,10 @@ define('games/games',["exports"], function (exports) {
 
         this.h1 = "Select equivalent";
         this.h2 = "Type equivalent";
+
+        if (!(_aureliaCookie.AureliaCookie.get('score') == null)) {
+            this.score = _aureliaCookie.AureliaCookie.get('score');
+        }
     };
 });
 define('home/home',["exports"], function (exports) {
@@ -764,6 +769,8 @@ define('register/register',["exports", "aurelia-fetch-client", "aurelia-cookie"]
                 return;
             }
 
+            this.userData.score = 0;
+
             var client = new _aureliaFetchClient.HttpClient();
             client.fetch("http://localhost:8080/users/add", {
                 'method': "POST",
@@ -782,6 +789,13 @@ define('register/register',["exports", "aurelia-fetch-client", "aurelia-cookie"]
             });
 
             _aureliaCookie.AureliaCookie.set('username', this.userData.username, {
+                expiry: 1,
+                path: '',
+                domain: '',
+                secure: false
+            });
+
+            _aureliaCookie.AureliaCookie.set('score', this.userData.score, {
                 expiry: 1,
                 path: '',
                 domain: '',
@@ -1230,7 +1244,7 @@ define('text!nav-bar.html', ['module'], function(module) { module.exports = "<te
 define('text!about/about.html', ['module'], function(module) { module.exports = "<template><div class=\"body\"><div class=\"main\"><div class=\"content\">${message}<br><br><img style=\"vertical-align:middle;padding:5px\" src=\"src/images/easy.png\" alt=\"Easy\" height=\"42\" width=\"42\">${easy}<br><img style=\"vertical-align:middle;padding:5px\" src=\"src/images/fast.png\" alt=\"Fast\" height=\"42\" width=\"42\">${fast}<br><img style=\"vertical-align:middle;padding:5px\" src=\"src/images/family.png\" alt=\"Family\" height=\"42\" width=\"42\">${family}<br><img style=\"vertical-align:middle;padding:5px\" src=\"src/images/game.png\" alt=\"Game\" height=\"42\" width=\"42\">${game}</div></div></div></template>"; });
 define('text!colours/colours.html', ['module'], function(module) { module.exports = "<template><div class=\"main\"><div class=\"content\"><div class=\"greyBox BackToGames\"><input type=\"button\" value=\"Back to selection\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" onclick='window.location.href=\"http://localhost:9000/#/typeEquivalent\"'></div><div class=\"gameHeader\"><h2>Colors</h2></div><div class=\"gameArea\"><div class=\"greyBox check\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" click.delegate=\"colours()\">Check!</div><div class=\"answerLeft2\"><br><form style=\"color:#000\"><label>White &nbsp;</label><input type=\"text\" value.bind=\"white\" style.bind=\"backgroundColor1\"><br><label>Black &nbsp;</label><input type=\"text\" value.bind=\"black\" style.bind=\"backgroundColor2\"><br><label>Red &nbsp;</label><input type=\"text\" value.bind=\"red\" style.bind=\"backgroundColor3\"><br><label>Blue &nbsp;</label><input type=\"text\" value.bind=\"blue\" style.bind=\"backgroundColor4\"><br></form></div><div class=\"answerRight3\"><br><form style=\"color:#000\"><label>Green &nbsp;</label><input type=\"text\" value.bind=\"green\" style.bind=\"backgroundColor5\"><br><label>Yellow &nbsp;</label><input type=\"text\" value.bind=\"yellow\" style.bind=\"backgroundColor6\"><br><label>Brown &nbsp;</label><input type=\"text\" value.bind=\"brown\" style.bind=\"backgroundColor7\"><br><label>Purple &nbsp;</label><input type=\"text\" value.bind=\"purple\" style.bind=\"backgroundColor8\"><br></form></div></div><div class=\"greyBox nextGame\" if.bind=\"isCompleted\"><input type=\"button\" value=\"To the next guess\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" onclick='window.location.href=\"http://localhost:9000/#/numbers\"'></div></div></div></template>"; });
 define('text!days/days.html', ['module'], function(module) { module.exports = "<template><div class=\"main\"><div class=\"content\"><div class=\"greyBox BackToGames\"><input type=\"button\" value=\"Back to selection\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" onclick='window.location.href=\"http://localhost:9000/#/typeEquivalent\"'></div><div class=\"gameHeader\"><h2>Days of the week</h2></div><div class=\"gameArea\"><div class=\"greyBox check\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" click.delegate=\"days()\">Check!</div><div class=\"answerLeft\"><br><form style=\"color:#000\"><label>Monday &nbsp;</label><br><input type=\"text\" value.bind=\"monday\" style.bind=\"backgroundColor1\"><br><label>Tuesday &nbsp;</label><br><input type=\"text\" value.bind=\"tuesday\" style.bind=\"backgroundColor2\"><br><label>Wednesday &nbsp;</label><br><input type=\"text\" value.bind=\"wednesday\" style.bind=\"backgroundColor3\"><br><label>Thursday &nbsp;</label><br><input type=\"text\" value.bind=\"thursday\" style.bind=\"backgroundColor4\"><br></form></div><div class=\"answerRight\"><br><form style=\"color:#000\"><label>Friday &nbsp;</label><br><input type=\"text\" value.bind=\"friday\" style.bind=\"backgroundColor5\"><br><label>Saturday &nbsp;</label><br><input type=\"text\" value.bind=\"saturday\" style.bind=\"backgroundColor6\"><br><label>Sunday &nbsp;</label><br><input type=\"text\" value.bind=\"sunday\" style.bind=\"backgroundColor7\"><br></form></div></div><div class=\"greyBox nextGame\"><input type=\"button\" value=\"To the next guess\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" onclick='window.location.href=\"http://localhost:9000/#/months\"'></div></div></div></template>"; });
-define('text!games/games.html', ['module'], function(module) { module.exports = "<template><div class=\"main\"><div class=\"gameChoice\"><h2>Select gametype:</h2><a href=\"http://localhost:9000/#/selectEquivalent\"><div class=\"gamechoiceButton blueBox\"><h3>${h1}</h3></div></a><a href=\"http://localhost:9000/#/typeEquivalent\"><div class=\"gamechoiceButton blueBox\"><h3>${h2}</h3></div></a></div></div></template>"; });
+define('text!games/games.html', ['module'], function(module) { module.exports = "<template><div class=\"main\"><div class=\"gameChoice\"><h2>Select gametype:</h2><div><a href=\"http://localhost:9000/#/selectEquivalent\"><div class=\"gamechoiceButton blueBox\"><h3>${h1}</h3></div></a><a href=\"http://localhost:9000/#/typeEquivalent\"><div class=\"gamechoiceButton blueBox\"><h3>${h2}</h3></div></a></div><br><br><br><br><br><h2>Your current score is: ${score}</h2></div></div></template>"; });
 define('text!home/home.html', ['module'], function(module) { module.exports = "<template><div class=\"body\"><div class=\"main\"><div class=\"content\">${message}</div></div></div></template>"; });
 define('text!human/human.html', ['module'], function(module) { module.exports = "<template><div class=\"main\"><div class=\"content\"><div class=\"greyBox BackToGames\"><input type=\"button\" value=\"Back to selection\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" onclick='window.location.href=\"http://localhost:9000/#/typeEquivalent\"'></div><div class=\"gameHeader\"><h2>Human body</h2></div><div class=\"gameArea\"><div class=\"greyBox check\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" click.delegate=\"human()\">Check!</div><div class=\"answerLeft\"><br><form style=\"color:#000\"><label>Head &nbsp;</label><br><input type=\"text\" value.bind=\"head\" style.bind=\"backgroundColor1\"><br><label>Hand &nbsp;</label><br><input type=\"text\" value.bind=\"hand\" style.bind=\"backgroundColor2\"><br><label>Leg &nbsp;</label><br><input type=\"text\" value.bind=\"leg\" style.bind=\"backgroundColor3\"><br><label>Mouth &nbsp;</label><br><input type=\"text\" value.bind=\"mouth\" style.bind=\"backgroundColor4\"><br><label>Nose &nbsp;</label><br><input type=\"text\" value.bind=\"nose\" style.bind=\"backgroundColor5\"><br><label>Ear &nbsp;</label><br><input type=\"text\" value.bind=\"ear\" style.bind=\"backgroundColor6\"><br></form></div><div class=\"answerRight\"><br><form style=\"color:#000\"><label>Knee &nbsp;</label><br><input type=\"text\" value.bind=\"knee\" style.bind=\"backgroundColor7\"><br><label>Finger &nbsp;</label><br><input type=\"text\" value.bind=\"finger\" style.bind=\"backgroundColor8\"><br><label>Tongue &nbsp;</label><br><input type=\"text\" value.bind=\"tongue\" style.bind=\"backgroundColor9\"><br><label>Hair &nbsp;</label><br><input type=\"text\" value.bind=\"hair\" style.bind=\"backgroundColor10\"><br><label>Chest &nbsp;</label><br><input type=\"text\" value.bind=\"chest\" style.bind=\"backgroundColor11\"><br><label>Back &nbsp;</label><br><input type=\"text\" value.bind=\"back\" style.bind=\"backgroundColor12\"><br></form></div></div><div class=\"greyBox nextGame\"><input type=\"button\" value=\"To the next guess\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" onclick='window.location.href=\"http://localhost:9000/#/kitchen\"'></div></div></div></template>"; });
 define('text!kitchen/kitchen.html', ['module'], function(module) { module.exports = "<template><div class=\"main\"><div class=\"content\"><div class=\"greyBox BackToGames\"><input type=\"button\" value=\"Back to selection\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" onclick='window.location.href=\"http://localhost:9000/#/typeEquivalent\"'></div><div class=\"gameHeader\"><h2>Kitchen</h2></div><div class=\"gameArea\"><div class=\"greyBox check\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" click.delegate=\"kitchen()\">Check!</div><div class=\"answerLeft\"><br><form style=\"color:#000\"><label>Sink &nbsp;</label><br><input type=\"text\" value.bind=\"sink\" style.bind=\"backgroundColor1\"><br><label>Plate &nbsp;</label><br><input type=\"text\" value.bind=\"plate\" style.bind=\"backgroundColor2\"><br><label>Bowl &nbsp;</label><br><input type=\"text\" value.bind=\"bowl\" style.bind=\"backgroundColor3\"><br><label>Glass &nbsp;</label><br><input type=\"text\" value.bind=\"glass\" style.bind=\"backgroundColor4\"><br><label>Cup &nbsp;</label><br><input type=\"text\" value.bind=\"cup\" style.bind=\"backgroundColor5\"><br><label>Fridge &nbsp;</label><br><input type=\"text\" value.bind=\"fridge\" style.bind=\"backgroundColor6\"><br></form></div><div class=\"answerRight\"><br><form style=\"color:#000\"><label>Knife &nbsp;</label><br><input type=\"text\" value.bind=\"knife\" style.bind=\"backgroundColor7\"><br><label>Fork &nbsp;</label><br><input type=\"text\" value.bind=\"fork\" style.bind=\"backgroundColor8\"><br><label>Spoon &nbsp;</label><br><input type=\"text\" value.bind=\"spoon\" style.bind=\"backgroundColor9\"><br><label>Oven &nbsp;</label><br><input type=\"text\" value.bind=\"oven\" style.bind=\"backgroundColor10\"><br><label>Stove &nbsp;</label><br><input type=\"text\" value.bind=\"stove\" style.bind=\"backgroundColor11\"><br><label>Sponge &nbsp;</label><br><input type=\"text\" value.bind=\"sponge\" style.bind=\"backgroundColor12\"><br></form></div></div></div></div></template>"; });
