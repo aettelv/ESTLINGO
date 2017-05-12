@@ -899,12 +899,13 @@ define('selectEquivalent/selectEquivalent',["exports"], function (exports) {
         this.h7 = "Fork";
     };
 });
-define('selectEquivalent1/selectEquivalent1',["exports"], function (exports) {
-    "use strict";
+define('selectEquivalent1/selectEquivalent1',['exports', 'aurelia-cookie', 'aurelia-fetch-client'], function (exports, _aureliaCookie, _aureliaFetchClient) {
+    'use strict';
 
     Object.defineProperty(exports, "__esModule", {
         value: true
     });
+    exports.select = undefined;
 
     function _classCallCheck(instance, Constructor) {
         if (!(instance instanceof Constructor)) {
@@ -915,6 +916,8 @@ define('selectEquivalent1/selectEquivalent1',["exports"], function (exports) {
     var select = exports.select = function () {
         function select() {
             _classCallCheck(this, select);
+
+            this.userData = null;
         }
 
         select.prototype.Right = function Right() {
@@ -926,6 +929,49 @@ define('selectEquivalent1/selectEquivalent1',["exports"], function (exports) {
         select.prototype.NotRight = function NotRight() {
             this.isFalse = true;
             this.isTrue = false;
+        };
+
+        select.prototype.nextGame = function nextGame() {
+            var _this = this;
+
+            var oldScore = _aureliaCookie.AureliaCookie.get('score');
+            var score = parseInt(oldScore, 10) + 10;
+
+            _aureliaCookie.AureliaCookie.set('score', score, {
+                expiry: 1,
+                path: '',
+                domain: '',
+                secure: false
+            });
+
+            var username = _aureliaCookie.AureliaCookie.get('username');
+
+            console.log("username: " + username);
+            console.log("score: " + score);
+
+            var client2 = new _aureliaFetchClient.HttpClient();
+            client2.fetch("http://localhost:8080/users/" + username).then(function (response) {
+                return response.json();
+            }).then(function (data) {
+                _this.userData = data;
+            });
+
+            console.log("data: " + this.userData);
+
+            console.log("userData.score: " + this.userData.score);
+            this.userData.score = score;
+            console.log("new userData.score: " + this.userData.score);
+
+            var client = new _aureliaFetchClient.HttpClient();
+            client.fetch("http://localhost:8080/users/" + username, {
+                'method': "PUT",
+                'body': this.userData
+            }).then(function (response) {
+                return response.json();
+            }).then(function (data) {
+                console.log("Server saatis " + data.username + data.password + data.e_mail);
+            });
+            window.location.href = 'http://localhost:9000/#/selectEquivalent2';
         };
 
         return select;
@@ -1258,7 +1304,7 @@ define('text!months/months.html', ['module'], function(module) { module.exports 
 define('text!numbers/numbers.html', ['module'], function(module) { module.exports = "<template><div class=\"main\"><div class=\"content\"><div class=\"greyBox BackToGames\"><input type=\"button\" value=\"Back to selection\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" onclick='window.location.href=\"http://localhost:9000/#/typeEquivalent\"'></div><div class=\"gameHeader\"><h2>Numbers</h2>(Make sure to type out the numbers)</div><div class=\"gameArea\"><div class=\"greyBox check\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" click.delegate=\"numbers()\">Check!</div><div class=\"answerLeft2\"><br><form style=\"color:#000\"><label>One &nbsp;</label><input type=\"text\" value.bind=\"one\" style.bind=\"backgroundColor1\"><br><label>Two &nbsp;</label><input type=\"text\" value.bind=\"two\" style.bind=\"backgroundColor2\"><br><label>Three &nbsp;</label><input type=\"text\" value.bind=\"three\" style.bind=\"backgroundColor3\"><br><label>Four &nbsp;</label><input type=\"text\" value.bind=\"four\" style.bind=\"backgroundColor4\"><br><label>Five &nbsp;</label><input type=\"text\" value.bind=\"five\" style.bind=\"backgroundColor5\"><br></form></div><div class=\"answerRight2\"><br><form style=\"color:#000\"><label>Six &nbsp;</label><input type=\"text\" value.bind=\"six\" style.bind=\"backgroundColor6\"><br><label>Seven &nbsp;</label><input type=\"text\" value.bind=\"seven\" style.bind=\"backgroundColor7\"><br><label>Eight &nbsp;</label><input type=\"text\" value.bind=\"eight\" style.bind=\"backgroundColor8\"><br><label>Nine &nbsp;</label><input type=\"text\" value.bind=\"nine\" style.bind=\"backgroundColor9\"><br><label>Ten &nbsp;</label><input type=\"text\" value.bind=\"ten\" style.bind=\"backgroundColor10\"><br></form></div></div><div class=\"greyBox nextGame\"><input type=\"button\" value=\"To the next guess\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" onclick='window.location.href=\"http://localhost:9000/#/days\"'></div></div></div></template>"; });
 define('text!register/register.html', ['module'], function(module) { module.exports = "<template><require from=\"app.css\"></require><div class=\"body\"><br><div class=\"indexMain\"><div class=\"welcomeText blueBox\"><h1>Welcome to Estlingo!</h1><div>Learn Estonian in a playful way!<br></div></div><div class=\"loginScreen blueBox\"><div><div>Log in:<form id=\"loginform\" submit.delegate=\"getUser()\"><div class=\"greyBox\"><input id=\"username\" name=\"username\" placeholder=\"Username\"></div><div class=\"greyBox\"><input id=\"password\" name=\"password\" placeholder=\"Password\" type=\"password\"></div><div class=\"greyBox\" style=\"float:right\"><input type=\"submit\" value=\"Log in\"></div></form></div><br><br><div>Register:<form id=\"registerform\" submit.delegate=\"addUser()\"><div class=\"greyBox\"><input name=\"username\" placeholder=\"Username\" value.bind=\"userData.username\"></div><div class=\"greyBox\"><input type=\"password\" name=\"password\" placeholder=\"Password\" value.bind=\"userData.password\"></div><div class=\"greyBox\"><input name=\"e_mail\" placeholder=\"E-mail\" value.bind=\"userData.e_mail\"></div><div class=\"greyBox\" style=\"float:right\"><input type=\"submit\" value=\"Register user\"></div></form></div></div><br><br><div style=\"font-size:10px\"><i>Log-in instructions etc ..</i></div></div></div></div></template>"; });
 define('text!selectEquivalent/selectEquivalent.html', ['module'], function(module) { module.exports = "<template><div class=\"body\"><div class=\"main\"><div class=\"content\"><div class=\"greyBox BackToGames\"><input type=\"button\" value=\"Back to games\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" onclick='window.location.href=\"http://localhost:9000/#/games\"'></div><div class=\"gameHeader\"><h2>Choose the topic:</h2></div><div class=\"gameArea\"><div class=\"picture\"></div><div class=\"answerLeft\"><a href=\"http://localhost:9000/#/selectEquivalent1\" style=\"text-decoration:none\"><div class=\"blueBox choice\">${h1}</div></a><a href=\"http://localhost:9000/#/selectEquivalent2\" style=\"text-decoration:none\"><div class=\"blueBox choice\">${h2}</div></a><a href=\"http://localhost:9000/#/selectEquivalent3\" style=\"text-decoration:none\"><div class=\"blueBox choice\">${h3}</div></a><a href=\"http://localhost:9000/#/selectEquivalent4\" style=\"text-decoration:none\"><div class=\"blueBox choice\">${h4}</div></a></div><div class=\"answerRight\"><a href=\"http://localhost:9000/#/selectEquivalent5\" style=\"text-decoration:none\"><div class=\"blueBox choice\">${h5}</div></a><a href=\"http://localhost:9000/#/selectEquivalent6\" style=\"text-decoration:none\"><div class=\"blueBox choice\">${h6}</div></a><a href=\"http://localhost:9000/#/selectEquivalent7\" style=\"text-decoration:none\"><div class=\"blueBox choice\">${h7}</div></a></div></div></div></div></div></template>"; });
-define('text!selectEquivalent1/selectEquivalent1.html', ['module'], function(module) { module.exports = "<template><div class=\"body\"><div class=\"main\"><div class=\"content\"><div class=\"greyBox BackToGames\"><input type=\"button\" value=\"Back to selection\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" onclick='window.location.href=\"http://localhost:9000/#/selectEquivalent\"'></div><div class=\"gameHeader\"><h2>Select the right Estonian equivalent!</h2></div><div class=\"gameArea\"><div><img src=\"src/images/Apple.png\" alt=\"Apple\" style=\"width:100px;height:50\"></div><h3 style=\"color:green\" if.bind=\"isTrue\">CORRECT</h3><h3 style=\"color:red\" if.bind=\"isFalse\">FALSE</h3><div class=\"answerLeft\"><div id=\"click\" class=\"blueBox choice\" click.delegate=\"Right()\">Õun</div><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Banaan</div><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Sibul</div><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Kaalikas</div></div><div class=\"answerRight\"><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Pirn</div><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Apelsin</div><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Sidrun</div><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Peet</div></div></div><div class=\"greyBox nextGame\" if.bind=\"gameCompleted\"><input type=\"button\" value=\"To the next guess\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" onclick='window.location.href=\"http://localhost:9000/#/selectEquivalent2\"'></div></div></div></div></template>"; });
+define('text!selectEquivalent1/selectEquivalent1.html', ['module'], function(module) { module.exports = "<template><div class=\"body\"><div class=\"main\"><div class=\"content\"><div class=\"greyBox BackToGames\"><input type=\"button\" value=\"Back to selection\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" onclick='window.location.href=\"http://localhost:9000/#/selectEquivalent\"'></div><div class=\"gameHeader\"><h2>Select the right Estonian equivalent!</h2></div><div class=\"gameArea\"><div><img src=\"src/images/Apple.png\" alt=\"Apple\" style=\"width:100px;height:50\"></div><h3 style=\"color:green\" if.bind=\"isTrue\">CORRECT</h3><h3 style=\"color:red\" if.bind=\"isFalse\">FALSE</h3><div class=\"answerLeft\"><div id=\"click\" class=\"blueBox choice\" click.delegate=\"Right()\">Õun</div><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Banaan</div><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Sibul</div><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Kaalikas</div></div><div class=\"answerRight\"><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Pirn</div><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Apelsin</div><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Sidrun</div><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Peet</div></div></div><div class=\"greyBox nextGame\" if.bind=\"gameCompleted\"><input type=\"button\" value=\"To the next guess\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" click.delegate=\"nextGame()\"></div></div></div></div></template>"; });
 define('text!selectEquivalent2/selectEquivalent2.html', ['module'], function(module) { module.exports = "<template><div class=\"main\"><div class=\"content\"><div class=\"greyBox BackToGames\"><input type=\"button\" value=\"Back to selection\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" onclick='window.location.href=\"http://localhost:9000/#/selectEquivalent\"'></div><div class=\"gameHeader\"><h2>Select the right Estonian equivalent!</h2></div><div class=\"gameArea\"><div><img src=\"src/images/chair.png\" alt=\"Chair\" style=\"width:100px;height:50\"></div><h3 style=\"color:green\" if.bind=\"isTrue\">CORRECT</h3><h3 style=\"color:red\" if.bind=\"isFalse\">FALSE</h3><div class=\"answerLeft\"><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Nuga</div><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Laud</div><div class=\"blueBox choice\" click.delegate=\"Right()\">Tool</div><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Kruus</div></div><div class=\"answerRight\"><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Kartul</div><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Lusikas</div><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Kahvel</div><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Taldrik</div></div></div><div class=\"greyBox nextGame\" if.bind=\"gameCompleted\"><input type=\"button\" value=\"To the next guess\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" onclick='window.location.href=\"http://localhost:9000/#/selectEquivalent3\"'></div></div></div></template>"; });
 define('text!selectEquivalent3/selectEquivalent3.html', ['module'], function(module) { module.exports = "<template><div class=\"main\"><div class=\"content\"><div class=\"greyBox BackToGames\"><input type=\"button\" value=\"Back to selection\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" onclick='window.location.href=\"http://localhost:9000/#/selectEquivalent\"'></div><div class=\"gameHeader\"><h2>Select the right Estonian equivalent!</h2></div><div class=\"gameArea\"><div><img src=\"src/images/bicycle.png\" alt=\"Bicycle\" style=\"width:100px;height:50\"></div><h3 style=\"color:green\" if.bind=\"isTrue\">CORRECT</h3><h3 style=\"color:red\" if.bind=\"isFalse\">FALSE</h3><div class=\"answerLeft\"><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Traktor</div><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Auto</div><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Kelk</div><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Kart</div></div><div class=\"answerRight\"><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Buss</div><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Veoauto</div><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Vanker</div><div class=\"blueBox choice\" click.delegate=\"Right()\">Jalgratas</div></div></div><div class=\"greyBox nextGame\" if.bind=\"gameCompleted\"><input type=\"button\" value=\"To the next guess\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" onclick='window.location.href=\"http://localhost:9000/#/selectEquivalent4\"'></div></div></div></template>"; });
 define('text!selectEquivalent4/selectEquivalent4.html', ['module'], function(module) { module.exports = "<template><div class=\"main\"><div class=\"content\"><div class=\"greyBox BackToGames\"><input type=\"button\" value=\"Back to selection\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" onclick='window.location.href=\"http://localhost:9000/#/selectEquivalent\"'></div><div class=\"gameHeader\"><h2>Select the right Estonian equivalent!</h2></div><div class=\"gameArea\"><div><img src=\"src/images/potato.png\" alt=\"Potato\" style=\"width:100px;height:50\"></div><h3 style=\"color:green\" if.bind=\"isTrue\">CORRECT</h3><h3 style=\"color:red\" if.bind=\"isFalse\">FALSE</h3><div class=\"answerLeft\"><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Lusikas</div><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Maasikas</div><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Arvuti</div><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Vaarikas</div></div><div class=\"answerRight\"><div class=\"blueBox choice\" click.delegate=\"Right()\">Kartul</div><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Püksid</div><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Rihm</div><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Kell</div></div></div><div class=\"greyBox nextGame\" if.bind=\"gameCompleted\"><input type=\"button\" value=\"To the next guess\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" onclick='window.location.href=\"http://localhost:9000/#/selectEquivalent5\"'></div></div></div></template>"; });
