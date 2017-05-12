@@ -917,7 +917,7 @@ define('selectEquivalent1/selectEquivalent1',['exports', 'aurelia-cookie', 'aure
         function select() {
             _classCallCheck(this, select);
 
-            this.userData = null;
+            this.userData = {};
         }
 
         select.prototype.Right = function Right() {
@@ -950,27 +950,34 @@ define('selectEquivalent1/selectEquivalent1',['exports', 'aurelia-cookie', 'aure
             console.log("score: " + score);
 
             var client2 = new _aureliaFetchClient.HttpClient();
-            client2.fetch("http://localhost:8080/users/" + username).then(function (response) {
+
+            client2.fetch("http://localhost:8080/users/" + username, {
+                'method': "GET"
+            }).then(function (response) {
                 return response.json();
             }).then(function (data) {
-                _this.userData = data;
+                console.log(data.username + " " + data.password + " " + data.e_meil + " " + data.score), _this.userData = data;
             });
 
             console.log("data: " + this.userData);
+            console.log("username: " + this.userData.username);
+            console.log("password: " + this.userData.password);
+            console.log("e_meil: " + this.userData.e_meil);
 
             console.log("userData.score: " + this.userData.score);
             this.userData.score = score;
             console.log("new userData.score: " + this.userData.score);
 
             var client = new _aureliaFetchClient.HttpClient();
-            client.fetch("http://localhost:8080/users/" + username, {
+            client.fetch("http://localhost:8080/users/update", {
                 'method': "PUT",
-                'body': this.userData
+                'body': (0, _aureliaFetchClient.json)(this.userData)
             }).then(function (response) {
                 return response.json();
             }).then(function (data) {
-                console.log("Server saatis " + data.username + data.password + data.e_mail);
+                console.log("Server saatis " + data.username + " " + data.password + " " + data.e_mail);
             });
+
             window.location.href = 'http://localhost:9000/#/selectEquivalent2';
         };
 

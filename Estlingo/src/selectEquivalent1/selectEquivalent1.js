@@ -6,7 +6,7 @@ export class select{
     isTrue;
     isFalse;
     gameCompleted;
-    userData = null;
+    userData = {};
     
     constructor(){
     }
@@ -24,9 +24,11 @@ export class select{
     
     nextGame(){
         
+        //Adding new score
         var oldScore = AureliaCookie.get('score');
         var score = parseInt(oldScore, 10) + 10;
         
+        //Update cookie
         AureliaCookie.set('score', score , {
             expiry: 1,
             path: '',
@@ -34,15 +36,23 @@ export class select{
             secure: false
         });
         
+        //Saving new result to database:
         var username = AureliaCookie.get('username');
 
         console.log("username: " + username);
         console.log("score: " + score);
         
         let client2 = new HttpClient();
-        client2.fetch("http://localhost:8080/users/" + username)
-            .then (response => response.json())
+        /*client2.fetch("http://localhost:8080/users/" + username)
             .then (data => {
+                this.userData.username = data.username;
+        });*/
+        client2.fetch("http://localhost:8080/users/" + username, {
+            'method': "GET"
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.username + " " + data.password + " " + data.e_meil + " " + data.score),
                 this.userData = data;
         });
         
@@ -58,12 +68,14 @@ export class select{
         let client = new HttpClient();
         client.fetch("http://localhost:8080/users/update", {
             'method': "PUT",
-            'body': json(this.userData);
+            'body': json(this.userData),
         })
             .then(response => response.json())
             .then(data => {
                 console.log("Server saatis " + data.username + " " + data.password + " " + data.e_mail);
-        })
-        window.location.href='http://localhost:9000/#/selectEquivalent2';
+        });
+       
+
+       /*Jumping to next game*/ window.location.href='http://localhost:9000/#/selectEquivalent2';
     }
 }
