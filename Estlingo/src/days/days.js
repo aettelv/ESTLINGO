@@ -2,6 +2,14 @@ import {HttpClient, json} from "aurelia-fetch-client";
 import {AureliaCookie} from 'aurelia-cookie';
 
 export class Days{
+	mondayCorrect;
+    tuesdayCorrect;
+    wednesdayCorrect;
+    thursdayCorrect;
+    fridayCorrect;
+    saturdayCorrect;
+    sundayCorrect;
+    isCompletedCorrect;
     days() {
 
     	if(this.monday == undefined ||
@@ -16,12 +24,14 @@ export class Days{
         } else {
 	    	if(this.monday.toLowerCase() == "esmaspäev"){
 	            this.backgroundColor1 = "background-color:lightgreen;";
+				this.mondayCorrect = true;
 	        } else {
 	        	this.backgroundColor1 = "background-color:lightcoral;";
 	        }
 	        
 	        if(this.tuesday.toLowerCase() == "teisipäev"){
 	            this.backgroundColor2 = "background-color:lightgreen;";
+				this.tuesdayCorrect = true;
 	        } else {
 	        	this.backgroundColor2 = "background-color:lightcoral;";
 	        }
