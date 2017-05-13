@@ -208,76 +208,86 @@ define('colours/colours',["exports", "aurelia-fetch-client", "aurelia-cookie"], 
                }();
 });
 define('days/days',["exports", "aurelia-fetch-client", "aurelia-cookie"], function (exports, _aureliaFetchClient, _aureliaCookie) {
-	"use strict";
+			"use strict";
 
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	exports.Days = undefined;
+			Object.defineProperty(exports, "__esModule", {
+						value: true
+			});
+			exports.Days = undefined;
 
-	function _classCallCheck(instance, Constructor) {
-		if (!(instance instanceof Constructor)) {
-			throw new TypeError("Cannot call a class as a function");
-		}
-	}
-
-	var Days = exports.Days = function () {
-		function Days() {
-			_classCallCheck(this, Days);
-		}
-
-		Days.prototype.days = function days() {
-
-			if (this.monday == undefined || this.tuesday == undefined || this.wednesday == undefined || this.thursday == undefined || this.friday == undefined || this.saturday == undefined || this.sunday == undefined) {
-				alert("You must fill the blanks before checking!");
-				return;
-			} else {
-				if (this.monday.toLowerCase() == "esmaspäev") {
-					this.backgroundColor1 = "background-color:lightgreen;";
-				} else {
-					this.backgroundColor1 = "background-color:lightcoral;";
-				}
-
-				if (this.tuesday.toLowerCase() == "teisipäev") {
-					this.backgroundColor2 = "background-color:lightgreen;";
-				} else {
-					this.backgroundColor2 = "background-color:lightcoral;";
-				}
-
-				if (this.wednesday.toLowerCase() == "kolmapäev") {
-					this.backgroundColor3 = "background-color:lightgreen;";
-				} else {
-					this.backgroundColor3 = "background-color:lightcoral;";
-				}
-
-				if (this.thursday.toLowerCase() == "neljapäev") {
-					this.backgroundColor4 = "background-color:lightgreen;";
-				} else {
-					this.backgroundColor4 = "background-color:lightcoral;";
-				}
-
-				if (this.friday.toLowerCase() == "reede") {
-					this.backgroundColor5 = "background-color:lightgreen;";
-				} else {
-					this.backgroundColor5 = "background-color:lightcoral;";
-				}
-
-				if (this.saturday.toLowerCase() == "laupäev") {
-					this.backgroundColor6 = "background-color:lightgreen;";
-				} else {
-					this.backgroundColor6 = "background-color:lightcoral;";
-				}
-
-				if (this.sunday.toLowerCase() == "pühapäev") {
-					this.backgroundColor7 = "background-color:lightgreen;";
-				} else {
-					this.backgroundColor7 = "background-color:lightcoral;";
-				}
+			function _classCallCheck(instance, Constructor) {
+						if (!(instance instanceof Constructor)) {
+									throw new TypeError("Cannot call a class as a function");
+						}
 			}
-		};
 
-		return Days;
-	}();
+			var Days = exports.Days = function () {
+						function Days() {
+									_classCallCheck(this, Days);
+						}
+
+						Days.prototype.days = function days() {
+
+									if (this.monday == undefined || this.tuesday == undefined || this.wednesday == undefined || this.thursday == undefined || this.friday == undefined || this.saturday == undefined || this.sunday == undefined) {
+												alert("You must fill the blanks before checking!");
+												return;
+									} else {
+												if (this.monday.toLowerCase() == "esmaspäev") {
+															this.backgroundColor1 = "background-color:lightgreen;";
+															this.mondayCorrect = true;
+												} else {
+															this.backgroundColor1 = "background-color:lightcoral;";
+												}
+
+												if (this.tuesday.toLowerCase() == "teisipäev") {
+															this.backgroundColor2 = "background-color:lightgreen;";
+															this.tuesdayCorrect = true;
+												} else {
+															this.backgroundColor2 = "background-color:lightcoral;";
+												}
+
+												if (this.wednesday.toLowerCase() == "kolmapäev") {
+															this.backgroundColor3 = "background-color:lightgreen;";
+															this.wednesdayCorrect = true;
+												} else {
+															this.backgroundColor3 = "background-color:lightcoral;";
+												}
+
+												if (this.thursday.toLowerCase() == "neljapäev") {
+															this.backgroundColor4 = "background-color:lightgreen;";
+															this.thursdayCorrect = true;
+												} else {
+															this.backgroundColor4 = "background-color:lightcoral;";
+												}
+
+												if (this.friday.toLowerCase() == "reede") {
+															this.backgroundColor5 = "background-color:lightgreen;";
+															this.fridayCorrect = true;
+												} else {
+															this.backgroundColor5 = "background-color:lightcoral;";
+												}
+
+												if (this.saturday.toLowerCase() == "laupäev") {
+															this.backgroundColor6 = "background-color:lightgreen;";
+															this.saturdayCorrect = true;
+												} else {
+															this.backgroundColor6 = "background-color:lightcoral;";
+												}
+
+												if (this.sunday.toLowerCase() == "pühapäev") {
+															this.backgroundColor7 = "background-color:lightgreen;";
+															this.sundayCorrect = true;
+												} else {
+															this.backgroundColor7 = "background-color:lightcoral;";
+												}
+												if (this.mondayCorrect == true & this.tuesdayCorrect == true & this.wednesdayCorrect == true & this.thursdayCorrect == true & this.fridayCorrect == true & this.saturdayCorrect == true & this.sundayCorrect == true) {
+															this.isCompleted = true;
+												}
+									}
+						};
+
+						return Days;
+			}();
 });
 define('games/games',["exports", "aurelia-cookie"], function (exports, _aureliaCookie) {
     "use strict";
@@ -352,72 +362,87 @@ define('human/human',["exports", "aurelia-fetch-client", "aurelia-cookie"], func
 					this.backgroundColor1 = "background-color:lightgreen;";
 				} else {
 					this.backgroundColor1 = "background-color:lightcoral;";
+					this.headCorrect = true;
 				}
 
 				if (this.hand.toLowerCase() == "käsi") {
 					this.backgroundColor2 = "background-color:lightgreen;";
 				} else {
 					this.backgroundColor2 = "background-color:lightcoral;";
+					this.handCorrect = true;
 				}
 
 				if (this.leg.toLowerCase() == "jalg") {
 					this.backgroundColor3 = "background-color:lightgreen;";
+					this.legCorrect = true;
 				} else {
 					this.backgroundColor3 = "background-color:lightcoral;";
 				}
 
 				if (this.mouth.toLowerCase() == "suu") {
 					this.backgroundColor4 = "background-color:lightgreen;";
+					this.mouthCorrect = true;
 				} else {
 					this.backgroundColor4 = "background-color:lightcoral;";
 				}
 
 				if (this.nose.toLowerCase() == "nina") {
 					this.backgroundColor5 = "background-color:lightgreen;";
+					this.noseCorrect = true;
 				} else {
 					this.backgroundColor5 = "background-color:lightcoral;";
 				}
 
 				if (this.ear.toLowerCase() == "kõrv") {
 					this.backgroundColor6 = "background-color:lightgreen;";
+					this.earCorrect = true;
 				} else {
 					this.backgroundColor6 = "background-color:lightcoral;";
 				}
 
 				if (this.knee.toLowerCase() == "põlv") {
 					this.backgroundColor7 = "background-color:lightgreen;";
+					this.kneeCorrect = true;
 				} else {
 					this.backgroundColor7 = "background-color:lightcoral;";
 				}
 
 				if (this.finger.toLowerCase() == "sõrm") {
 					this.backgroundColor8 = "background-color:lightgreen;";
+					this.fingerCorrect = true;
 				} else {
 					this.backgroundColor8 = "background-color:lightcoral;";
 				}
 
 				if (this.tongue.toLowerCase() == "keel") {
 					this.backgroundColor9 = "background-color:lightgreen;";
+					this.tongueCorrect = true;
 				} else {
 					this.backgroundColor9 = "background-color:lightcoral;";
 				}
 
 				if (this.hair.toLowerCase() == "juuksed") {
 					this.backgroundColor10 = "background-color:lightgreen;";
+					this.hairCorrect = true;
 				} else {
 					this.backgroundColor10 = "background-color:lightcoral;";
 				}
 
 				if (this.chest.toLowerCase() == "rind") {
 					this.backgroundColor11 = "background-color:lightgreen;";
+					this.chestCorrect = true;
 				} else {
 					this.backgroundColor11 = "background-color:lightcoral;";
 				}
 
 				if (this.back.toLowerCase() == "selg") {
 					this.backgroundColor12 = "background-color:lightgreen;";
+					this.backCorrect = true;
 				} else {
 					this.backgroundColor12 = "background-color:lightcoral;";
+				}
+				if (headCorrect == true & handCorrect == true & legCorrect == true & mouthCorrect == true & noseCorrect == true & earCorrect == true & kneeCorrect == true & fingerCorrect == true & tongueCorrect == true & hairCorrect == true & chestCorrect == true & backCorrect == true) {
+					this.isCompletedCorrect = true;
 				}
 			}
 		};
@@ -452,74 +477,89 @@ define('kitchen/kitchen',["exports", "aurelia-fetch-client", "aurelia-cookie"], 
 			} else {
 				if (this.sink.toLowerCase() == "kraanikauss") {
 					this.backgroundColor1 = "background-color:lightgreen;";
+					this.sinkCorrect = true;
 				} else {
 					this.backgroundColor1 = "background-color:lightcoral;";
 				}
 
 				if (this.plate.toLowerCase() == "taldrik") {
 					this.backgroundColor2 = "background-color:lightgreen;";
+					this.plateCorrect = true;
 				} else {
 					this.backgroundColor2 = "background-color:lightcoral;";
 				}
 
 				if (this.bowl.toLowerCase() == "kauss") {
 					this.backgroundColor3 = "background-color:lightgreen;";
+					this.bowlCorrect = true;
 				} else {
 					this.backgroundColor3 = "background-color:lightcoral;";
 				}
 
 				if (this.glass.toLowerCase() == "klaas") {
 					this.backgroundColor4 = "background-color:lightgreen;";
+					this.glassCorrect = true;
 				} else {
 					this.backgroundColor4 = "background-color:lightcoral;";
 				}
 
 				if (this.cup.toLowerCase() == "tass") {
 					this.backgroundColor5 = "background-color:lightgreen;";
+					this.cupCorrect = true;
 				} else {
 					this.backgroundColor5 = "background-color:lightcoral;";
 				}
 
 				if (this.fridge.toLowerCase() == "külmkapp") {
 					this.backgroundColor6 = "background-color:lightgreen;";
+					this.fridgeCorrect = true;
 				} else {
 					this.backgroundColor6 = "background-color:lightcoral;";
 				}
 
 				if (this.knife.toLowerCase() == "nuga") {
 					this.backgroundColor7 = "background-color:lightgreen;";
+					this.knifeCorrect = true;
 				} else {
 					this.backgroundColor7 = "background-color:lightcoral;";
 				}
 
 				if (this.fork.toLowerCase() == "kahvel") {
 					this.backgroundColor8 = "background-color:lightgreen;";
+					this.forkCorrect = true;
 				} else {
 					this.backgroundColor8 = "background-color:lightcoral;";
 				}
 
 				if (this.spoon.toLowerCase() == "lusikas") {
 					this.backgroundColor9 = "background-color:lightgreen;";
+					this.spoonCorrect = true;
 				} else {
 					this.backgroundColor9 = "background-color:lightcoral;";
 				}
 
 				if (this.oven.toLowerCase() == "ahi") {
 					this.backgroundColor10 = "background-color:lightgreen;";
+					this.ovenCorrect = true;
 				} else {
 					this.backgroundColor10 = "background-color:lightcoral;";
 				}
 
 				if (this.stove.toLowerCase() == "pliit") {
 					this.backgroundColor11 = "background-color:lightgreen;";
+					this.stoceCorrect = true;
 				} else {
 					this.backgroundColor11 = "background-color:lightcoral;";
 				}
 
 				if (this.sponge.toLowerCase() == "käsn") {
 					this.backgroundColor12 = "background-color:lightgreen;";
+					this.spongeCorrect = true;
 				} else {
 					this.backgroundColor12 = "background-color:lightcoral;";
+				}
+				if (sinkCorrect == true & plateCorrect == true & bowlCorrect == true & glassCorrect == true & cupCorrect == true & fridgeCorrect == true & knifeCorrect == true & forkCorrect == true & spoonCorrect == true & ovenCorrect == true & stoceCorrect == true & spongeCorrect == true) {
+					this.isCompleted = true;
 				}
 			}
 		};
@@ -528,106 +568,121 @@ define('kitchen/kitchen',["exports", "aurelia-fetch-client", "aurelia-cookie"], 
 	}();
 });
 define('months/months',["exports", "aurelia-fetch-client", "aurelia-cookie"], function (exports, _aureliaFetchClient, _aureliaCookie) {
-	"use strict";
+			"use strict";
 
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	exports.Months = undefined;
+			Object.defineProperty(exports, "__esModule", {
+						value: true
+			});
+			exports.Months = undefined;
 
-	function _classCallCheck(instance, Constructor) {
-		if (!(instance instanceof Constructor)) {
-			throw new TypeError("Cannot call a class as a function");
-		}
-	}
-
-	var Months = exports.Months = function () {
-		function Months() {
-			_classCallCheck(this, Months);
-		}
-
-		Months.prototype.months = function months() {
-
-			if (this.january == undefined || this.february == undefined || this.march == undefined || this.april == undefined || this.may == undefined || this.june == undefined || this.july == undefined || this.august == undefined || this.september == undefined || this.october == undefined || this.november == undefined || this.december == undefined) {
-				alert("You must fill the blanks before checking!");
-				return;
-			} else {
-				if (this.january.toLowerCase() == "jaanuar") {
-					this.backgroundColor1 = "background-color:lightgreen;";
-				} else {
-					this.backgroundColor1 = "background-color:lightcoral;";
-				}
-
-				if (this.february.toLowerCase() == "veebruar") {
-					this.backgroundColor2 = "background-color:lightgreen;";
-				} else {
-					this.backgroundColor2 = "background-color:lightcoral;";
-				}
-
-				if (this.march.toLowerCase() == "märts") {
-					this.backgroundColor3 = "background-color:lightgreen;";
-				} else {
-					this.backgroundColor3 = "background-color:lightcoral;";
-				}
-
-				if (this.april.toLowerCase() == "aprill") {
-					this.backgroundColor4 = "background-color:lightgreen;";
-				} else {
-					this.backgroundColor4 = "background-color:lightcoral;";
-				}
-
-				if (this.may.toLowerCase() == "mai") {
-					this.backgroundColor5 = "background-color:lightgreen;";
-				} else {
-					this.backgroundColor5 = "background-color:lightcoral;";
-				}
-
-				if (this.june.toLowerCase() == "juuni") {
-					this.backgroundColor6 = "background-color:lightgreen;";
-				} else {
-					this.backgroundColor6 = "background-color:lightcoral;";
-				}
-
-				if (this.july.toLowerCase() == "juuli") {
-					this.backgroundColor7 = "background-color:lightgreen;";
-				} else {
-					this.backgroundColor7 = "background-color:lightcoral;";
-				}
-
-				if (this.august.toLowerCase() == "august") {
-					this.backgroundColor8 = "background-color:lightgreen;";
-				} else {
-					this.backgroundColor8 = "background-color:lightcoral;";
-				}
-
-				if (this.september.toLowerCase() == "september") {
-					this.backgroundColor9 = "background-color:lightgreen;";
-				} else {
-					this.backgroundColor9 = "background-color:lightcoral;";
-				}
-
-				if (this.october.toLowerCase() == "oktoober") {
-					this.backgroundColor10 = "background-color:lightgreen;";
-				} else {
-					this.backgroundColor10 = "background-color:lightcoral;";
-				}
-
-				if (this.november.toLowerCase() == "november") {
-					this.backgroundColor11 = "background-color:lightgreen;";
-				} else {
-					this.backgroundColor11 = "background-color:lightcoral;";
-				}
-
-				if (this.december.toLowerCase() == "detsember") {
-					this.backgroundColor12 = "background-color:lightgreen;";
-				} else {
-					this.backgroundColor12 = "background-color:lightcoral;";
-				}
+			function _classCallCheck(instance, Constructor) {
+						if (!(instance instanceof Constructor)) {
+									throw new TypeError("Cannot call a class as a function");
+						}
 			}
-		};
 
-		return Months;
-	}();
+			var Months = exports.Months = function () {
+						function Months() {
+									_classCallCheck(this, Months);
+						}
+
+						Months.prototype.months = function months() {
+
+									if (this.january == undefined || this.february == undefined || this.march == undefined || this.april == undefined || this.may == undefined || this.june == undefined || this.july == undefined || this.august == undefined || this.september == undefined || this.october == undefined || this.november == undefined || this.december == undefined) {
+												alert("You must fill the blanks before checking!");
+												return;
+									} else {
+												if (this.january.toLowerCase() == "jaanuar") {
+															this.backgroundColor1 = "background-color:lightgreen;";
+															this.januaryCorrect = true;
+												} else {
+															this.backgroundColor1 = "background-color:lightcoral;";
+												}
+
+												if (this.february.toLowerCase() == "veebruar") {
+															this.backgroundColor2 = "background-color:lightgreen;";
+															this.februaryCorrect = true;
+												} else {
+															this.backgroundColor2 = "background-color:lightcoral;";
+												}
+
+												if (this.march.toLowerCase() == "märts") {
+															this.backgroundColor3 = "background-color:lightgreen;";
+															this.marchCorrect = true;
+												} else {
+															this.backgroundColor3 = "background-color:lightcoral;";
+												}
+
+												if (this.april.toLowerCase() == "aprill") {
+															this.backgroundColor4 = "background-color:lightgreen;";
+															this.aprilCorrect = true;
+												} else {
+															this.backgroundColor4 = "background-color:lightcoral;";
+												}
+
+												if (this.may.toLowerCase() == "mai") {
+															this.backgroundColor5 = "background-color:lightgreen;";
+															this.mayCorrect = true;
+												} else {
+															this.backgroundColor5 = "background-color:lightcoral;";
+												}
+
+												if (this.june.toLowerCase() == "juuni") {
+															this.backgroundColor6 = "background-color:lightgreen;";
+															this.juneCorrect = true;
+												} else {
+															this.backgroundColor6 = "background-color:lightcoral;";
+												}
+
+												if (this.july.toLowerCase() == "juuli") {
+															this.backgroundColor7 = "background-color:lightgreen;";
+															this.julyCorrect = true;
+												} else {
+															this.backgroundColor7 = "background-color:lightcoral;";
+												}
+
+												if (this.august.toLowerCase() == "august") {
+															this.backgroundColor8 = "background-color:lightgreen;";
+															this.augustCorrect = true;
+												} else {
+															this.backgroundColor8 = "background-color:lightcoral;";
+												}
+
+												if (this.september.toLowerCase() == "september") {
+															this.backgroundColor9 = "background-color:lightgreen;";
+															this.septemberCorrect = true;
+												} else {
+															this.backgroundColor9 = "background-color:lightcoral;";
+												}
+
+												if (this.october.toLowerCase() == "oktoober") {
+															this.backgroundColor10 = "background-color:lightgreen;";
+															this.octoberCorrect = true;
+												} else {
+															this.backgroundColor10 = "background-color:lightcoral;";
+												}
+
+												if (this.november.toLowerCase() == "november") {
+															this.backgroundColor11 = "background-color:lightgreen;";
+															this.novemberCorrect = true;
+												} else {
+															this.backgroundColor11 = "background-color:lightcoral;";
+												}
+
+												if (this.december.toLowerCase() == "detsember") {
+															this.backgroundColor12 = "background-color:lightgreen;";
+															this.decemberCorrect = true;
+												} else {
+															this.backgroundColor12 = "background-color:lightcoral;";
+												}
+												if (januaryCorrect = true & februaryCorrect == true & marchCorrect == true & aprilCorrect == true & mayCorrect == true & juneCorrect == true & julyCorrect == true & augustCorrect == true & septemberCorrect == true & octoberCorrect == true & novemberCorrect == true & decemberCorrect == true) {
+															this.isCompleted = true;
+												}
+									}
+						};
+
+						return Months;
+			}();
 });
 define('numbers/numbers',["exports", "aurelia-fetch-client", "aurelia-cookie"], function (exports, _aureliaFetchClient, _aureliaCookie) {
 			"use strict";
@@ -723,7 +778,7 @@ define('numbers/numbers',["exports", "aurelia-fetch-client", "aurelia-cookie"], 
 												} else {
 															this.backgroundColor10 = "background-color:lightcoral;";
 												}
-												if (this.one == true & this.two == true & this.three == true & this.four == true & this.five == true & this.six == true & this.seven == true & this.eight == true & this.nine == true & this.ten == true) {
+												if (this.oneCorrect == true & this.twoCorrect == true & this.threeCorrect == true & this.fourCorrect == true & this.fiveCorrect == true & this.sixCorrect == true & this.sevenCorrect == true & this.eightCorrect == true & this.nineCorrect == true & this.tenCorrect == true) {
 															this.isCompleted = true;
 												}
 									}
@@ -1315,12 +1370,12 @@ define('text!app.css', ['module'], function(module) { module.exports = "html, bo
 define('text!nav-bar.html', ['module'], function(module) { module.exports = "<template bindable=\"router\" class=\"nav\"><p><a repeat.for=\"item of router.navigation\" href.bind=\"item.href\">${item.title}</a></p></template>"; });
 define('text!about/about.html', ['module'], function(module) { module.exports = "<template><div class=\"body\"><div class=\"main\"><div class=\"content\">${message}<br><br><img style=\"vertical-align:middle;padding:5px\" src=\"src/images/easy.png\" alt=\"Easy\" height=\"42\" width=\"42\">${easy}<br><img style=\"vertical-align:middle;padding:5px\" src=\"src/images/fast.png\" alt=\"Fast\" height=\"42\" width=\"42\">${fast}<br><img style=\"vertical-align:middle;padding:5px\" src=\"src/images/family.png\" alt=\"Family\" height=\"42\" width=\"42\">${family}<br><img style=\"vertical-align:middle;padding:5px\" src=\"src/images/game.png\" alt=\"Game\" height=\"42\" width=\"42\">${game}</div></div></div></template>"; });
 define('text!colours/colours.html', ['module'], function(module) { module.exports = "<template><div class=\"main\"><div class=\"content\"><div class=\"greyBox BackToGames\"><input type=\"button\" value=\"Back to selection\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" onclick='window.location.href=\"http://localhost:9000/#/typeEquivalent\"'></div><div class=\"gameHeader\"><h2>Colors</h2></div><div class=\"gameArea\"><div class=\"greyBox check\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" click.delegate=\"colours()\">Check!</div><div class=\"answerLeft2\"><br><form style=\"color:#000\"><label>White &nbsp;</label><input type=\"text\" value.bind=\"white\" style.bind=\"backgroundColor1\"><br><label>Black &nbsp;</label><input type=\"text\" value.bind=\"black\" style.bind=\"backgroundColor2\"><br><label>Red &nbsp;</label><input type=\"text\" value.bind=\"red\" style.bind=\"backgroundColor3\"><br><label>Blue &nbsp;</label><input type=\"text\" value.bind=\"blue\" style.bind=\"backgroundColor4\"><br></form></div><div class=\"answerRight3\"><br><form style=\"color:#000\"><label>Green &nbsp;</label><input type=\"text\" value.bind=\"green\" style.bind=\"backgroundColor5\"><br><label>Yellow &nbsp;</label><input type=\"text\" value.bind=\"yellow\" style.bind=\"backgroundColor6\"><br><label>Brown &nbsp;</label><input type=\"text\" value.bind=\"brown\" style.bind=\"backgroundColor7\"><br><label>Purple &nbsp;</label><input type=\"text\" value.bind=\"purple\" style.bind=\"backgroundColor8\"><br></form></div></div><div class=\"greyBox nextGame\" if.bind=\"isCompleted\"><input type=\"button\" value=\"To the next guess\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" onclick='window.location.href=\"http://localhost:9000/#/numbers\"'></div></div></div></template>"; });
-define('text!days/days.html', ['module'], function(module) { module.exports = "<template><div class=\"main\"><div class=\"content\"><div class=\"greyBox BackToGames\"><input type=\"button\" value=\"Back to selection\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" onclick='window.location.href=\"http://localhost:9000/#/typeEquivalent\"'></div><div class=\"gameHeader\"><h2>Days of the week</h2></div><div class=\"gameArea\"><div class=\"greyBox check\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" click.delegate=\"days()\">Check!</div><div class=\"answerLeft\"><br><form style=\"color:#000\"><label>Monday &nbsp;</label><br><input type=\"text\" value.bind=\"monday\" style.bind=\"backgroundColor1\"><br><label>Tuesday &nbsp;</label><br><input type=\"text\" value.bind=\"tuesday\" style.bind=\"backgroundColor2\"><br><label>Wednesday &nbsp;</label><br><input type=\"text\" value.bind=\"wednesday\" style.bind=\"backgroundColor3\"><br><label>Thursday &nbsp;</label><br><input type=\"text\" value.bind=\"thursday\" style.bind=\"backgroundColor4\"><br></form></div><div class=\"answerRight\"><br><form style=\"color:#000\"><label>Friday &nbsp;</label><br><input type=\"text\" value.bind=\"friday\" style.bind=\"backgroundColor5\"><br><label>Saturday &nbsp;</label><br><input type=\"text\" value.bind=\"saturday\" style.bind=\"backgroundColor6\"><br><label>Sunday &nbsp;</label><br><input type=\"text\" value.bind=\"sunday\" style.bind=\"backgroundColor7\"><br></form></div></div><div class=\"greyBox nextGame\"><input type=\"button\" value=\"To the next guess\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" onclick='window.location.href=\"http://localhost:9000/#/months\"'></div></div></div></template>"; });
+define('text!days/days.html', ['module'], function(module) { module.exports = "<template><div class=\"main\"><div class=\"content\"><div class=\"greyBox BackToGames\"><input type=\"button\" value=\"Back to selection\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" onclick='window.location.href=\"http://localhost:9000/#/typeEquivalent\"'></div><div class=\"gameHeader\"><h2>Days of the week</h2></div><div class=\"gameArea\"><div class=\"greyBox check\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" click.delegate=\"days()\">Check!</div><div class=\"answerLeft\"><br><form style=\"color:#000\"><label>Monday &nbsp;</label><br><input type=\"text\" value.bind=\"monday\" style.bind=\"backgroundColor1\"><br><label>Tuesday &nbsp;</label><br><input type=\"text\" value.bind=\"tuesday\" style.bind=\"backgroundColor2\"><br><label>Wednesday &nbsp;</label><br><input type=\"text\" value.bind=\"wednesday\" style.bind=\"backgroundColor3\"><br><label>Thursday &nbsp;</label><br><input type=\"text\" value.bind=\"thursday\" style.bind=\"backgroundColor4\"><br></form></div><div class=\"answerRight\"><br><form style=\"color:#000\"><label>Friday &nbsp;</label><br><input type=\"text\" value.bind=\"friday\" style.bind=\"backgroundColor5\"><br><label>Saturday &nbsp;</label><br><input type=\"text\" value.bind=\"saturday\" style.bind=\"backgroundColor6\"><br><label>Sunday &nbsp;</label><br><input type=\"text\" value.bind=\"sunday\" style.bind=\"backgroundColor7\"><br></form></div></div><div class=\"greyBox nextGame\" if.bind=\"isCompleted\"><input type=\"button\" value=\"To the next guess\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" onclick='window.location.href=\"http://localhost:9000/#/months\"'></div></div></div></template>"; });
+define('text!home/home.html', ['module'], function(module) { module.exports = "<template><div class=\"body\"><div class=\"main\"><div class=\"content\">${message};<div class=\"greyBox nextGame\"><input type=\"button\" value=\"Go play!\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" onclick='window.location.href=\"http://localhost:9000/#/games\"'></div></div></div></div></template>"; });
 define('text!games/games.html', ['module'], function(module) { module.exports = "<template><div class=\"main\"><div class=\"gameChoice\"><h2>Select gametype:</h2><div><a href=\"http://localhost:9000/#/selectEquivalent\"><div class=\"gamechoiceButton blueBox\"><h3>${h1}</h3></div></a><a href=\"http://localhost:9000/#/typeEquivalent\"><div class=\"gamechoiceButton blueBox\"><h3>${h2}</h3></div></a></div><br><br><br><br><br><h2>Your current score is: ${score}</h2></div></div></template>"; });
-define('text!home/home.html', ['module'], function(module) { module.exports = "<template><div class=\"body\"><div class=\"main\"><div class=\"content\">${message};</div></div></div></template>"; });
-define('text!human/human.html', ['module'], function(module) { module.exports = "<template><div class=\"main\"><div class=\"content\"><div class=\"greyBox BackToGames\"><input type=\"button\" value=\"Back to selection\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" onclick='window.location.href=\"http://localhost:9000/#/typeEquivalent\"'></div><div class=\"gameHeader\"><h2>Human body</h2></div><div class=\"gameArea\"><div class=\"greyBox check\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" click.delegate=\"human()\">Check!</div><div class=\"answerLeft\"><br><form style=\"color:#000\"><label>Head &nbsp;</label><br><input type=\"text\" value.bind=\"head\" style.bind=\"backgroundColor1\"><br><label>Hand &nbsp;</label><br><input type=\"text\" value.bind=\"hand\" style.bind=\"backgroundColor2\"><br><label>Leg &nbsp;</label><br><input type=\"text\" value.bind=\"leg\" style.bind=\"backgroundColor3\"><br><label>Mouth &nbsp;</label><br><input type=\"text\" value.bind=\"mouth\" style.bind=\"backgroundColor4\"><br><label>Nose &nbsp;</label><br><input type=\"text\" value.bind=\"nose\" style.bind=\"backgroundColor5\"><br><label>Ear &nbsp;</label><br><input type=\"text\" value.bind=\"ear\" style.bind=\"backgroundColor6\"><br></form></div><div class=\"answerRight\"><br><form style=\"color:#000\"><label>Knee &nbsp;</label><br><input type=\"text\" value.bind=\"knee\" style.bind=\"backgroundColor7\"><br><label>Finger &nbsp;</label><br><input type=\"text\" value.bind=\"finger\" style.bind=\"backgroundColor8\"><br><label>Tongue &nbsp;</label><br><input type=\"text\" value.bind=\"tongue\" style.bind=\"backgroundColor9\"><br><label>Hair &nbsp;</label><br><input type=\"text\" value.bind=\"hair\" style.bind=\"backgroundColor10\"><br><label>Chest &nbsp;</label><br><input type=\"text\" value.bind=\"chest\" style.bind=\"backgroundColor11\"><br><label>Back &nbsp;</label><br><input type=\"text\" value.bind=\"back\" style.bind=\"backgroundColor12\"><br></form></div></div><div class=\"greyBox nextGame\"><input type=\"button\" value=\"To the next guess\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" onclick='window.location.href=\"http://localhost:9000/#/kitchen\"'></div></div></div></template>"; });
+define('text!human/human.html', ['module'], function(module) { module.exports = "<template><div class=\"main\"><div class=\"content\"><div class=\"greyBox BackToGames\"><input type=\"button\" value=\"Back to selection\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" onclick='window.location.href=\"http://localhost:9000/#/typeEquivalent\"'></div><div class=\"gameHeader\"><h2>Human body</h2></div><div class=\"gameArea\"><div class=\"greyBox check\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" click.delegate=\"human()\">Check!</div><div class=\"answerLeft\"><br><form style=\"color:#000\"><label>Head &nbsp;</label><br><input type=\"text\" value.bind=\"head\" style.bind=\"backgroundColor1\"><br><label>Hand &nbsp;</label><br><input type=\"text\" value.bind=\"hand\" style.bind=\"backgroundColor2\"><br><label>Leg &nbsp;</label><br><input type=\"text\" value.bind=\"leg\" style.bind=\"backgroundColor3\"><br><label>Mouth &nbsp;</label><br><input type=\"text\" value.bind=\"mouth\" style.bind=\"backgroundColor4\"><br><label>Nose &nbsp;</label><br><input type=\"text\" value.bind=\"nose\" style.bind=\"backgroundColor5\"><br><label>Ear &nbsp;</label><br><input type=\"text\" value.bind=\"ear\" style.bind=\"backgroundColor6\"><br></form></div><div class=\"answerRight\"><br><form style=\"color:#000\"><label>Knee &nbsp;</label><br><input type=\"text\" value.bind=\"knee\" style.bind=\"backgroundColor7\"><br><label>Finger &nbsp;</label><br><input type=\"text\" value.bind=\"finger\" style.bind=\"backgroundColor8\"><br><label>Tongue &nbsp;</label><br><input type=\"text\" value.bind=\"tongue\" style.bind=\"backgroundColor9\"><br><label>Hair &nbsp;</label><br><input type=\"text\" value.bind=\"hair\" style.bind=\"backgroundColor10\"><br><label>Chest &nbsp;</label><br><input type=\"text\" value.bind=\"chest\" style.bind=\"backgroundColor11\"><br><label>Back &nbsp;</label><br><input type=\"text\" value.bind=\"back\" style.bind=\"backgroundColor12\"><br></form></div></div><div class=\"greyBox nextGame\" if.bind=\"isCompleted\"><input type=\"button\" value=\"To the next guess\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" onclick='window.location.href=\"http://localhost:9000/#/kitchen\"'></div></div></div></template>"; });
 define('text!kitchen/kitchen.html', ['module'], function(module) { module.exports = "<template><div class=\"main\"><div class=\"content\"><div class=\"greyBox BackToGames\"><input type=\"button\" value=\"Back to selection\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" onclick='window.location.href=\"http://localhost:9000/#/typeEquivalent\"'></div><div class=\"gameHeader\"><h2>Kitchen</h2></div><div class=\"gameArea\"><div class=\"greyBox check\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" click.delegate=\"kitchen()\">Check!</div><div class=\"answerLeft\"><br><form style=\"color:#000\"><label>Sink &nbsp;</label><br><input type=\"text\" value.bind=\"sink\" style.bind=\"backgroundColor1\"><br><label>Plate &nbsp;</label><br><input type=\"text\" value.bind=\"plate\" style.bind=\"backgroundColor2\"><br><label>Bowl &nbsp;</label><br><input type=\"text\" value.bind=\"bowl\" style.bind=\"backgroundColor3\"><br><label>Glass &nbsp;</label><br><input type=\"text\" value.bind=\"glass\" style.bind=\"backgroundColor4\"><br><label>Cup &nbsp;</label><br><input type=\"text\" value.bind=\"cup\" style.bind=\"backgroundColor5\"><br><label>Fridge &nbsp;</label><br><input type=\"text\" value.bind=\"fridge\" style.bind=\"backgroundColor6\"><br></form></div><div class=\"answerRight\"><br><form style=\"color:#000\"><label>Knife &nbsp;</label><br><input type=\"text\" value.bind=\"knife\" style.bind=\"backgroundColor7\"><br><label>Fork &nbsp;</label><br><input type=\"text\" value.bind=\"fork\" style.bind=\"backgroundColor8\"><br><label>Spoon &nbsp;</label><br><input type=\"text\" value.bind=\"spoon\" style.bind=\"backgroundColor9\"><br><label>Oven &nbsp;</label><br><input type=\"text\" value.bind=\"oven\" style.bind=\"backgroundColor10\"><br><label>Stove &nbsp;</label><br><input type=\"text\" value.bind=\"stove\" style.bind=\"backgroundColor11\"><br><label>Sponge &nbsp;</label><br><input type=\"text\" value.bind=\"sponge\" style.bind=\"backgroundColor12\"><br></form></div></div></div></div></template>"; });
-define('text!months/months.html', ['module'], function(module) { module.exports = "<template><div class=\"main\"><div class=\"content\"><div class=\"greyBox BackToGames\"><input type=\"button\" value=\"Back to selection\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" onclick='window.location.href=\"http://localhost:9000/#/typeEquivalent\"'></div><div class=\"gameHeader\"><h2>Months</h2></div><div class=\"gameArea\"><div class=\"greyBox check\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" click.delegate=\"months()\">Check!</div><div class=\"answerLeft\"><br><form style=\"color:#000\"><label>January &nbsp;</label><br><input type=\"text\" value.bind=\"january\" style.bind=\"backgroundColor1\"><br><label>February &nbsp;</label><br><input type=\"text\" value.bind=\"february\" style.bind=\"backgroundColor2\"><br><label>March &nbsp;</label><br><input type=\"text\" value.bind=\"march\" style.bind=\"backgroundColor3\"><br><label>April &nbsp;</label><br><input type=\"text\" value.bind=\"april\" style.bind=\"backgroundColor4\"><br><label>May &nbsp;</label><br><input type=\"text\" value.bind=\"may\" style.bind=\"backgroundColor5\"><br><label>June &nbsp;</label><br><input type=\"text\" value.bind=\"june\" style.bind=\"backgroundColor6\"><br></form></div><div class=\"answerRight\"><br><form style=\"color:#000\"><label>July &nbsp;</label><br><input type=\"text\" value.bind=\"july\" style.bind=\"backgroundColor7\"><br><label>August &nbsp;</label><br><input type=\"text\" value.bind=\"august\" style.bind=\"backgroundColor8\"><br><label>September &nbsp;</label><br><input type=\"text\" value.bind=\"september\" style.bind=\"backgroundColor9\"><br><label>October &nbsp;</label><br><input type=\"text\" value.bind=\"october\" style.bind=\"backgroundColor10\"><br><label>November &nbsp;</label><br><input type=\"text\" value.bind=\"november\" style.bind=\"backgroundColor11\"><br><label>December &nbsp;</label><br><input type=\"text\" value.bind=\"december\" style.bind=\"backgroundColor12\"><br></form></div></div><div class=\"greyBox nextGame\"><input type=\"button\" value=\"To the next guess\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" onclick='window.location.href=\"http://localhost:9000/#/human\"'></div></div></div></template>"; });
+define('text!months/months.html', ['module'], function(module) { module.exports = "<template><div class=\"main\"><div class=\"content\"><div class=\"greyBox BackToGames\"><input type=\"button\" value=\"Back to selection\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" onclick='window.location.href=\"http://localhost:9000/#/typeEquivalent\"'></div><div class=\"gameHeader\"><h2>Months</h2></div><div class=\"gameArea\"><div class=\"greyBox check\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" click.delegate=\"months()\">Check!</div><div class=\"answerLeft\"><br><form style=\"color:#000\"><label>January &nbsp;</label><br><input type=\"text\" value.bind=\"january\" style.bind=\"backgroundColor1\"><br><label>February &nbsp;</label><br><input type=\"text\" value.bind=\"february\" style.bind=\"backgroundColor2\"><br><label>March &nbsp;</label><br><input type=\"text\" value.bind=\"march\" style.bind=\"backgroundColor3\"><br><label>April &nbsp;</label><br><input type=\"text\" value.bind=\"april\" style.bind=\"backgroundColor4\"><br><label>May &nbsp;</label><br><input type=\"text\" value.bind=\"may\" style.bind=\"backgroundColor5\"><br><label>June &nbsp;</label><br><input type=\"text\" value.bind=\"june\" style.bind=\"backgroundColor6\"><br></form></div><div class=\"answerRight\"><br><form style=\"color:#000\"><label>July &nbsp;</label><br><input type=\"text\" value.bind=\"july\" style.bind=\"backgroundColor7\"><br><label>August &nbsp;</label><br><input type=\"text\" value.bind=\"august\" style.bind=\"backgroundColor8\"><br><label>September &nbsp;</label><br><input type=\"text\" value.bind=\"september\" style.bind=\"backgroundColor9\"><br><label>October &nbsp;</label><br><input type=\"text\" value.bind=\"october\" style.bind=\"backgroundColor10\"><br><label>November &nbsp;</label><br><input type=\"text\" value.bind=\"november\" style.bind=\"backgroundColor11\"><br><label>December &nbsp;</label><br><input type=\"text\" value.bind=\"december\" style.bind=\"backgroundColor12\"><br></form></div></div><div class=\"greyBox nextGame\" if.bind=\"isCompleted\"><input type=\"button\" value=\"To the next guess\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" onclick='window.location.href=\"http://localhost:9000/#/human\"'></div></div></div></template>"; });
 define('text!numbers/numbers.html', ['module'], function(module) { module.exports = "<template><div class=\"main\"><div class=\"content\"><div class=\"greyBox BackToGames\"><input type=\"button\" value=\"Back to selection\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" onclick='window.location.href=\"http://localhost:9000/#/typeEquivalent\"'></div><div class=\"gameHeader\"><h2>Numbers</h2>(Make sure to type out the numbers)</div><div class=\"gameArea\"><div class=\"greyBox check\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" click.delegate=\"numbers()\">Check!</div><div class=\"answerLeft2\"><br><form style=\"color:#000\"><label>One &nbsp;</label><input type=\"text\" value.bind=\"one\" style.bind=\"backgroundColor1\"><br><label>Two &nbsp;</label><input type=\"text\" value.bind=\"two\" style.bind=\"backgroundColor2\"><br><label>Three &nbsp;</label><input type=\"text\" value.bind=\"three\" style.bind=\"backgroundColor3\"><br><label>Four &nbsp;</label><input type=\"text\" value.bind=\"four\" style.bind=\"backgroundColor4\"><br><label>Five &nbsp;</label><input type=\"text\" value.bind=\"five\" style.bind=\"backgroundColor5\"><br></form></div><div class=\"answerRight2\"><br><form style=\"color:#000\"><label>Six &nbsp;</label><input type=\"text\" value.bind=\"six\" style.bind=\"backgroundColor6\"><br><label>Seven &nbsp;</label><input type=\"text\" value.bind=\"seven\" style.bind=\"backgroundColor7\"><br><label>Eight &nbsp;</label><input type=\"text\" value.bind=\"eight\" style.bind=\"backgroundColor8\"><br><label>Nine &nbsp;</label><input type=\"text\" value.bind=\"nine\" style.bind=\"backgroundColor9\"><br><label>Ten &nbsp;</label><input type=\"text\" value.bind=\"ten\" style.bind=\"backgroundColor10\"><br></form></div></div><div class=\"greyBox nextGame\" if.bind=\"isCompleted\"><input type=\"button\" value=\"To the next guess\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" onclick='window.location.href=\"http://localhost:9000/#/days\"'></div></div></div></template>"; });
 define('text!register/register.html', ['module'], function(module) { module.exports = "<template><require from=\"app.css\"></require><div class=\"body\"><br><div class=\"indexMain\"><div class=\"welcomeText blueBox\"><h1>Welcome to Estlingo!</h1><div>Learn Estonian in a playful way!<br></div></div><div class=\"loginScreen blueBox\"><div><div>Log in:<form id=\"loginform\" submit.delegate=\"getUser()\"><div class=\"greyBox\"><input id=\"username\" name=\"username\" placeholder=\"Username\"></div><div class=\"greyBox\"><input id=\"password\" name=\"password\" placeholder=\"Password\" type=\"password\"></div><div class=\"greyBox\" style=\"float:right\"><input type=\"submit\" value=\"Log in\"></div></form></div><br><br><div>Register:<form id=\"registerform\" submit.delegate=\"addUser()\"><div class=\"greyBox\"><input name=\"username\" placeholder=\"Username\" value.bind=\"userData.username\"></div><div class=\"greyBox\"><input type=\"password\" name=\"password\" placeholder=\"Password\" value.bind=\"userData.password\"></div><div class=\"greyBox\"><input name=\"e_mail\" placeholder=\"E-mail\" value.bind=\"userData.e_mail\"></div><div class=\"greyBox\" style=\"float:right\"><input type=\"submit\" value=\"Register user\"></div></form></div></div><br><br><div style=\"font-size:10px\"><i>Log-in instructions etc ..</i></div></div></div></div></template>"; });
 define('text!selectEquivalent/selectEquivalent.html', ['module'], function(module) { module.exports = "<template><div class=\"body\"><div class=\"main\"><div class=\"content\"><div class=\"greyBox BackToGames\"><input type=\"button\" value=\"Back to games\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" onclick='window.location.href=\"http://localhost:9000/#/games\"'></div><div class=\"gameHeader\"><h2>Choose the topic:</h2></div><div class=\"gameArea\"><div class=\"picture\"></div><div class=\"answerLeft\"><a href=\"http://localhost:9000/#/selectEquivalent1\" style=\"text-decoration:none\"><div class=\"blueBox choice\">${h1}</div></a><a href=\"http://localhost:9000/#/selectEquivalent2\" style=\"text-decoration:none\"><div class=\"blueBox choice\">${h2}</div></a><a href=\"http://localhost:9000/#/selectEquivalent3\" style=\"text-decoration:none\"><div class=\"blueBox choice\">${h3}</div></a><a href=\"http://localhost:9000/#/selectEquivalent4\" style=\"text-decoration:none\"><div class=\"blueBox choice\">${h4}</div></a></div><div class=\"answerRight\"><a href=\"http://localhost:9000/#/selectEquivalent5\" style=\"text-decoration:none\"><div class=\"blueBox choice\">${h5}</div></a><a href=\"http://localhost:9000/#/selectEquivalent6\" style=\"text-decoration:none\"><div class=\"blueBox choice\">${h6}</div></a><a href=\"http://localhost:9000/#/selectEquivalent7\" style=\"text-decoration:none\"><div class=\"blueBox choice\">${h7}</div></a></div></div></div></div></div></template>"; });

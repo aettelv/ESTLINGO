@@ -38,33 +38,47 @@ export class Days{
 
 	        if(this.wednesday.toLowerCase() == "kolmapäev"){
 	            this.backgroundColor3 = "background-color:lightgreen;";
+				this.wednesdayCorrect = true;
 	        } else {
 	        	this.backgroundColor3 = "background-color:lightcoral;";
 	        }
 
 	        if(this.thursday.toLowerCase() == "neljapäev"){
 	            this.backgroundColor4 = "background-color:lightgreen;";
+				this.thursdayCorrect = true;
 	        } else {
 	        	this.backgroundColor4 = "background-color:lightcoral;";
 	        }
 
 	        if(this.friday.toLowerCase() == "reede"){
 	            this.backgroundColor5 = "background-color:lightgreen;";
+				this.fridayCorrect = true;
 	        } else {
 	        	this.backgroundColor5 = "background-color:lightcoral;";
 	        }
 
 	        if(this.saturday.toLowerCase() == "laupäev"){
 	            this.backgroundColor6 = "background-color:lightgreen;";
+				this.saturdayCorrect = true;
 	        } else {
 	        	this.backgroundColor6 = "background-color:lightcoral;";
 	        }
 
 	        if(this.sunday.toLowerCase() == "pühapäev"){
 	            this.backgroundColor7 = "background-color:lightgreen;";
+				this.sundayCorrect = true;
 	        } else {
 	        	this.backgroundColor7 = "background-color:lightcoral;";
 	        }
-    	}
+			if(this.mondayCorrect == true &
+          this.tuesdayCorrect == true &
+          this.wednesdayCorrect == true &
+          this.thursdayCorrect == true &
+          this.fridayCorrect == true &
+          this.saturdayCorrect == true &
+          this.sundayCorrect == true){
+            this.isCompleted = true;
+		  }
+        }
     }
 }
