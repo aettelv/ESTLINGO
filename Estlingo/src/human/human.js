@@ -35,21 +35,21 @@ export class Human{
         } else {
 	    	if(this.head.toLowerCase() == "pea"){
 	            this.backgroundColor1 = "background-color:lightgreen;";
+                this.headCorrect = true;
 	        } else {
 	        	this.backgroundColor1 = "background-color:lightcoral;";
-				this.headCorrect = true;
 	        }
 	        
 	        if(this.hand.toLowerCase() == "käsi"){
 	            this.backgroundColor2 = "background-color:lightgreen;";
+                this.handCorrect = true;
 	        } else {
 	        	this.backgroundColor2 = "background-color:lightcoral;";
-				this.handCorrect = true;
 	        }
 
 	        if(this.leg.toLowerCase() == "jalg"){
 	            this.backgroundColor3 = "background-color:lightgreen;";
-				this.legCorrect = true;
+                this.legCorrect = true;
 	        } else {
 	        	this.backgroundColor3 = "background-color:lightcoral;";
 	        }
@@ -116,20 +116,34 @@ export class Human{
 	        } else {
 	        	this.backgroundColor12 = "background-color:lightcoral;";
 	        }
-			if (headCorrect == true &
-				handCorrect == true &
-				legCorrect == true &
-				mouthCorrect == true &
-				noseCorrect == true &
-				earCorrect == true &
-				kneeCorrect == true &
-				fingerCorrect == true &
-				tongueCorrect == true &
-				hairCorrect == true &
-				chestCorrect == true &
-				backCorrect == true){
-					this.isCompletedCorrect = true;
-				}
+        }
+        if (headCorrect == true &
+            handCorrect == true &
+            legCorrect == true &
+            mouthCorrect == true &
+            noseCorrect == true &
+            earCorrect == true &
+            kneeCorrect == true &
+            fingerCorrect == true &
+            tongueCorrect == true &
+            hairCorrect == true &
+            chestCorrect == true &
+            backCorrect == true){
+                this.isCompletedCorrect = true;
+        }
     }
-}
+    
+    nextGame(){
+        
+        var oldScore = AureliaCookie.get('score');
+        var score = parseInt(oldScore, 10) + 10;
+        
+        AureliaCookie.set('score', score , {
+            expiry: 1,
+            path: '',
+            domain: '',
+            secure: false
+        });
+         window.location.href='http://localhost:9000/#/kitchen';
+    }
 }
