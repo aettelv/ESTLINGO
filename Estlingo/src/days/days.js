@@ -70,6 +70,7 @@ export class Days{
 	        } else {
 	        	this.backgroundColor7 = "background-color:lightcoral;";
 	        }
+<<<<<<< HEAD
 	    }
 		if(this.mondayCorrect == true &
 	      this.tuesdayCorrect == true &
@@ -80,5 +81,31 @@ export class Days{
 	      this.sundayCorrect == true){
         	this.isCompleted = true;
     	}
+=======
+        }
+        if(this.mondayCorrect == true &
+            this.tuesdayCorrect == true &
+            this.wednesdayCorrect == true &
+            this.thursdayCorrect == true &
+            this.fridayCorrect == true &
+            this.saturdayCorrect == true &
+            this.sundayCorrect == true){
+                this.isCompleted = true;
+        }
+    }
+        
+    nextGame(){
+        
+        var oldScore = AureliaCookie.get('score');
+        var score = parseInt(oldScore, 10) + 10;
+        
+        AureliaCookie.set('score', score , {
+            expiry: 1,
+            path: '',
+            domain: '',
+            secure: false
+        });
+         window.location.href='http://localhost:9000/#/months';
+>>>>>>> origin/master
     }
 }
