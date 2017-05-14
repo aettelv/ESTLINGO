@@ -115,20 +115,20 @@ export class Months{
 	        } else {
 	        	this.backgroundColor12 = "background-color:lightcoral;";
 	        }
-			if (januaryCorrect = true &
-				februaryCorrect == true &
-				marchCorrect == true &
-				aprilCorrect == true &
-				mayCorrect == true &
-				juneCorrect == true &
-				julyCorrect == true &
-				augustCorrect == true &
-				septemberCorrect ==true &
-				octoberCorrect == true &
-				novemberCorrect == true &
-				decemberCorrect == true){
-					this.isCompleted = true;
-				}
-    	}
+	    }
+		if (januaryCorrect = true &
+			februaryCorrect == true &
+			marchCorrect == true &
+			aprilCorrect == true &
+			mayCorrect == true &
+			juneCorrect == true &
+			julyCorrect == true &
+			augustCorrect == true &
+			septemberCorrect ==true &
+			octoberCorrect == true &
+			novemberCorrect == true &
+			decemberCorrect == true){
+				this.isCompleted = true;
+		}
     }
 }

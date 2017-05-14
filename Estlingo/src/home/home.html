@@ -1,10 +1,14 @@
 <template>
     <div class="body">
         <div class="main">
-            <div class="content">
-                ${message};
-            <div class="greyBox nextGame">
-                <input type="button" value="Go play!" style="color:#f5f5f5; font-family: 'Open Sans', sans-serif;" onclick="window.location.href='http://localhost:9000/#/games'">
+            <div class="gameChoice" align="center" style="padding-top: 35px">
+                <h2>${message}</h2>
+            <div align="center">
+                <a href="http://localhost:9000/#/games">
+                    <div class="choice2 blueBox">
+                        <h3>${h1}</h3>
+                    </div>
+                </a>
             </div>
             </div>
         </div>

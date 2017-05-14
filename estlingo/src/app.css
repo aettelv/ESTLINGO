@@ -139,13 +139,31 @@ input{
     float: top;
 }
 
+a:link {
+    text-decoration: none;
+}
+
 .choice {
     margin: 5px 0px 5px 0px;
     color: black;
     cursor: pointer;
 }
 
+.choice2 {
+    margin: 5px 0px 5px 0px;
+    width: 90px;
+    text-decoration: none;
+    text-align: center;
+    color: black;
+    cursor: pointer;
+}
+
 .choice:hover {
+    color: #f5f5f5;
+    font-weight: bold;
+}
+
+.choice2:hover {
     color: #f5f5f5;
     font-weight: bold;
 }

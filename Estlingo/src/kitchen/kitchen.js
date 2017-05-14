@@ -116,21 +116,21 @@ export class Kitchen{
 	        } else {
 	        	this.backgroundColor12 = "background-color:lightcoral;";
 	        }
-			if (
-				sinkCorrect == true &
-				plateCorrect == true &
-				bowlCorrect == true &
-				glassCorrect == true &
-				cupCorrect == true &
-				fridgeCorrect == true &
-				knifeCorrect == true &
-				forkCorrect == true &
-				spoonCorrect == true &
-				ovenCorrect == true &
-				stoceCorrect == true &
-				spongeCorrect == true){
-					this.isCompleted = true;
-				}
-    	}
+	    }
+		if (
+			sinkCorrect == true &
+			plateCorrect == true &
+			bowlCorrect == true &
+			glassCorrect == true &
+			cupCorrect == true &
+			fridgeCorrect == true &
+			knifeCorrect == true &
+			forkCorrect == true &
+			spoonCorrect == true &
+			ovenCorrect == true &
+			stoceCorrect == true &
+			spongeCorrect == true){
+				this.isCompleted = true;
+		}
     }
 }

@@ -2,6 +2,7 @@ import {HttpClient, json} from "aurelia-fetch-client";
 import {AureliaCookie} from 'aurelia-cookie';
 
 export class Human{
+
 	headCorrect;
 	handCorrect;
 	legCorrect;
@@ -35,16 +36,16 @@ export class Human{
         } else {
 	    	if(this.head.toLowerCase() == "pea"){
 	            this.backgroundColor1 = "background-color:lightgreen;";
+	            this.headCorrect = true;
 	        } else {
 	        	this.backgroundColor1 = "background-color:lightcoral;";
-				this.headCorrect = true;
 	        }
 	        
 	        if(this.hand.toLowerCase() == "käsi"){
 	            this.backgroundColor2 = "background-color:lightgreen;";
+	            this.handCorrect = true;
 	        } else {
 	        	this.backgroundColor2 = "background-color:lightcoral;";
-				this.handCorrect = true;
 	        }
 
 	        if(this.leg.toLowerCase() == "jalg"){
@@ -116,20 +117,20 @@ export class Human{
 	        } else {
 	        	this.backgroundColor12 = "background-color:lightcoral;";
 	        }
-			if (headCorrect == true &
-				handCorrect == true &
-				legCorrect == true &
-				mouthCorrect == true &
-				noseCorrect == true &
-				earCorrect == true &
-				kneeCorrect == true &
-				fingerCorrect == true &
-				tongueCorrect == true &
-				hairCorrect == true &
-				chestCorrect == true &
-				backCorrect == true){
-					this.isCompletedCorrect = true;
-				}
-    }
-}
+	    }
+		if(this.headCorrect == true &
+			this.handCorrect == true &
+			this.legCorrect == true &
+			this.mouthCorrect == true &
+			this.noseCorrect == true &
+			this.earCorrect == true &
+			this.kneeCorrect == true &
+			this.fingerCorrect == true &
+			this.tongueCorrect == true &
+			this.hairCorrect == true &
+			this.chestCorrect == true &
+			this.backCorrect == true){
+				this.isCompleted = true;
+		}
+	}
 }

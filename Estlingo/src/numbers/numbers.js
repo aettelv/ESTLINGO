@@ -98,18 +98,18 @@ export class Numbers{
 	        } else {
 	        	this.backgroundColor10 = "background-color:lightcoral;";
 	        }
-			if(this.oneCorrect == true &
-          this.twoCorrect == true &
-          this.threeCorrect == true &
-          this.fourCorrect == true &
-          this.fiveCorrect == true &
-          this.sixCorrect == true &
-          this.sevenCorrect == true &
-          this.eightCorrect == true &
+	    }
+		if(this.oneCorrect == true &
+	      this.twoCorrect == true &
+	      this.threeCorrect == true &
+	      this.fourCorrect == true &
+	      this.fiveCorrect == true &
+	      this.sixCorrect == true &
+	      this.sevenCorrect == true &
+	      this.eightCorrect == true &
 		  this.nineCorrect == true &
-          this.tenCorrect == true){
-            this.isCompleted = true;
+	      this.tenCorrect == true){
+	        this.isCompleted = true;
     	}
-    }
-}
+	}
 }
