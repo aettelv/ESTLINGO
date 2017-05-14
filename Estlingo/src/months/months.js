@@ -14,7 +14,8 @@ export class Months{
 	octoberCorrect;
 	novemberCorrect;
 	decemberCorrect;
-    isCompletedCorrect;
+    isCompleted;
+    
     months() {
 
     	if(this.january == undefined ||
@@ -115,20 +116,34 @@ export class Months{
 	        } else {
 	        	this.backgroundColor12 = "background-color:lightcoral;";
 	        }
-			if (januaryCorrect = true &
-				februaryCorrect == true &
-				marchCorrect == true &
-				aprilCorrect == true &
-				mayCorrect == true &
-				juneCorrect == true &
-				julyCorrect == true &
-				augustCorrect == true &
-				septemberCorrect ==true &
-				octoberCorrect == true &
-				novemberCorrect == true &
-				decemberCorrect == true){
-					this.isCompleted = true;
-				}
-    	}
+        }
+        if (januaryCorrect = true &
+            februaryCorrect == true &
+            marchCorrect == true &
+            aprilCorrect == true &
+            mayCorrect == true &
+            juneCorrect == true &
+            julyCorrect == true &
+            augustCorrect == true &
+            septemberCorrect ==true &
+            octoberCorrect == true &
+            novemberCorrect == true &
+            decemberCorrect == true){
+                this.isCompleted = true;
+        }
+    }
+        
+    nextGame(){
+        
+        var oldScore = AureliaCookie.get('score');
+        var score = parseInt(oldScore, 10) + 10;
+        
+        AureliaCookie.set('score', score , {
+            expiry: 1,
+            path: '',
+            domain: '',
+            secure: false
+        });
+         window.location.href='http://localhost:9000/#/human';
     }
 }

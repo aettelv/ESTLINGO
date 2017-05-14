@@ -93,4 +93,18 @@ export class Colours{
             this.isCompleted = true;
         }
     }
+    
+    nextGame(){
+        
+        var oldScore = AureliaCookie.get('score');
+        var score = parseInt(oldScore, 10) + 10;
+        
+        AureliaCookie.set('score', score , {
+            expiry: 1,
+            path: '',
+            domain: '',
+            secure: false
+        });
+         window.location.href='http://localhost:9000/#/numbers';
+    }
 }
