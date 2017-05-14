@@ -97,7 +97,6 @@ export class Numbers{
 				this.tenCorrect=true;
 	        } else {
 	        	this.backgroundColor10 = "background-color:lightcoral;";
-<<<<<<< HEAD
 	        }
 	    }
 		if(this.oneCorrect == true &
@@ -113,35 +112,4 @@ export class Numbers{
 	        this.isCompleted = true;
     	}
 	}
-=======
-            }
-	    }
-        if(this.oneCorrect == true &
-            this.twoCorrect == true &
-            this.threeCorrect == true &
-            this.fourCorrect == true &
-            this.fiveCorrect == true &
-            this.sixCorrect == true &
-            this.sevenCorrect == true &
-            this.eightCorrect == true &
-            this.nineCorrect == true &
-            this.tenCorrect == true){
-                this.isCompleted = true;
-        }
-    }
-        
-    nextGame(){
-        
-        var oldScore = AureliaCookie.get('score');
-        var score = parseInt(oldScore, 10) + 10;
-        
-        AureliaCookie.set('score', score , {
-            expiry: 1,
-            path: '',
-            domain: '',
-            secure: false
-        });
-         window.location.href='http://localhost:9000/#/days';
-    }
->>>>>>> origin/master
 }
