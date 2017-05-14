@@ -42,7 +42,9 @@
                         </div>
                 </div>
             </div>
-            
+            <div class="greyBox nextGame" if.bind="gameCompleted">
+                <input type="button" value="To the next guess" style="color:#f5f5f5; font-family: 'Open Sans', sans-serif;" click.delegate="nextGame()">
+            </div>
         </div>
     </div>
 </template>
