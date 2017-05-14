@@ -25,4 +25,10 @@ public class UserService {
     User getUserByUsername(String username) {
 		return userRepository.findOne(username);
 	}
+	User updateScore (User user){
+		User update = userService.findone(user);
+		update.setScore(user.getScore());
+		return userRepository.updateScore(user);
+	}
+	
 }

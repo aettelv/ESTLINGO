@@ -32,4 +32,12 @@ public class UserController {
 	public User getUser(@PathVariable("username") String username) {
 		return userService.getUserByUsername(username);
 	}
+	
+	@RequestMapping(value="/users/score", method=RequestMethod.POST,
+			consumes = "application/json")
+	public User updateScore(@RequestBody User user) {
+		User update = userService.findone(user);
+		update.setScore(user.getScore());
+		return userService.updateScore(user);
+}
 }
