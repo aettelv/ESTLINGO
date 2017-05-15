@@ -28,8 +28,8 @@ public class UserController {
 		return userService.getAllUsers();
 	}
     
-    @RequestMapping(value = "/users/{username}", method=RequestMethod.GET)
-	public User getUser(@PathVariable("username") String username) {
-		return userService.getUserByUsername(username);
+    @RequestMapping(value = "/users/{id}", method=RequestMethod.GET)
+	public User getUser(@PathVariable("id") long userId) {
+		return userService.getUserById(userId);
 	}
 }

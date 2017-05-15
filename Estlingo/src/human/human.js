@@ -117,23 +117,22 @@ export class Human{
 	        	this.backgroundColor12 = "background-color:lightcoral;";
 	        }
         }
-        if (headCorrect == true &
-            handCorrect == true &
-            legCorrect == true &
-            mouthCorrect == true &
-            noseCorrect == true &
-            earCorrect == true &
-            kneeCorrect == true &
-            fingerCorrect == true &
-            tongueCorrect == true &
-            hairCorrect == true &
-            chestCorrect == true &
-            backCorrect == true){
-                this.isCompletedCorrect = true;
+        if (this.headCorrect == true &
+            this.handCorrect == true &
+            this.legCorrect == true &
+            this.mouthCorrect == true &
+            this.noseCorrect == true &
+            this.earCorrect == true &
+            this.kneeCorrect == true &
+            this.fingerCorrect == true &
+            this.tongueCorrect == true &
+            this.hairCorrect == true &
+            this.chestCorrect == true &
+            this.backCorrect == true){
+                this.isCompleted = true;
         }
-    }
-    
-    nextGame(){
+	}
+ 		nextGame(){
         
         var oldScore = AureliaCookie.get('score');
         var score = parseInt(oldScore, 10) + 10;
@@ -145,5 +144,5 @@ export class Human{
             secure: false
         });
          window.location.href='http://localhost:9000/#/kitchen';
-    }
+	}
 }

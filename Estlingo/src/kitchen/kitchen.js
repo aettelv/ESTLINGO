@@ -118,18 +118,18 @@ export class Kitchen{
 	        }
         }
         if (
-            sinkCorrect == true &
-            plateCorrect == true &
-            bowlCorrect == true &
-            glassCorrect == true &
-            cupCorrect == true &
-            fridgeCorrect == true &
-            knifeCorrect == true &
-            forkCorrect == true &
-            spoonCorrect == true &
-            ovenCorrect == true &
-            stoceCorrect == true &
-            spongeCorrect == true){
+            this.sinkCorrect == true &
+            this.plateCorrect == true &
+            this.bowlCorrect == true &
+            this.glassCorrect == true &
+            this.cupCorrect == true &
+            this.fridgeCorrect == true &
+            this.knifeCorrect == true &
+            this.forkCorrect == true &
+            this.spoonCorrect == true &
+            this.ovenCorrect == true &
+            this.stoceCorrect == true &
+            this.spongeCorrect == true){
                 this.isCompleted = true;
         }
     }

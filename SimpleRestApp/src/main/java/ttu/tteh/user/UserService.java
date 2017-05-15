@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import ttu.tteh.score.Score;
+
 @Service
 public class UserService {
 	
@@ -15,6 +17,7 @@ public class UserService {
 
 	User addUser(User user) {
 		// here you can do some validations etc before saving the user
+		user.setScore(new Score());
 		return userRepository.save(user);
 	}
 
@@ -22,7 +25,7 @@ public class UserService {
 		return userRepository.findAll();
 	}
     
-    User getUserByUsername(String username) {
-		return userRepository.findOne(username);
+    User getUserById(long userId) {
+		return userRepository.findOne(userId);
 	}
 }
