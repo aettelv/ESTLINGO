@@ -36,22 +36,14 @@ export class Human{
         } else {
 	    	if(this.head.toLowerCase() == "pea"){
 	            this.backgroundColor1 = "background-color:lightgreen;";
-<<<<<<< HEAD
 	            this.headCorrect = true;
-=======
-                this.headCorrect = true;
->>>>>>> origin/master
 	        } else {
 	        	this.backgroundColor1 = "background-color:lightcoral;";
 	        }
 	        
 	        if(this.hand.toLowerCase() == "käsi"){
 	            this.backgroundColor2 = "background-color:lightgreen;";
-<<<<<<< HEAD
-	            this.handCorrect = true;
-=======
                 this.handCorrect = true;
->>>>>>> origin/master
 	        } else {
 	        	this.backgroundColor2 = "background-color:lightcoral;";
 	        }
@@ -125,7 +117,6 @@ export class Human{
 	        } else {
 	        	this.backgroundColor12 = "background-color:lightcoral;";
 	        }
-<<<<<<< HEAD
 	    }
 		if(this.headCorrect == true &
 			this.handCorrect == true &
@@ -141,23 +132,6 @@ export class Human{
 			this.backCorrect == true){
 				this.isCompleted = true;
 		}
-	}
-=======
-        }
-        if (headCorrect == true &
-            handCorrect == true &
-            legCorrect == true &
-            mouthCorrect == true &
-            noseCorrect == true &
-            earCorrect == true &
-            kneeCorrect == true &
-            fingerCorrect == true &
-            tongueCorrect == true &
-            hairCorrect == true &
-            chestCorrect == true &
-            backCorrect == true){
-                this.isCompletedCorrect = true;
-        }
     }
     
     nextGame(){
@@ -173,5 +147,4 @@ export class Human{
         });
          window.location.href='http://localhost:9000/#/kitchen';
     }
->>>>>>> origin/master
 }

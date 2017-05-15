@@ -97,8 +97,7 @@ export class Numbers{
 				this.tenCorrect=true;
 	        } else {
 	        	this.backgroundColor10 = "background-color:lightcoral;";
-<<<<<<< HEAD
-	        }
+				        }
 	    }
 		if(this.oneCorrect == true &
 	      this.twoCorrect == true &
@@ -111,23 +110,7 @@ export class Numbers{
 		  this.nineCorrect == true &
 	      this.tenCorrect == true){
 	        this.isCompleted = true;
-    	}
-	}
-=======
-            }
-	    }
-        if(this.oneCorrect == true &
-            this.twoCorrect == true &
-            this.threeCorrect == true &
-            this.fourCorrect == true &
-            this.fiveCorrect == true &
-            this.sixCorrect == true &
-            this.sevenCorrect == true &
-            this.eightCorrect == true &
-            this.nineCorrect == true &
-            this.tenCorrect == true){
-                this.isCompleted = true;
-        }
+		  }
     }
         
     nextGame(){
@@ -143,5 +126,4 @@ export class Numbers{
         });
          window.location.href='http://localhost:9000/#/days';
     }
->>>>>>> origin/master
 }

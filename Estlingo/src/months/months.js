@@ -14,7 +14,7 @@ export class Months{
 	octoberCorrect;
 	novemberCorrect;
 	decemberCorrect;
-    isCompleted;
+    isCompletedCorrect;
     
     months() {
 
@@ -116,38 +116,21 @@ export class Months{
 	        } else {
 	        	this.backgroundColor12 = "background-color:lightcoral;";
 	        }
-<<<<<<< HEAD
 	    }
-		if (januaryCorrect = true &
-			februaryCorrect == true &
-			marchCorrect == true &
-			aprilCorrect == true &
-			mayCorrect == true &
-			juneCorrect == true &
-			julyCorrect == true &
-			augustCorrect == true &
-			septemberCorrect ==true &
-			octoberCorrect == true &
-			novemberCorrect == true &
-			decemberCorrect == true){
+		if (this.januaryCorrect = true &
+			this.februaryCorrect == true &
+			this.marchCorrect == true &
+			this.aprilCorrect == true &
+			this.mayCorrect == true &
+			this.juneCorrect == true &
+			this.julyCorrect == true &
+			this.augustCorrect == true &
+			this.septemberCorrect ==true &
+			this.octoberCorrect == true &
+			this.novemberCorrect == true &
+			this.decemberCorrect == true){
 				this.isCompleted = true;
 		}
-=======
-        }
-        if (januaryCorrect = true &
-            februaryCorrect == true &
-            marchCorrect == true &
-            aprilCorrect == true &
-            mayCorrect == true &
-            juneCorrect == true &
-            julyCorrect == true &
-            augustCorrect == true &
-            septemberCorrect ==true &
-            octoberCorrect == true &
-            novemberCorrect == true &
-            decemberCorrect == true){
-                this.isCompleted = true;
-        }
     }
         
     nextGame(){
@@ -162,6 +145,5 @@ export class Months{
             secure: false
         });
          window.location.href='http://localhost:9000/#/human';
->>>>>>> origin/master
     }
 }

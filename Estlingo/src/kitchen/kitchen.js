@@ -116,40 +116,23 @@ export class Kitchen{
 	        } else {
 	        	this.backgroundColor12 = "background-color:lightcoral;";
 	        }
-<<<<<<< HEAD
 	    }
 		if (
-			sinkCorrect == true &
-			plateCorrect == true &
-			bowlCorrect == true &
-			glassCorrect == true &
-			cupCorrect == true &
-			fridgeCorrect == true &
-			knifeCorrect == true &
-			forkCorrect == true &
-			spoonCorrect == true &
-			ovenCorrect == true &
-			stoceCorrect == true &
-			spongeCorrect == true){
+			this.sinkCorrect == true &
+			this.plateCorrect == true &
+			this.bowlCorrect == true &
+			this.glassCorrect == true &
+			this.cupCorrect == true &
+			this.fridgeCorrect == true &
+			this.knifeCorrect == true &
+			this.forkCorrect == true &
+			this.spoonCorrect == true &
+			this.ovenCorrect == true &
+			this.stoceCorrect == true &
+			this.spongeCorrect == true){
 				this.isCompleted = true;
 		}
-=======
-        }
-        if (
-            sinkCorrect == true &
-            plateCorrect == true &
-            bowlCorrect == true &
-            glassCorrect == true &
-            cupCorrect == true &
-            fridgeCorrect == true &
-            knifeCorrect == true &
-            forkCorrect == true &
-            spoonCorrect == true &
-            ovenCorrect == true &
-            stoceCorrect == true &
-            spongeCorrect == true){
-                this.isCompleted = true;
-        }
+    
     }
     nextGame(){
         
@@ -163,6 +146,5 @@ export class Kitchen{
             secure: false
         });
          window.location.href='http://localhost:9000/#/games';
->>>>>>> origin/master
     }
 }
