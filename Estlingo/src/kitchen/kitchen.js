@@ -116,6 +116,7 @@ export class Kitchen{
 	        } else {
 	        	this.backgroundColor12 = "background-color:lightcoral;";
 	        }
+<<<<<<< HEAD
 	    }
 		if (
 			sinkCorrect == true &
@@ -132,5 +133,36 @@ export class Kitchen{
 			spongeCorrect == true){
 				this.isCompleted = true;
 		}
+=======
+        }
+        if (
+            sinkCorrect == true &
+            plateCorrect == true &
+            bowlCorrect == true &
+            glassCorrect == true &
+            cupCorrect == true &
+            fridgeCorrect == true &
+            knifeCorrect == true &
+            forkCorrect == true &
+            spoonCorrect == true &
+            ovenCorrect == true &
+            stoceCorrect == true &
+            spongeCorrect == true){
+                this.isCompleted = true;
+        }
+    }
+    nextGame(){
+        
+        var oldScore = AureliaCookie.get('score');
+        var score = parseInt(oldScore, 10) + 10;
+        
+        AureliaCookie.set('score', score , {
+            expiry: 1,
+            path: '',
+            domain: '',
+            secure: false
+        });
+         window.location.href='http://localhost:9000/#/games';
+>>>>>>> origin/master
     }
 }
