@@ -20,4 +20,8 @@ public class PictureService {
     Picture getPictureByPath(String path) {
 		return pictureRepository.findOne(path);
 	}
+    
+    Picture getPictureByName(String naem) {
+		return pictureRepository.findOne(name);
+	}
 }

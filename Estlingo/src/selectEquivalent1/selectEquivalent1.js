@@ -9,7 +9,13 @@ export class select{
     userData = {};
     
     constructor(){
-        this.location = "src/images/Apple.png"
+        
+        let client = new HttpClient();
+        client.fetch("http://localhost:8080/pictures/apple")
+            .then (response => response.json())
+            .then (data => {
+                this.location = data.path;
+            })
     }
     
     Right(){

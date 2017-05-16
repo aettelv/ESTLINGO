@@ -1266,11 +1266,19 @@ define('selectEquivalent1/selectEquivalent1',["exports", "aurelia-cookie", "aure
 
     var select = exports.select = function () {
         function select() {
+            var _this = this;
+
             _classCallCheck(this, select);
 
             this.userData = {};
 
-            this.location = "src/images/Apple.png";
+
+            var client = new _aureliaFetchClient.HttpClient();
+            client.fetch("http://localhost:8080/pictures/apple").then(function (response) {
+                return response.json();
+            }).then(function (data) {
+                _this.location = data.path;
+            });
         }
 
         select.prototype.Right = function Right() {
@@ -1285,7 +1293,7 @@ define('selectEquivalent1/selectEquivalent1',["exports", "aurelia-cookie", "aure
         };
 
         select.prototype.nextGame = function nextGame() {
-            var _this = this;
+            var _this2 = this;
 
             var oldScore = _aureliaCookie.AureliaCookie.get('score');
             var score = parseInt(oldScore, 10) + 10;
@@ -1309,16 +1317,16 @@ define('selectEquivalent1/selectEquivalent1',["exports", "aurelia-cookie", "aure
                 return response.json();
             }).then(function (data) {
                 console.log(data.username + " " + data.password + " " + data.e_mail + " " + data.score);
-                _this.userData = data;
+                _this2.userData = data;
 
-                console.log("userData.score: " + _this.userData.score);
-                _this.userData.score = score;
-                console.log("new userData.score: " + _this.userData.score);
+                console.log("userData.score: " + _this2.userData.score);
+                _this2.userData.score = score;
+                console.log("new userData.score: " + _this2.userData.score);
 
                 var client = new _aureliaFetchClient.HttpClient();
                 client.fetch("http://localhost:8080/users/add", {
                     'method': "POST",
-                    'body': (0, _aureliaFetchClient.json)(_this.userData)
+                    'body': (0, _aureliaFetchClient.json)(_this2.userData)
                 }).then(function (response) {
                     return response.json();
                 }).then(function (data) {
@@ -1348,9 +1356,16 @@ define('selectEquivalent2/selectEquivalent2',["exports", "aurelia-cookie", "aure
 
     var select = exports.select = function () {
         function select() {
+            var _this = this;
+
             _classCallCheck(this, select);
 
-            this.location = "src/images/chair.png";
+            var client = new _aureliaFetchClient.HttpClient();
+            client.fetch("http://localhost:8080/pictures/chair").then(function (response) {
+                return response.json();
+            }).then(function (data) {
+                _this.location = data.path;
+            });
         }
 
         select.prototype.Right = function Right() {
@@ -1365,7 +1380,7 @@ define('selectEquivalent2/selectEquivalent2',["exports", "aurelia-cookie", "aure
         };
 
         select.prototype.nextGame = function nextGame() {
-            var _this = this;
+            var _this2 = this;
 
             var oldScore = _aureliaCookie.AureliaCookie.get('score');
             var score = parseInt(oldScore, 10) + 10;
@@ -1386,16 +1401,16 @@ define('selectEquivalent2/selectEquivalent2',["exports", "aurelia-cookie", "aure
                 return response.json();
             }).then(function (data) {
                 console.log(data.username + " " + data.password + " " + data.e_mail + " " + data.score);
-                _this.userData = data;
+                _this2.userData = data;
 
-                console.log("userData.score: " + _this.userData.score);
-                _this.userData.score = score;
-                console.log("new userData.score: " + _this.userData.score);
+                console.log("userData.score: " + _this2.userData.score);
+                _this2.userData.score = score;
+                console.log("new userData.score: " + _this2.userData.score);
 
                 var client = new _aureliaFetchClient.HttpClient();
                 client.fetch("http://localhost:8080/users/add", {
                     'method': "POST",
-                    'body': (0, _aureliaFetchClient.json)(_this.userData)
+                    'body': (0, _aureliaFetchClient.json)(_this2.userData)
                 }).then(function (response) {
                     return response.json();
                 }).then(function (data) {
@@ -1424,9 +1439,16 @@ define('selectEquivalent3/selectEquivalent3',["exports", "aurelia-cookie", "aure
 
     var select = exports.select = function () {
         function select() {
+            var _this = this;
+
             _classCallCheck(this, select);
 
-            this.location = "src/images/bicycle.png";
+            var client = new _aureliaFetchClient.HttpClient();
+            client.fetch("http://localhost:8080/pictures/bicycle").then(function (response) {
+                return response.json();
+            }).then(function (data) {
+                _this.location = data.path;
+            });
         }
 
         select.prototype.Right = function Right() {
@@ -1441,7 +1463,7 @@ define('selectEquivalent3/selectEquivalent3',["exports", "aurelia-cookie", "aure
         };
 
         select.prototype.nextGame = function nextGame() {
-            var _this = this;
+            var _this2 = this;
 
             var oldScore = _aureliaCookie.AureliaCookie.get('score');
             var score = parseInt(oldScore, 10) + 10;
@@ -1462,16 +1484,16 @@ define('selectEquivalent3/selectEquivalent3',["exports", "aurelia-cookie", "aure
                 return response.json();
             }).then(function (data) {
                 console.log(data.username + " " + data.password + " " + data.e_mail + " " + data.score);
-                _this.userData = data;
+                _this2.userData = data;
 
-                console.log("userData.score: " + _this.userData.score);
-                _this.userData.score = score;
-                console.log("new userData.score: " + _this.userData.score);
+                console.log("userData.score: " + _this2.userData.score);
+                _this2.userData.score = score;
+                console.log("new userData.score: " + _this2.userData.score);
 
                 var client = new _aureliaFetchClient.HttpClient();
                 client.fetch("http://localhost:8080/users/add", {
                     'method': "POST",
-                    'body': (0, _aureliaFetchClient.json)(_this.userData)
+                    'body': (0, _aureliaFetchClient.json)(_this2.userData)
                 }).then(function (response) {
                     return response.json();
                 }).then(function (data) {
@@ -1500,9 +1522,16 @@ define('selectEquivalent4/selectEquivalent4',["exports", "aurelia-cookie", "aure
 
     var select = exports.select = function () {
         function select() {
+            var _this = this;
+
             _classCallCheck(this, select);
 
-            this.location = "src/images/potato.png";
+            var client = new _aureliaFetchClient.HttpClient();
+            client.fetch("http://localhost:8080/pictures/potato").then(function (response) {
+                return response.json();
+            }).then(function (data) {
+                _this.location = data.path;
+            });
         }
 
         select.prototype.Right = function Right() {
@@ -1517,7 +1546,7 @@ define('selectEquivalent4/selectEquivalent4',["exports", "aurelia-cookie", "aure
         };
 
         select.prototype.nextGame = function nextGame() {
-            var _this = this;
+            var _this2 = this;
 
             var oldScore = _aureliaCookie.AureliaCookie.get('score');
             var score = parseInt(oldScore, 10) + 10;
@@ -1538,16 +1567,16 @@ define('selectEquivalent4/selectEquivalent4',["exports", "aurelia-cookie", "aure
                 return response.json();
             }).then(function (data) {
                 console.log(data.username + " " + data.password + " " + data.e_mail + " " + data.score);
-                _this.userData = data;
+                _this2.userData = data;
 
-                console.log("userData.score: " + _this.userData.score);
-                _this.userData.score = score;
-                console.log("new userData.score: " + _this.userData.score);
+                console.log("userData.score: " + _this2.userData.score);
+                _this2.userData.score = score;
+                console.log("new userData.score: " + _this2.userData.score);
 
                 var client = new _aureliaFetchClient.HttpClient();
                 client.fetch("http://localhost:8080/users/add", {
                     'method': "POST",
-                    'body': (0, _aureliaFetchClient.json)(_this.userData)
+                    'body': (0, _aureliaFetchClient.json)(_this2.userData)
                 }).then(function (response) {
                     return response.json();
                 }).then(function (data) {
@@ -1576,9 +1605,16 @@ define('selectEquivalent5/selectEquivalent5',["exports", "aurelia-cookie", "aure
 
     var select = exports.select = function () {
         function select() {
+            var _this = this;
+
             _classCallCheck(this, select);
 
-            this.location = "src/images/strawberry.png";
+            var client = new _aureliaFetchClient.HttpClient();
+            client.fetch("http://localhost:8080/pictures/strawberry").then(function (response) {
+                return response.json();
+            }).then(function (data) {
+                _this.location = data.path;
+            });
         }
 
         select.prototype.Right = function Right() {
@@ -1593,7 +1629,7 @@ define('selectEquivalent5/selectEquivalent5',["exports", "aurelia-cookie", "aure
         };
 
         select.prototype.nextGame = function nextGame() {
-            var _this = this;
+            var _this2 = this;
 
             var oldScore = _aureliaCookie.AureliaCookie.get('score');
             var score = parseInt(oldScore, 10) + 10;
@@ -1614,16 +1650,16 @@ define('selectEquivalent5/selectEquivalent5',["exports", "aurelia-cookie", "aure
                 return response.json();
             }).then(function (data) {
                 console.log(data.username + " " + data.password + " " + data.e_mail + " " + data.score);
-                _this.userData = data;
+                _this2.userData = data;
 
-                console.log("userData.score: " + _this.userData.score);
-                _this.userData.score = score;
-                console.log("new userData.score: " + _this.userData.score);
+                console.log("userData.score: " + _this2.userData.score);
+                _this2.userData.score = score;
+                console.log("new userData.score: " + _this2.userData.score);
 
                 var client = new _aureliaFetchClient.HttpClient();
                 client.fetch("http://localhost:8080/users/add", {
                     'method': "POST",
-                    'body': (0, _aureliaFetchClient.json)(_this.userData)
+                    'body': (0, _aureliaFetchClient.json)(_this2.userData)
                 }).then(function (response) {
                     return response.json();
                 }).then(function (data) {
@@ -1652,9 +1688,16 @@ define('selectEquivalent6/selectEquivalent6',["exports", "aurelia-cookie", "aure
 
     var select = exports.select = function () {
         function select() {
+            var _this = this;
+
             _classCallCheck(this, select);
 
-            this.location = "src/images/clock.png";
+            var client = new _aureliaFetchClient.HttpClient();
+            client.fetch("http://localhost:8080/pictures/clock").then(function (response) {
+                return response.json();
+            }).then(function (data) {
+                _this.location = data.path;
+            });
         }
 
         select.prototype.Right = function Right() {
@@ -1669,7 +1712,7 @@ define('selectEquivalent6/selectEquivalent6',["exports", "aurelia-cookie", "aure
         };
 
         select.prototype.nextGame = function nextGame() {
-            var _this = this;
+            var _this2 = this;
 
             var oldScore = _aureliaCookie.AureliaCookie.get('score');
             var score = parseInt(oldScore, 10) + 10;
@@ -1690,16 +1733,16 @@ define('selectEquivalent6/selectEquivalent6',["exports", "aurelia-cookie", "aure
                 return response.json();
             }).then(function (data) {
                 console.log(data.username + " " + data.password + " " + data.e_mail + " " + data.score);
-                _this.userData = data;
+                _this2.userData = data;
 
-                console.log("userData.score: " + _this.userData.score);
-                _this.userData.score = score;
-                console.log("new userData.score: " + _this.userData.score);
+                console.log("userData.score: " + _this2.userData.score);
+                _this2.userData.score = score;
+                console.log("new userData.score: " + _this2.userData.score);
 
                 var client = new _aureliaFetchClient.HttpClient();
                 client.fetch("http://localhost:8080/users/add", {
                     'method': "POST",
-                    'body': (0, _aureliaFetchClient.json)(_this.userData)
+                    'body': (0, _aureliaFetchClient.json)(_this2.userData)
                 }).then(function (response) {
                     return response.json();
                 }).then(function (data) {
@@ -1728,9 +1771,16 @@ define('selectEquivalent7/selectEquivalent7',["exports", "aurelia-cookie", "aure
 
     var select = exports.select = function () {
         function select() {
+            var _this = this;
+
             _classCallCheck(this, select);
 
-            this.location = "src/images/fork.png";
+            var client = new _aureliaFetchClient.HttpClient();
+            client.fetch("http://localhost:8080/pictures/fork").then(function (response) {
+                return response.json();
+            }).then(function (data) {
+                _this.location = data.path;
+            });
         }
 
         select.prototype.Right = function Right() {
@@ -1745,7 +1795,7 @@ define('selectEquivalent7/selectEquivalent7',["exports", "aurelia-cookie", "aure
         };
 
         select.prototype.nextGame = function nextGame() {
-            var _this = this;
+            var _this2 = this;
 
             var oldScore = _aureliaCookie.AureliaCookie.get('score');
             var score = parseInt(oldScore, 10) + 10;
@@ -1766,16 +1816,16 @@ define('selectEquivalent7/selectEquivalent7',["exports", "aurelia-cookie", "aure
                 return response.json();
             }).then(function (data) {
                 console.log(data.username + " " + data.password + " " + data.e_mail + " " + data.score);
-                _this.userData = data;
+                _this2.userData = data;
 
-                console.log("userData.score: " + _this.userData.score);
-                _this.userData.score = score;
-                console.log("new userData.score: " + _this.userData.score);
+                console.log("userData.score: " + _this2.userData.score);
+                _this2.userData.score = score;
+                console.log("new userData.score: " + _this2.userData.score);
 
                 var client = new _aureliaFetchClient.HttpClient();
                 client.fetch("http://localhost:8080/users/add", {
                     'method': "POST",
-                    'body': (0, _aureliaFetchClient.json)(_this.userData)
+                    'body': (0, _aureliaFetchClient.json)(_this2.userData)
                 }).then(function (response) {
                     return response.json();
                 }).then(function (data) {

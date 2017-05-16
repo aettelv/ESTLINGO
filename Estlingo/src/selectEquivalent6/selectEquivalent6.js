@@ -8,7 +8,12 @@ export class select{
     gameCompleted;
     
     constructor(){
-        this.location = "src/images/clock.png"
+        let client = new HttpClient();
+        client.fetch("http://localhost:8080/pictures/clock")
+            .then (response => response.json())
+            .then (data => {
+                this.location = data.path;
+            })
     }
     
     Right(){
