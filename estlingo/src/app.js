@@ -41,6 +41,7 @@ export class App {
             { route: 'months',              name: 'months',             moduleId: 'months/months', nav: true },
             { route: 'human',               name: 'human',              moduleId: 'human/human', nav: true },
             { route: 'kitchen',             name: 'kitchen',            moduleId: 'kitchen/kitchen', nav: true },
+            { route: 'contact',             name: 'contact',            moduleId: 'contact/contact', nav: true },
             ]);
     }
 
