@@ -65,9 +65,6 @@ export class select{
                         console.log("Server saatis: " + data.username + " " + data.password + " " + data.e_mail + " " + data.score);
                 });
         });
-        
-        
-       
 
        /*Jumping to next game*/ window.location.href='http://localhost:9000/#/selectEquivalent2';
     }

@@ -119,203 +119,257 @@ define('about/about',["exports"], function (exports) {
     };
 });
 define('colours/colours',["exports", "aurelia-fetch-client", "aurelia-cookie"], function (exports, _aureliaFetchClient, _aureliaCookie) {
-               "use strict";
+    "use strict";
 
-               Object.defineProperty(exports, "__esModule", {
-                              value: true
-               });
-               exports.Colours = undefined;
+    Object.defineProperty(exports, "__esModule", {
+        value: true
+    });
+    exports.Colours = undefined;
 
-               function _classCallCheck(instance, Constructor) {
-                              if (!(instance instanceof Constructor)) {
-                                             throw new TypeError("Cannot call a class as a function");
-                              }
-               }
+    function _classCallCheck(instance, Constructor) {
+        if (!(instance instanceof Constructor)) {
+            throw new TypeError("Cannot call a class as a function");
+        }
+    }
 
-               var Colours = exports.Colours = function () {
-                              function Colours() {
-                                             _classCallCheck(this, Colours);
-                              }
+    var Colours = exports.Colours = function () {
+        function Colours() {
+            _classCallCheck(this, Colours);
+        }
 
-                              Colours.prototype.colours = function colours() {
+        Colours.prototype.colours = function colours() {
 
-                                             if (this.white == undefined || this.black == undefined || this.red == undefined || this.blue == undefined || this.green == undefined || this.yellow == undefined || this.brown == undefined || this.purple == undefined) {
-                                                            alert("You must fill the blanks before checking!");
-                                                            return;
-                                             } else {
-                                                            if (this.white.toLowerCase() == "valge") {
-                                                                           this.backgroundColor1 = "background-color:lightgreen;";
-                                                                           this.whiteCorrect = true;
-                                                            } else {
-                                                                           this.backgroundColor1 = "background-color:lightcoral;";
-                                                            }
+            if (this.white == undefined || this.black == undefined || this.red == undefined || this.blue == undefined || this.green == undefined || this.yellow == undefined || this.brown == undefined || this.purple == undefined) {
+                alert("You must fill the blanks before checking!");
+                return;
+            } else {
+                if (this.white.toLowerCase() == "valge") {
+                    this.backgroundColor1 = "background-color:lightgreen;";
+                    this.whiteCorrect = true;
+                } else {
+                    this.backgroundColor1 = "background-color:lightcoral;";
+                }
 
-                                                            if (this.black.toLowerCase() == "must") {
-                                                                           this.backgroundColor2 = "background-color:lightgreen;";
-                                                                           this.blackCorrect = true;
-                                                            } else {
-                                                                           this.backgroundColor2 = "background-color:lightcoral;";
-                                                            }
+                if (this.black.toLowerCase() == "must") {
+                    this.backgroundColor2 = "background-color:lightgreen;";
+                    this.blackCorrect = true;
+                } else {
+                    this.backgroundColor2 = "background-color:lightcoral;";
+                }
 
-                                                            if (this.red.toLowerCase() == "punane") {
-                                                                           this.backgroundColor3 = "background-color:lightgreen;";
-                                                                           this.redCorrect = true;
-                                                            } else {
-                                                                           this.backgroundColor3 = "background-color:lightcoral;";
-                                                            }
+                if (this.red.toLowerCase() == "punane") {
+                    this.backgroundColor3 = "background-color:lightgreen;";
+                    this.redCorrect = true;
+                } else {
+                    this.backgroundColor3 = "background-color:lightcoral;";
+                }
 
-                                                            if (this.blue.toLowerCase() == "sinine") {
-                                                                           this.backgroundColor4 = "background-color:lightgreen;";
-                                                                           this.blueCorrect = true;
-                                                            } else {
-                                                                           this.backgroundColor4 = "background-color:lightcoral;";
-                                                            }
+                if (this.blue.toLowerCase() == "sinine") {
+                    this.backgroundColor4 = "background-color:lightgreen;";
+                    this.blueCorrect = true;
+                } else {
+                    this.backgroundColor4 = "background-color:lightcoral;";
+                }
 
-                                                            if (this.green.toLowerCase() == "roheline") {
-                                                                           this.backgroundColor5 = "background-color:lightgreen;";
-                                                                           this.greenCorrect = true;
-                                                            } else {
-                                                                           this.backgroundColor5 = "background-color:lightcoral;";
-                                                            }
+                if (this.green.toLowerCase() == "roheline") {
+                    this.backgroundColor5 = "background-color:lightgreen;";
+                    this.greenCorrect = true;
+                } else {
+                    this.backgroundColor5 = "background-color:lightcoral;";
+                }
 
-                                                            if (this.yellow.toLowerCase() == "kollane") {
-                                                                           this.backgroundColor6 = "background-color:lightgreen;";
-                                                                           this.yellowCorrect = true;
-                                                            } else {
-                                                                           this.backgroundColor6 = "background-color:lightcoral;";
-                                                            }
+                if (this.yellow.toLowerCase() == "kollane") {
+                    this.backgroundColor6 = "background-color:lightgreen;";
+                    this.yellowCorrect = true;
+                } else {
+                    this.backgroundColor6 = "background-color:lightcoral;";
+                }
 
-                                                            if (this.brown.toLowerCase() == "pruun") {
-                                                                           this.backgroundColor7 = "background-color:lightgreen;";
-                                                                           this.brownCorrect = true;
-                                                            } else {
-                                                                           this.backgroundColor7 = "background-color:lightcoral;";
-                                                            }
+                if (this.brown.toLowerCase() == "pruun") {
+                    this.backgroundColor7 = "background-color:lightgreen;";
+                    this.brownCorrect = true;
+                } else {
+                    this.backgroundColor7 = "background-color:lightcoral;";
+                }
 
-                                                            if (this.purple.toLowerCase() == "lilla" || this.purple.toLowerCase() == "purpur" || this.purple.toLowerCase() == "violetne") {
-                                                                           this.backgroundColor8 = "background-color:lightgreen;";
-                                                                           this.purpleCorrect = true;
-                                                            } else {
-                                                                           this.backgroundColor8 = "background-color:lightcoral;";
-                                                            }
-                                             }
-                                             if (this.whiteCorrect == true & this.blackCorrect == true & this.redCorrect == true & this.blueCorrect == true & this.greenCorrect == true & this.yellowCorrect == true & this.brownCorrect == true & this.purpleCorrect == true) {
-                                                            this.isCompleted = true;
-                                             }
-                              };
+                if (this.purple.toLowerCase() == "lilla" || this.purple.toLowerCase() == "purpur" || this.purple.toLowerCase() == "violetne") {
+                    this.backgroundColor8 = "background-color:lightgreen;";
+                    this.purpleCorrect = true;
+                } else {
+                    this.backgroundColor8 = "background-color:lightcoral;";
+                }
+            }
+            if (this.whiteCorrect == true & this.blackCorrect == true & this.redCorrect == true & this.blueCorrect == true & this.greenCorrect == true & this.yellowCorrect == true & this.brownCorrect == true & this.purpleCorrect == true) {
+                this.isCompleted = true;
+            }
+        };
 
-                              Colours.prototype.nextGame = function nextGame() {
+        Colours.prototype.nextGame = function nextGame() {
+            var _this = this;
 
-                                             var oldScore = _aureliaCookie.AureliaCookie.get('score');
-                                             var score = parseInt(oldScore, 10) + 10;
+            var oldScore = _aureliaCookie.AureliaCookie.get('score');
+            var score = parseInt(oldScore, 10) + 10;
 
-                                             _aureliaCookie.AureliaCookie.set('score', score, {
-                                                            expiry: 1,
-                                                            path: '',
-                                                            domain: '',
-                                                            secure: false
-                                             });
-                                             window.location.href = 'http://localhost:9000/#/numbers';
-                              };
+            _aureliaCookie.AureliaCookie.set('score', score, {
+                expiry: 1,
+                path: '',
+                domain: '',
+                secure: false
+            });
 
-                              return Colours;
-               }();
+            var username = _aureliaCookie.AureliaCookie.get('username');
+
+            var client2 = new _aureliaFetchClient.HttpClient();
+            client2.fetch("http://localhost:8080/users/" + username, {
+                'method': "GET"
+            }).then(function (response) {
+                return response.json();
+            }).then(function (data) {
+                console.log(data.username + " " + data.password + " " + data.e_mail + " " + data.score);
+                _this.userData = data;
+
+                console.log("userData.score: " + _this.userData.score);
+                _this.userData.score = score;
+                console.log("new userData.score: " + _this.userData.score);
+
+                var client = new _aureliaFetchClient.HttpClient();
+                client.fetch("http://localhost:8080/users/add", {
+                    'method': "POST",
+                    'body': (0, _aureliaFetchClient.json)(_this.userData)
+                }).then(function (response) {
+                    return response.json();
+                }).then(function (data) {
+                    console.log("Server saatis: " + data.username + " " + data.password + " " + data.e_mail + " " + data.score);
+                });
+            });
+            window.location.href = 'http://localhost:9000/#/numbers';
+        };
+
+        return Colours;
+    }();
 });
 define('days/days',["exports", "aurelia-fetch-client", "aurelia-cookie"], function (exports, _aureliaFetchClient, _aureliaCookie) {
-			"use strict";
+    "use strict";
 
-			Object.defineProperty(exports, "__esModule", {
-						value: true
-			});
-			exports.Days = undefined;
+    Object.defineProperty(exports, "__esModule", {
+        value: true
+    });
+    exports.Days = undefined;
 
-			function _classCallCheck(instance, Constructor) {
-						if (!(instance instanceof Constructor)) {
-									throw new TypeError("Cannot call a class as a function");
-						}
-			}
+    function _classCallCheck(instance, Constructor) {
+        if (!(instance instanceof Constructor)) {
+            throw new TypeError("Cannot call a class as a function");
+        }
+    }
 
-			var Days = exports.Days = function () {
-						function Days() {
-									_classCallCheck(this, Days);
-						}
+    var Days = exports.Days = function () {
+        function Days() {
+            _classCallCheck(this, Days);
+        }
 
-						Days.prototype.days = function days() {
+        Days.prototype.days = function days() {
 
-									if (this.monday == undefined || this.tuesday == undefined || this.wednesday == undefined || this.thursday == undefined || this.friday == undefined || this.saturday == undefined || this.sunday == undefined) {
-												alert("You must fill the blanks before checking!");
-												return;
-									} else {
-												if (this.monday.toLowerCase() == "esmaspäev") {
-															this.backgroundColor1 = "background-color:lightgreen;";
-															this.mondayCorrect = true;
-												} else {
-															this.backgroundColor1 = "background-color:lightcoral;";
-												}
+            if (this.monday == undefined || this.tuesday == undefined || this.wednesday == undefined || this.thursday == undefined || this.friday == undefined || this.saturday == undefined || this.sunday == undefined) {
+                alert("You must fill the blanks before checking!");
+                return;
+            } else {
+                if (this.monday.toLowerCase() == "esmaspäev") {
+                    this.backgroundColor1 = "background-color:lightgreen;";
+                    this.mondayCorrect = true;
+                } else {
+                    this.backgroundColor1 = "background-color:lightcoral;";
+                }
 
-												if (this.tuesday.toLowerCase() == "teisipäev") {
-															this.backgroundColor2 = "background-color:lightgreen;";
-															this.tuesdayCorrect = true;
-												} else {
-															this.backgroundColor2 = "background-color:lightcoral;";
-												}
+                if (this.tuesday.toLowerCase() == "teisipäev") {
+                    this.backgroundColor2 = "background-color:lightgreen;";
+                    this.tuesdayCorrect = true;
+                } else {
+                    this.backgroundColor2 = "background-color:lightcoral;";
+                }
 
-												if (this.wednesday.toLowerCase() == "kolmapäev") {
-															this.backgroundColor3 = "background-color:lightgreen;";
-															this.wednesdayCorrect = true;
-												} else {
-															this.backgroundColor3 = "background-color:lightcoral;";
-												}
+                if (this.wednesday.toLowerCase() == "kolmapäev") {
+                    this.backgroundColor3 = "background-color:lightgreen;";
+                    this.wednesdayCorrect = true;
+                } else {
+                    this.backgroundColor3 = "background-color:lightcoral;";
+                }
 
-												if (this.thursday.toLowerCase() == "neljapäev") {
-															this.backgroundColor4 = "background-color:lightgreen;";
-															this.thursdayCorrect = true;
-												} else {
-															this.backgroundColor4 = "background-color:lightcoral;";
-												}
+                if (this.thursday.toLowerCase() == "neljapäev") {
+                    this.backgroundColor4 = "background-color:lightgreen;";
+                    this.thursdayCorrect = true;
+                } else {
+                    this.backgroundColor4 = "background-color:lightcoral;";
+                }
 
-												if (this.friday.toLowerCase() == "reede") {
-															this.backgroundColor5 = "background-color:lightgreen;";
-															this.fridayCorrect = true;
-												} else {
-															this.backgroundColor5 = "background-color:lightcoral;";
-												}
+                if (this.friday.toLowerCase() == "reede") {
+                    this.backgroundColor5 = "background-color:lightgreen;";
+                    this.fridayCorrect = true;
+                } else {
+                    this.backgroundColor5 = "background-color:lightcoral;";
+                }
 
-												if (this.saturday.toLowerCase() == "laupäev") {
-															this.backgroundColor6 = "background-color:lightgreen;";
-															this.saturdayCorrect = true;
-												} else {
-															this.backgroundColor6 = "background-color:lightcoral;";
-												}
+                if (this.saturday.toLowerCase() == "laupäev") {
+                    this.backgroundColor6 = "background-color:lightgreen;";
+                    this.saturdayCorrect = true;
+                } else {
+                    this.backgroundColor6 = "background-color:lightcoral;";
+                }
 
-												if (this.sunday.toLowerCase() == "pühapäev") {
-															this.backgroundColor7 = "background-color:lightgreen;";
-															this.sundayCorrect = true;
-												} else {
-															this.backgroundColor7 = "background-color:lightcoral;";
-												}
-									}
-									if (this.mondayCorrect == true & this.tuesdayCorrect == true & this.wednesdayCorrect == true & this.thursdayCorrect == true & this.fridayCorrect == true & this.saturdayCorrect == true & this.sundayCorrect == true) {
-												this.isCompleted = true;
-									}
-						};
+                if (this.sunday.toLowerCase() == "pühapäev") {
+                    this.backgroundColor7 = "background-color:lightgreen;";
+                    this.sundayCorrect = true;
+                } else {
+                    this.backgroundColor7 = "background-color:lightcoral;";
+                }
+            }
+            if (this.mondayCorrect == true & this.tuesdayCorrect == true & this.wednesdayCorrect == true & this.thursdayCorrect == true & this.fridayCorrect == true & this.saturdayCorrect == true & this.sundayCorrect == true) {
+                this.isCompleted = true;
+            }
+        };
 
-						Days.prototype.nextGame = function nextGame() {
+        Days.prototype.nextGame = function nextGame() {
+            var _this = this;
 
-									var oldScore = _aureliaCookie.AureliaCookie.get('score');
-									var score = parseInt(oldScore, 10) + 10;
+            var oldScore = _aureliaCookie.AureliaCookie.get('score');
+            var score = parseInt(oldScore, 10) + 10;
 
-									_aureliaCookie.AureliaCookie.set('score', score, {
-												expiry: 1,
-												path: '',
-												domain: '',
-												secure: false
-									});
-									window.location.href = 'http://localhost:9000/#/months';
-						};
+            _aureliaCookie.AureliaCookie.set('score', score, {
+                expiry: 1,
+                path: '',
+                domain: '',
+                secure: false
+            });
 
-						return Days;
-			}();
+            var username = _aureliaCookie.AureliaCookie.get('username');
+
+            var client2 = new _aureliaFetchClient.HttpClient();
+            client2.fetch("http://localhost:8080/users/" + username, {
+                'method': "GET"
+            }).then(function (response) {
+                return response.json();
+            }).then(function (data) {
+                console.log(data.username + " " + data.password + " " + data.e_mail + " " + data.score);
+                _this.userData = data;
+
+                console.log("userData.score: " + _this.userData.score);
+                _this.userData.score = score;
+                console.log("new userData.score: " + _this.userData.score);
+
+                var client = new _aureliaFetchClient.HttpClient();
+                client.fetch("http://localhost:8080/users/add", {
+                    'method': "POST",
+                    'body': (0, _aureliaFetchClient.json)(_this.userData)
+                }).then(function (response) {
+                    return response.json();
+                }).then(function (data) {
+                    console.log("Server saatis: " + data.username + " " + data.password + " " + data.e_mail + " " + data.score);
+                });
+            });
+            window.location.href = 'http://localhost:9000/#/months';
+        };
+
+        return Days;
+    }();
 });
 define('games/games',["exports", "aurelia-cookie"], function (exports, _aureliaCookie) {
     "use strict";
@@ -478,6 +532,7 @@ define('human/human',["exports", "aurelia-fetch-client", "aurelia-cookie"], func
 		};
 
 		Human.prototype.nextGame = function nextGame() {
+			var _this = this;
 
 			var oldScore = _aureliaCookie.AureliaCookie.get('score');
 			var score = parseInt(oldScore, 10) + 10;
@@ -487,6 +542,32 @@ define('human/human',["exports", "aurelia-fetch-client", "aurelia-cookie"], func
 				path: '',
 				domain: '',
 				secure: false
+			});
+
+			var username = _aureliaCookie.AureliaCookie.get('username');
+
+			var client2 = new _aureliaFetchClient.HttpClient();
+			client2.fetch("http://localhost:8080/users/" + username, {
+				'method': "GET"
+			}).then(function (response) {
+				return response.json();
+			}).then(function (data) {
+				console.log(data.username + " " + data.password + " " + data.e_mail + " " + data.score);
+				_this.userData = data;
+
+				console.log("userData.score: " + _this.userData.score);
+				_this.userData.score = score;
+				console.log("new userData.score: " + _this.userData.score);
+
+				var client = new _aureliaFetchClient.HttpClient();
+				client.fetch("http://localhost:8080/users/add", {
+					'method': "POST",
+					'body': (0, _aureliaFetchClient.json)(_this.userData)
+				}).then(function (response) {
+					return response.json();
+				}).then(function (data) {
+					console.log("Server saatis: " + data.username + " " + data.password + " " + data.e_mail + " " + data.score);
+				});
 			});
 			window.location.href = 'http://localhost:9000/#/kitchen';
 		};
@@ -609,6 +690,7 @@ define('kitchen/kitchen',["exports", "aurelia-fetch-client", "aurelia-cookie"], 
 		};
 
 		Kitchen.prototype.nextGame = function nextGame() {
+			var _this = this;
 
 			var oldScore = _aureliaCookie.AureliaCookie.get('score');
 			var score = parseInt(oldScore, 10) + 10;
@@ -618,6 +700,32 @@ define('kitchen/kitchen',["exports", "aurelia-fetch-client", "aurelia-cookie"], 
 				path: '',
 				domain: '',
 				secure: false
+			});
+
+			var username = _aureliaCookie.AureliaCookie.get('username');
+
+			var client2 = new _aureliaFetchClient.HttpClient();
+			client2.fetch("http://localhost:8080/users/" + username, {
+				'method': "GET"
+			}).then(function (response) {
+				return response.json();
+			}).then(function (data) {
+				console.log(data.username + " " + data.password + " " + data.e_mail + " " + data.score);
+				_this.userData = data;
+
+				console.log("userData.score: " + _this.userData.score);
+				_this.userData.score = score;
+				console.log("new userData.score: " + _this.userData.score);
+
+				var client = new _aureliaFetchClient.HttpClient();
+				client.fetch("http://localhost:8080/users/add", {
+					'method': "POST",
+					'body': (0, _aureliaFetchClient.json)(_this.userData)
+				}).then(function (response) {
+					return response.json();
+				}).then(function (data) {
+					console.log("Server saatis: " + data.username + " " + data.password + " " + data.e_mail + " " + data.score);
+				});
 			});
 			window.location.href = 'http://localhost:9000/#/games';
 		};
@@ -740,6 +848,7 @@ define('months/months',["exports", "aurelia-fetch-client", "aurelia-cookie"], fu
 						};
 
 						Months.prototype.nextGame = function nextGame() {
+									var _this = this;
 
 									var oldScore = _aureliaCookie.AureliaCookie.get('score');
 									var score = parseInt(oldScore, 10) + 10;
@@ -749,6 +858,32 @@ define('months/months',["exports", "aurelia-fetch-client", "aurelia-cookie"], fu
 												path: '',
 												domain: '',
 												secure: false
+									});
+
+									var username = _aureliaCookie.AureliaCookie.get('username');
+
+									var client2 = new _aureliaFetchClient.HttpClient();
+									client2.fetch("http://localhost:8080/users/" + username, {
+												'method': "GET"
+									}).then(function (response) {
+												return response.json();
+									}).then(function (data) {
+												console.log(data.username + " " + data.password + " " + data.e_mail + " " + data.score);
+												_this.userData = data;
+
+												console.log("userData.score: " + _this.userData.score);
+												_this.userData.score = score;
+												console.log("new userData.score: " + _this.userData.score);
+
+												var client = new _aureliaFetchClient.HttpClient();
+												client.fetch("http://localhost:8080/users/add", {
+															'method': "POST",
+															'body': (0, _aureliaFetchClient.json)(_this.userData)
+												}).then(function (response) {
+															return response.json();
+												}).then(function (data) {
+															console.log("Server saatis: " + data.username + " " + data.password + " " + data.e_mail + " " + data.score);
+												});
 									});
 									window.location.href = 'http://localhost:9000/#/human';
 						};
@@ -857,6 +992,7 @@ define('numbers/numbers',["exports", "aurelia-fetch-client", "aurelia-cookie"], 
 		};
 
 		Numbers.prototype.nextGame = function nextGame() {
+			var _this = this;
 
 			var oldScore = _aureliaCookie.AureliaCookie.get('score');
 			var score = parseInt(oldScore, 10) + 10;
@@ -866,6 +1002,32 @@ define('numbers/numbers',["exports", "aurelia-fetch-client", "aurelia-cookie"], 
 				path: '',
 				domain: '',
 				secure: false
+			});
+
+			var username = _aureliaCookie.AureliaCookie.get('username');
+
+			var client2 = new _aureliaFetchClient.HttpClient();
+			client2.fetch("http://localhost:8080/users/" + username, {
+				'method': "GET"
+			}).then(function (response) {
+				return response.json();
+			}).then(function (data) {
+				console.log(data.username + " " + data.password + " " + data.e_mail + " " + data.score);
+				_this.userData = data;
+
+				console.log("userData.score: " + _this.userData.score);
+				_this.userData.score = score;
+				console.log("new userData.score: " + _this.userData.score);
+
+				var client = new _aureliaFetchClient.HttpClient();
+				client.fetch("http://localhost:8080/users/add", {
+					'method': "POST",
+					'body': (0, _aureliaFetchClient.json)(_this.userData)
+				}).then(function (response) {
+					return response.json();
+				}).then(function (data) {
+					console.log("Server saatis: " + data.username + " " + data.password + " " + data.e_mail + " " + data.score);
+				});
 			});
 			window.location.href = 'http://localhost:9000/#/days';
 		};
@@ -1199,6 +1361,7 @@ define('selectEquivalent2/selectEquivalent2',['exports', 'aurelia-cookie', 'aure
         };
 
         select.prototype.nextGame = function nextGame() {
+            var _this = this;
 
             var oldScore = _aureliaCookie.AureliaCookie.get('score');
             var score = parseInt(oldScore, 10) + 10;
@@ -1208,6 +1371,32 @@ define('selectEquivalent2/selectEquivalent2',['exports', 'aurelia-cookie', 'aure
                 path: '',
                 domain: '',
                 secure: false
+            });
+
+            var username = _aureliaCookie.AureliaCookie.get('username');
+
+            var client2 = new _aureliaFetchClient.HttpClient();
+            client2.fetch("http://localhost:8080/users/" + username, {
+                'method': "GET"
+            }).then(function (response) {
+                return response.json();
+            }).then(function (data) {
+                console.log(data.username + " " + data.password + " " + data.e_mail + " " + data.score);
+                _this.userData = data;
+
+                console.log("userData.score: " + _this.userData.score);
+                _this.userData.score = score;
+                console.log("new userData.score: " + _this.userData.score);
+
+                var client = new _aureliaFetchClient.HttpClient();
+                client.fetch("http://localhost:8080/users/add", {
+                    'method': "POST",
+                    'body': (0, _aureliaFetchClient.json)(_this.userData)
+                }).then(function (response) {
+                    return response.json();
+                }).then(function (data) {
+                    console.log("Server saatis: " + data.username + " " + data.password + " " + data.e_mail + " " + data.score);
+                });
             });
             window.location.href = 'http://localhost:9000/#/selectEquivalent3';
         };
@@ -1246,6 +1435,7 @@ define('selectEquivalent3/selectEquivalent3',['exports', 'aurelia-cookie', 'aure
         };
 
         select.prototype.nextGame = function nextGame() {
+            var _this = this;
 
             var oldScore = _aureliaCookie.AureliaCookie.get('score');
             var score = parseInt(oldScore, 10) + 10;
@@ -1255,6 +1445,32 @@ define('selectEquivalent3/selectEquivalent3',['exports', 'aurelia-cookie', 'aure
                 path: '',
                 domain: '',
                 secure: false
+            });
+
+            var username = _aureliaCookie.AureliaCookie.get('username');
+
+            var client2 = new _aureliaFetchClient.HttpClient();
+            client2.fetch("http://localhost:8080/users/" + username, {
+                'method': "GET"
+            }).then(function (response) {
+                return response.json();
+            }).then(function (data) {
+                console.log(data.username + " " + data.password + " " + data.e_mail + " " + data.score);
+                _this.userData = data;
+
+                console.log("userData.score: " + _this.userData.score);
+                _this.userData.score = score;
+                console.log("new userData.score: " + _this.userData.score);
+
+                var client = new _aureliaFetchClient.HttpClient();
+                client.fetch("http://localhost:8080/users/add", {
+                    'method': "POST",
+                    'body': (0, _aureliaFetchClient.json)(_this.userData)
+                }).then(function (response) {
+                    return response.json();
+                }).then(function (data) {
+                    console.log("Server saatis: " + data.username + " " + data.password + " " + data.e_mail + " " + data.score);
+                });
             });
             window.location.href = 'http://localhost:9000/#/selectEquivalent4';
         };
@@ -1293,6 +1509,7 @@ define('selectEquivalent4/selectEquivalent4',['exports', 'aurelia-cookie', 'aure
         };
 
         select.prototype.nextGame = function nextGame() {
+            var _this = this;
 
             var oldScore = _aureliaCookie.AureliaCookie.get('score');
             var score = parseInt(oldScore, 10) + 10;
@@ -1302,6 +1519,32 @@ define('selectEquivalent4/selectEquivalent4',['exports', 'aurelia-cookie', 'aure
                 path: '',
                 domain: '',
                 secure: false
+            });
+
+            var username = _aureliaCookie.AureliaCookie.get('username');
+
+            var client2 = new _aureliaFetchClient.HttpClient();
+            client2.fetch("http://localhost:8080/users/" + username, {
+                'method': "GET"
+            }).then(function (response) {
+                return response.json();
+            }).then(function (data) {
+                console.log(data.username + " " + data.password + " " + data.e_mail + " " + data.score);
+                _this.userData = data;
+
+                console.log("userData.score: " + _this.userData.score);
+                _this.userData.score = score;
+                console.log("new userData.score: " + _this.userData.score);
+
+                var client = new _aureliaFetchClient.HttpClient();
+                client.fetch("http://localhost:8080/users/add", {
+                    'method': "POST",
+                    'body': (0, _aureliaFetchClient.json)(_this.userData)
+                }).then(function (response) {
+                    return response.json();
+                }).then(function (data) {
+                    console.log("Server saatis: " + data.username + " " + data.password + " " + data.e_mail + " " + data.score);
+                });
             });
             window.location.href = 'http://localhost:9000/#/selectEquivalent5';
         };
@@ -1340,6 +1583,7 @@ define('selectEquivalent5/selectEquivalent5',['exports', 'aurelia-cookie', 'aure
         };
 
         select.prototype.nextGame = function nextGame() {
+            var _this = this;
 
             var oldScore = _aureliaCookie.AureliaCookie.get('score');
             var score = parseInt(oldScore, 10) + 10;
@@ -1349,6 +1593,32 @@ define('selectEquivalent5/selectEquivalent5',['exports', 'aurelia-cookie', 'aure
                 path: '',
                 domain: '',
                 secure: false
+            });
+
+            var username = _aureliaCookie.AureliaCookie.get('username');
+
+            var client2 = new _aureliaFetchClient.HttpClient();
+            client2.fetch("http://localhost:8080/users/" + username, {
+                'method': "GET"
+            }).then(function (response) {
+                return response.json();
+            }).then(function (data) {
+                console.log(data.username + " " + data.password + " " + data.e_mail + " " + data.score);
+                _this.userData = data;
+
+                console.log("userData.score: " + _this.userData.score);
+                _this.userData.score = score;
+                console.log("new userData.score: " + _this.userData.score);
+
+                var client = new _aureliaFetchClient.HttpClient();
+                client.fetch("http://localhost:8080/users/add", {
+                    'method': "POST",
+                    'body': (0, _aureliaFetchClient.json)(_this.userData)
+                }).then(function (response) {
+                    return response.json();
+                }).then(function (data) {
+                    console.log("Server saatis: " + data.username + " " + data.password + " " + data.e_mail + " " + data.score);
+                });
             });
             window.location.href = 'http://localhost:9000/#/selectEquivalent6';
         };
@@ -1387,6 +1657,7 @@ define('selectEquivalent6/selectEquivalent6',['exports', 'aurelia-cookie', 'aure
         };
 
         select.prototype.nextGame = function nextGame() {
+            var _this = this;
 
             var oldScore = _aureliaCookie.AureliaCookie.get('score');
             var score = parseInt(oldScore, 10) + 10;
@@ -1396,6 +1667,32 @@ define('selectEquivalent6/selectEquivalent6',['exports', 'aurelia-cookie', 'aure
                 path: '',
                 domain: '',
                 secure: false
+            });
+
+            var username = _aureliaCookie.AureliaCookie.get('username');
+
+            var client2 = new _aureliaFetchClient.HttpClient();
+            client2.fetch("http://localhost:8080/users/" + username, {
+                'method': "GET"
+            }).then(function (response) {
+                return response.json();
+            }).then(function (data) {
+                console.log(data.username + " " + data.password + " " + data.e_mail + " " + data.score);
+                _this.userData = data;
+
+                console.log("userData.score: " + _this.userData.score);
+                _this.userData.score = score;
+                console.log("new userData.score: " + _this.userData.score);
+
+                var client = new _aureliaFetchClient.HttpClient();
+                client.fetch("http://localhost:8080/users/add", {
+                    'method': "POST",
+                    'body': (0, _aureliaFetchClient.json)(_this.userData)
+                }).then(function (response) {
+                    return response.json();
+                }).then(function (data) {
+                    console.log("Server saatis: " + data.username + " " + data.password + " " + data.e_mail + " " + data.score);
+                });
             });
             window.location.href = 'http://localhost:9000/#/selectEquivalent7';
         };
@@ -1434,6 +1731,7 @@ define('selectEquivalent7/selectEquivalent7',['exports', 'aurelia-cookie', 'aure
         };
 
         select.prototype.nextGame = function nextGame() {
+            var _this = this;
 
             var oldScore = _aureliaCookie.AureliaCookie.get('score');
             var score = parseInt(oldScore, 10) + 10;
@@ -1443,6 +1741,32 @@ define('selectEquivalent7/selectEquivalent7',['exports', 'aurelia-cookie', 'aure
                 path: '',
                 domain: '',
                 secure: false
+            });
+
+            var username = _aureliaCookie.AureliaCookie.get('username');
+
+            var client2 = new _aureliaFetchClient.HttpClient();
+            client2.fetch("http://localhost:8080/users/" + username, {
+                'method': "GET"
+            }).then(function (response) {
+                return response.json();
+            }).then(function (data) {
+                console.log(data.username + " " + data.password + " " + data.e_mail + " " + data.score);
+                _this.userData = data;
+
+                console.log("userData.score: " + _this.userData.score);
+                _this.userData.score = score;
+                console.log("new userData.score: " + _this.userData.score);
+
+                var client = new _aureliaFetchClient.HttpClient();
+                client.fetch("http://localhost:8080/users/add", {
+                    'method': "POST",
+                    'body': (0, _aureliaFetchClient.json)(_this.userData)
+                }).then(function (response) {
+                    return response.json();
+                }).then(function (data) {
+                    console.log("Server saatis: " + data.username + " " + data.password + " " + data.e_mail + " " + data.score);
+                });
             });
             window.location.href = 'http://localhost:9000/#/games';
         };
