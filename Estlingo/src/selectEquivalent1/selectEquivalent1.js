@@ -43,37 +43,30 @@ export class select{
         console.log("score: " + score);
         
         let client2 = new HttpClient();
-        /*client2.fetch("http://localhost:8080/users/" + username)
-            .then (data => {
-                this.userData.username = data.username;
-        });*/
         client2.fetch("http://localhost:8080/users/" + username, {
             'method': "GET"
         })
             .then(response => response.json())
             .then(data => {
-                console.log(data.username + " " + data.password + " " + data.e_meil + " " + data.score),
+                console.log(data.username + " " + data.password + " " + data.e_mail + " " + data.score);
                 this.userData = data;
+
+                console.log("userData.score: " + this.userData.score);
+                this.userData.score = score;
+                console.log("new userData.score: " + this.userData.score);
+
+                let client = new HttpClient();
+                client.fetch("http://localhost:8080/users/add", {
+                    'method': "POST",
+                    'body': json(this.userData),
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log("Server saatis: " + data.username + " " + data.password + " " + data.e_mail + " " + data.score);
+                });
         });
         
-        console.log("data: " + this.userData);
-        console.log("username: " + this.userData.username);
-        console.log("password: " + this.userData.password);
-        console.log("e_meil: " + this.userData.e_meil);
         
-        console.log("userData.score: " + this.userData.score);
-        this.userData.score = score;
-        console.log("new userData.score: " + this.userData.score);
-        
-        let client = new HttpClient();
-        client.fetch("http://localhost:8080/users/update", {
-            'method': "PUT",
-            'body': json(this.userData),
-        })
-            .then(response => response.json())
-            .then(data => {
-                console.log("Server saatis " + data.username + " " + data.password + " " + data.e_mail);
-        });
        
 
        /*Jumping to next game*/ window.location.href='http://localhost:9000/#/selectEquivalent2';

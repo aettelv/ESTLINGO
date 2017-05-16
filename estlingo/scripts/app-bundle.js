@@ -1139,32 +1139,27 @@ define('selectEquivalent1/selectEquivalent1',['exports', 'aurelia-cookie', 'aure
             console.log("score: " + score);
 
             var client2 = new _aureliaFetchClient.HttpClient();
-
             client2.fetch("http://localhost:8080/users/" + username, {
                 'method': "GET"
             }).then(function (response) {
                 return response.json();
             }).then(function (data) {
-                console.log(data.username + " " + data.password + " " + data.e_meil + " " + data.score), _this.userData = data;
-            });
+                console.log(data.username + " " + data.password + " " + data.e_mail + " " + data.score);
+                _this.userData = data;
 
-            console.log("data: " + this.userData);
-            console.log("username: " + this.userData.username);
-            console.log("password: " + this.userData.password);
-            console.log("e_meil: " + this.userData.e_meil);
+                console.log("userData.score: " + _this.userData.score);
+                _this.userData.score = score;
+                console.log("new userData.score: " + _this.userData.score);
 
-            console.log("userData.score: " + this.userData.score);
-            this.userData.score = score;
-            console.log("new userData.score: " + this.userData.score);
-
-            var client = new _aureliaFetchClient.HttpClient();
-            client.fetch("http://localhost:8080/users/update", {
-                'method': "PUT",
-                'body': (0, _aureliaFetchClient.json)(this.userData)
-            }).then(function (response) {
-                return response.json();
-            }).then(function (data) {
-                console.log("Server saatis " + data.username + " " + data.password + " " + data.e_mail);
+                var client = new _aureliaFetchClient.HttpClient();
+                client.fetch("http://localhost:8080/users/add", {
+                    'method': "POST",
+                    'body': (0, _aureliaFetchClient.json)(_this.userData)
+                }).then(function (response) {
+                    return response.json();
+                }).then(function (data) {
+                    console.log("Server saatis: " + data.username + " " + data.password + " " + data.e_mail + " " + data.score);
+                });
             });
 
             window.location.href = 'http://localhost:9000/#/selectEquivalent2';
