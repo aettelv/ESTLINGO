@@ -28,7 +28,7 @@ public class PictureController {
 	}
     
      @RequestMapping(value = "/picture/{name}", method=RequestMethod.GET)
-	public Picture getPicture(@PathVariable("name") String path) {
+	public Picture getPicture1(@PathVariable("name") String name) {
 		return pictureService.getPictureByName(name);
 	}
 }

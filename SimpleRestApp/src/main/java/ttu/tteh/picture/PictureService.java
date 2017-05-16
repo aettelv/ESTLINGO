@@ -21,7 +21,7 @@ public class PictureService {
 		return pictureRepository.findOne(path);
 	}
     
-    Picture getPictureByName(String naem) {
+    Picture getPictureByName(String name) {
 		return pictureRepository.findOne(name);
 	}
 }
