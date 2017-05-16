@@ -1,4 +1,5 @@
 import {AureliaCookie} from 'aurelia-cookie';
+import {HttpClient, json} from "aurelia-fetch-client";
 
 export class App {
     
@@ -16,6 +17,13 @@ export class App {
         if(!(AureliaCookie.get('username') == null)){
             this.usernameFromCookie = AureliaCookie.get('username');
         }
+
+        let client = new HttpClient();
+        client.fetch("http://localhost:8080/pictures/estlingo")
+            .then (response => response.json())
+            .then (data => {
+                this.location = data.path;
+            })
     }
 
     configureRouter(config, router) {
