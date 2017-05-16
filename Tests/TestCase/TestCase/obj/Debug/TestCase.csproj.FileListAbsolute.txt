@@ -1,0 +1,10 @@
+c:\users\aett\documents\visual studio 2015\Projects\TestCase\TestCase\bin\Debug\TestCase.exe.config
+c:\users\aett\documents\visual studio 2015\Projects\TestCase\TestCase\bin\Debug\TestCase.exe
+c:\users\aett\documents\visual studio 2015\Projects\TestCase\TestCase\bin\Debug\TestCase.pdb
+c:\users\aett\documents\visual studio 2015\Projects\TestCase\TestCase\bin\Debug\WebDriver.dll
+c:\users\aett\documents\visual studio 2015\Projects\TestCase\TestCase\bin\Debug\WebDriver.xml
+c:\users\aett\documents\visual studio 2015\Projects\TestCase\TestCase\obj\Debug\TestCase.exe
+c:\users\aett\documents\visual studio 2015\Projects\TestCase\TestCase\obj\Debug\TestCase.pdb
+c:\users\aett\documents\visual studio 2015\Projects\TestCase\TestCase\bin\Debug\nunit.framework.dll
+c:\users\aett\documents\visual studio 2015\Projects\TestCase\TestCase\bin\Debug\nunit.framework.xml
+C:\Users\aett\Documents\Visual Studio 2015\Projects\TestCase\TestCase\obj\Debug\TestCase.csprojResolveAssemblyReference.cache
