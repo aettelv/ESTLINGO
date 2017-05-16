@@ -30,27 +30,27 @@ export class type{
         
         console.log("score: " + this.score);
         
-        if(this.score > 10){
+        if(this.score >= 10){
             this.chair = true;
         }
         
-        if(this.score > 20){
+        if(this.score >= 20){
             this.bicycle = true;
         }
         
-        if(this.score > 30){
+        if(this.score >= 30){
             this.potato = true;
         }
         
-        if(this.score > 40){
+        if(this.score >= 40){
             this.strawberry = true;
         }
         
-        if(this.score > 50){
+        if(this.score >= 50){
             this.clock = true;
         }
         
-        if(this.score > 60){
+        if(this.score >= 60){
             this.fork = true;
         }
     }
