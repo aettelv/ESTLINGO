@@ -8,6 +8,7 @@ export class select{
     gameCompleted;
     
     constructor(){
+        this.location = "src/images/clock.png"
     }
     
     Right(){

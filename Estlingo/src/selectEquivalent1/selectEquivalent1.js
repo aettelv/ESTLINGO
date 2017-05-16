@@ -9,6 +9,7 @@ export class select{
     userData = {};
     
     constructor(){
+        this.location = "src/images/Apple.png"
     }
     
     Right(){
