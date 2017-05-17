@@ -31,11 +31,11 @@ define('app',['exports', 'aurelia-cookie', 'aurelia-fetch-client'], function (ex
                 this.usernameFromCookie = _aureliaCookie.AureliaCookie.get('username');
             }
 
-            var client = new _aureliaFetchClient.HttpClient();
-            client.fetch("http://localhost:8080/pictures/estlingo").then(function (response) {
+            var clientX = new _aureliaFetchClient.HttpClient();
+            clientX.fetch("http://localhost:8080/pictures/estlingo").then(function (response) {
                 return response.json();
             }).then(function (data) {
-                _this.location = data.path;
+                _this.EstlingoLogo = data.path;
             });
         }
 
@@ -155,6 +155,44 @@ define('about/about',["exports", "aurelia-cookie", "aurelia-fetch-client"], func
             return response.json();
         }).then(function (data) {
             _this.location4 = data.path;
+        });
+    };
+});
+define('contact/contact',["exports", "aurelia-cookie", "aurelia-fetch-client"], function (exports, _aureliaCookie, _aureliaFetchClient) {
+    "use strict";
+
+    Object.defineProperty(exports, "__esModule", {
+        value: true
+    });
+    exports.about = undefined;
+
+    function _classCallCheck(instance, Constructor) {
+        if (!(instance instanceof Constructor)) {
+            throw new TypeError("Cannot call a class as a function");
+        }
+    }
+
+    var about = exports.about = function about() {
+        var _this = this;
+
+        _classCallCheck(this, about);
+
+        this.message = "Contact us:";
+        this.email = "Email: estlingo@gmail.com";
+        this.phone = "Phone: +372 1234 5678";
+
+        var client1 = new _aureliaFetchClient.HttpClient();
+        client1.fetch("http://localhost:8080/pictures/email").then(function (response) {
+            return response.json();
+        }).then(function (data) {
+            _this.location1 = data.path;
+        });
+
+        var client2 = new _aureliaFetchClient.HttpClient();
+        client2.fetch("http://localhost:8080/pictures/phone").then(function (response) {
+            return response.json();
+        }).then(function (data) {
+            _this.location2 = data.path;
         });
     };
 });
@@ -288,13 +326,13 @@ define('colours/colours',["exports", "aurelia-fetch-client", "aurelia-cookie"], 
         return Colours;
     }();
 });
-define('contact/contact',["exports", "aurelia-cookie", "aurelia-fetch-client"], function (exports, _aureliaCookie, _aureliaFetchClient) {
+define('games/games',["exports", "aurelia-cookie"], function (exports, _aureliaCookie) {
     "use strict";
 
     Object.defineProperty(exports, "__esModule", {
         value: true
     });
-    exports.about = undefined;
+    exports.games = undefined;
 
     function _classCallCheck(instance, Constructor) {
         if (!(instance instanceof Constructor)) {
@@ -302,28 +340,36 @@ define('contact/contact',["exports", "aurelia-cookie", "aurelia-fetch-client"], 
         }
     }
 
-    var about = exports.about = function about() {
-        var _this = this;
+    var games = exports.games = function games() {
+        _classCallCheck(this, games);
 
-        _classCallCheck(this, about);
+        this.h1 = "Select equivalent";
+        this.h2 = "Type equivalent";
 
-        this.message = "Contact us:";
-        this.email = "Email: estlingo@gmail.com";
-        this.phone = "Phone: +372 1234 5678";
+        if (!(_aureliaCookie.AureliaCookie.get('score') == null)) {
+            this.score = _aureliaCookie.AureliaCookie.get('score');
+        }
+    };
+});
+define('home/home',["exports", "aurelia-cookie"], function (exports, _aureliaCookie) {
+    "use strict";
 
-        var client1 = new _aureliaFetchClient.HttpClient();
-        client1.fetch("http://localhost:8080/pictures/email").then(function (response) {
-            return response.json();
-        }).then(function (data) {
-            _this.location1 = data.path;
-        });
+    Object.defineProperty(exports, "__esModule", {
+        value: true
+    });
+    exports.Home = undefined;
 
-        var client2 = new _aureliaFetchClient.HttpClient();
-        client2.fetch("http://localhost:8080/pictures/phone").then(function (response) {
-            return response.json();
-        }).then(function (data) {
-            _this.location2 = data.path;
-        });
+    function _classCallCheck(instance, Constructor) {
+        if (!(instance instanceof Constructor)) {
+            throw new TypeError("Cannot call a class as a function");
+        }
+    }
+
+    var Home = exports.Home = function Home() {
+        _classCallCheck(this, Home);
+
+        this.message = "Welcome to Estlingo! Are you ready to learn language in a playful way?";
+        this.h1 = "Go play!";
     };
 });
 define('days/days',["exports", "aurelia-fetch-client", "aurelia-cookie"], function (exports, _aureliaFetchClient, _aureliaCookie) {
@@ -448,52 +494,6 @@ define('days/days',["exports", "aurelia-fetch-client", "aurelia-cookie"], functi
 
         return Days;
     }();
-});
-define('games/games',["exports", "aurelia-cookie"], function (exports, _aureliaCookie) {
-    "use strict";
-
-    Object.defineProperty(exports, "__esModule", {
-        value: true
-    });
-    exports.games = undefined;
-
-    function _classCallCheck(instance, Constructor) {
-        if (!(instance instanceof Constructor)) {
-            throw new TypeError("Cannot call a class as a function");
-        }
-    }
-
-    var games = exports.games = function games() {
-        _classCallCheck(this, games);
-
-        this.h1 = "Select equivalent";
-        this.h2 = "Type equivalent";
-
-        if (!(_aureliaCookie.AureliaCookie.get('score') == null)) {
-            this.score = _aureliaCookie.AureliaCookie.get('score');
-        }
-    };
-});
-define('home/home',["exports", "aurelia-cookie"], function (exports, _aureliaCookie) {
-    "use strict";
-
-    Object.defineProperty(exports, "__esModule", {
-        value: true
-    });
-    exports.Home = undefined;
-
-    function _classCallCheck(instance, Constructor) {
-        if (!(instance instanceof Constructor)) {
-            throw new TypeError("Cannot call a class as a function");
-        }
-    }
-
-    var Home = exports.Home = function Home() {
-        _classCallCheck(this, Home);
-
-        this.message = "Welcome to Estlingo! Are you ready to learn language in a playful way?";
-        this.h1 = "Go play!";
-    };
 });
 define('human/human',["exports", "aurelia-fetch-client", "aurelia-cookie"], function (exports, _aureliaFetchClient, _aureliaCookie) {
 	"use strict";
@@ -811,6 +811,150 @@ define('kitchen/kitchen',["exports", "aurelia-fetch-client", "aurelia-cookie"], 
 		return Kitchen;
 	}();
 });
+define('numbers/numbers',["exports", "aurelia-fetch-client", "aurelia-cookie"], function (exports, _aureliaFetchClient, _aureliaCookie) {
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.Numbers = undefined;
+
+	function _classCallCheck(instance, Constructor) {
+		if (!(instance instanceof Constructor)) {
+			throw new TypeError("Cannot call a class as a function");
+		}
+	}
+
+	var Numbers = exports.Numbers = function () {
+		function Numbers() {
+			_classCallCheck(this, Numbers);
+		}
+
+		Numbers.prototype.numbers = function numbers() {
+
+			if (this.one == undefined || this.two == undefined || this.three == undefined || this.four == undefined || this.five == undefined || this.six == undefined || this.seven == undefined || this.eight == undefined || this.nine == undefined || this.ten == undefined) {
+				alert("You must fill the blanks before checking!");
+				return;
+			} else {
+				if (this.one.toLowerCase() == "üks") {
+					this.backgroundColor1 = "background-color:lightgreen;";
+					this.oneCorrect = true;
+				} else {
+					this.backgroundColor1 = "background-color:lightcoral;";
+				}
+
+				if (this.two.toLowerCase() == "kaks") {
+					this.backgroundColor2 = "background-color:lightgreen;";
+					this.twoCorrect = true;
+				} else {
+					this.backgroundColor2 = "background-color:lightcoral;";
+				}
+
+				if (this.three.toLowerCase() == "kolm") {
+					this.backgroundColor3 = "background-color:lightgreen;";
+					this.threeCorrect = true;
+				} else {
+					this.backgroundColor3 = "background-color:lightcoral;";
+				}
+
+				if (this.four.toLowerCase() == "neli") {
+					this.backgroundColor4 = "background-color:lightgreen;";
+					this.fourCorrect = true;
+				} else {
+					this.backgroundColor4 = "background-color:lightcoral;";
+				}
+
+				if (this.five.toLowerCase() == "viis") {
+					this.backgroundColor5 = "background-color:lightgreen;";
+					this.fiveCorrect = true;
+				} else {
+					this.backgroundColor5 = "background-color:lightcoral;";
+				}
+
+				if (this.six.toLowerCase() == "kuus") {
+					this.backgroundColor6 = "background-color:lightgreen;";
+					this.sixCorrect = true;
+				} else {
+					this.backgroundColor6 = "background-color:lightcoral;";
+				}
+
+				if (this.seven.toLowerCase() == "seitse") {
+					this.backgroundColor7 = "background-color:lightgreen;";
+					this.sevenCorrect = true;
+				} else {
+					this.backgroundColor7 = "background-color:lightcoral;";
+				}
+
+				if (this.eight.toLowerCase() == "kaheksa") {
+					this.backgroundColor8 = "background-color:lightgreen;";
+					this.eightCorrect = true;
+				} else {
+					this.backgroundColor8 = "background-color:lightcoral;";
+				}
+
+				if (this.nine.toLowerCase() == "üheksa") {
+					this.backgroundColor9 = "background-color:lightgreen;";
+					this.nineCorrect = true;
+				} else {
+					this.backgroundColor9 = "background-color:lightcoral;";
+				}
+
+				if (this.ten.toLowerCase() == "kümme") {
+					this.backgroundColor10 = "background-color:lightgreen;";
+					this.tenCorrect = true;
+				} else {
+					this.backgroundColor10 = "background-color:lightcoral;";
+				}
+			}
+			if (this.oneCorrect == true & this.twoCorrect == true & this.threeCorrect == true & this.fourCorrect == true & this.fiveCorrect == true & this.sixCorrect == true & this.sevenCorrect == true & this.eightCorrect == true & this.nineCorrect == true & this.tenCorrect == true) {
+				this.isCompleted = true;
+			}
+		};
+
+		Numbers.prototype.nextGame = function nextGame() {
+			var _this = this;
+
+			var oldScore = _aureliaCookie.AureliaCookie.get('score');
+			var score = parseInt(oldScore, 10) + 10;
+
+			_aureliaCookie.AureliaCookie.set('score', score, {
+				expiry: 1,
+				path: '',
+				domain: '',
+				secure: false
+			});
+
+			var username = _aureliaCookie.AureliaCookie.get('username');
+
+			var client2 = new _aureliaFetchClient.HttpClient();
+			client2.fetch("http://localhost:8080/users/" + username, {
+				'method': "GET"
+			}).then(function (response) {
+				return response.json();
+			}).then(function (data) {
+				console.log(data.username + " " + data.password + " " + data.e_mail + " " + data.score);
+				_this.userData = data;
+
+				console.log("userData.score: " + _this.userData.score);
+				_this.userData.score = score;
+				console.log("new userData.score: " + _this.userData.score);
+
+				var client = new _aureliaFetchClient.HttpClient();
+				client.fetch("http://localhost:8080/users/add", {
+					'method': "POST",
+					'body': (0, _aureliaFetchClient.json)(_this.userData)
+				}).then(function (response) {
+					return response.json();
+				}).then(function (data) {
+					console.log("Server saatis: " + data.username + " " + data.password + " " + data.e_mail + " " + data.score);
+				});
+			});
+			window.location.href = 'http://localhost:9000/#/days';
+		};
+
+		return Numbers;
+	}();
+});
 define('months/months',["exports", "aurelia-fetch-client", "aurelia-cookie"], function (exports, _aureliaFetchClient, _aureliaCookie) {
 			"use strict";
 
@@ -969,150 +1113,6 @@ define('months/months',["exports", "aurelia-fetch-client", "aurelia-cookie"], fu
 						return Months;
 			}();
 });
-define('numbers/numbers',["exports", "aurelia-fetch-client", "aurelia-cookie"], function (exports, _aureliaFetchClient, _aureliaCookie) {
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	exports.Numbers = undefined;
-
-	function _classCallCheck(instance, Constructor) {
-		if (!(instance instanceof Constructor)) {
-			throw new TypeError("Cannot call a class as a function");
-		}
-	}
-
-	var Numbers = exports.Numbers = function () {
-		function Numbers() {
-			_classCallCheck(this, Numbers);
-		}
-
-		Numbers.prototype.numbers = function numbers() {
-
-			if (this.one == undefined || this.two == undefined || this.three == undefined || this.four == undefined || this.five == undefined || this.six == undefined || this.seven == undefined || this.eight == undefined || this.nine == undefined || this.ten == undefined) {
-				alert("You must fill the blanks before checking!");
-				return;
-			} else {
-				if (this.one.toLowerCase() == "üks") {
-					this.backgroundColor1 = "background-color:lightgreen;";
-					this.oneCorrect = true;
-				} else {
-					this.backgroundColor1 = "background-color:lightcoral;";
-				}
-
-				if (this.two.toLowerCase() == "kaks") {
-					this.backgroundColor2 = "background-color:lightgreen;";
-					this.twoCorrect = true;
-				} else {
-					this.backgroundColor2 = "background-color:lightcoral;";
-				}
-
-				if (this.three.toLowerCase() == "kolm") {
-					this.backgroundColor3 = "background-color:lightgreen;";
-					this.threeCorrect = true;
-				} else {
-					this.backgroundColor3 = "background-color:lightcoral;";
-				}
-
-				if (this.four.toLowerCase() == "neli") {
-					this.backgroundColor4 = "background-color:lightgreen;";
-					this.fourCorrect = true;
-				} else {
-					this.backgroundColor4 = "background-color:lightcoral;";
-				}
-
-				if (this.five.toLowerCase() == "viis") {
-					this.backgroundColor5 = "background-color:lightgreen;";
-					this.fiveCorrect = true;
-				} else {
-					this.backgroundColor5 = "background-color:lightcoral;";
-				}
-
-				if (this.six.toLowerCase() == "kuus") {
-					this.backgroundColor6 = "background-color:lightgreen;";
-					this.sixCorrect = true;
-				} else {
-					this.backgroundColor6 = "background-color:lightcoral;";
-				}
-
-				if (this.seven.toLowerCase() == "seitse") {
-					this.backgroundColor7 = "background-color:lightgreen;";
-					this.sevenCorrect = true;
-				} else {
-					this.backgroundColor7 = "background-color:lightcoral;";
-				}
-
-				if (this.eight.toLowerCase() == "kaheksa") {
-					this.backgroundColor8 = "background-color:lightgreen;";
-					this.eightCorrect = true;
-				} else {
-					this.backgroundColor8 = "background-color:lightcoral;";
-				}
-
-				if (this.nine.toLowerCase() == "üheksa") {
-					this.backgroundColor9 = "background-color:lightgreen;";
-					this.nineCorrect = true;
-				} else {
-					this.backgroundColor9 = "background-color:lightcoral;";
-				}
-
-				if (this.ten.toLowerCase() == "kümme") {
-					this.backgroundColor10 = "background-color:lightgreen;";
-					this.tenCorrect = true;
-				} else {
-					this.backgroundColor10 = "background-color:lightcoral;";
-				}
-			}
-			if (this.oneCorrect == true & this.twoCorrect == true & this.threeCorrect == true & this.fourCorrect == true & this.fiveCorrect == true & this.sixCorrect == true & this.sevenCorrect == true & this.eightCorrect == true & this.nineCorrect == true & this.tenCorrect == true) {
-				this.isCompleted = true;
-			}
-		};
-
-		Numbers.prototype.nextGame = function nextGame() {
-			var _this = this;
-
-			var oldScore = _aureliaCookie.AureliaCookie.get('score');
-			var score = parseInt(oldScore, 10) + 10;
-
-			_aureliaCookie.AureliaCookie.set('score', score, {
-				expiry: 1,
-				path: '',
-				domain: '',
-				secure: false
-			});
-
-			var username = _aureliaCookie.AureliaCookie.get('username');
-
-			var client2 = new _aureliaFetchClient.HttpClient();
-			client2.fetch("http://localhost:8080/users/" + username, {
-				'method': "GET"
-			}).then(function (response) {
-				return response.json();
-			}).then(function (data) {
-				console.log(data.username + " " + data.password + " " + data.e_mail + " " + data.score);
-				_this.userData = data;
-
-				console.log("userData.score: " + _this.userData.score);
-				_this.userData.score = score;
-				console.log("new userData.score: " + _this.userData.score);
-
-				var client = new _aureliaFetchClient.HttpClient();
-				client.fetch("http://localhost:8080/users/add", {
-					'method': "POST",
-					'body': (0, _aureliaFetchClient.json)(_this.userData)
-				}).then(function (response) {
-					return response.json();
-				}).then(function (data) {
-					console.log("Server saatis: " + data.username + " " + data.password + " " + data.e_mail + " " + data.score);
-				});
-			});
-			window.location.href = 'http://localhost:9000/#/days';
-		};
-
-		return Numbers;
-	}();
-});
 define('register/register',["exports", "aurelia-fetch-client", "aurelia-cookie"], function (exports, _aureliaFetchClient, _aureliaCookie) {
     "use strict";
 
@@ -1258,15 +1258,6 @@ define('register/register',["exports", "aurelia-fetch-client", "aurelia-cookie"]
 
         return Register;
     }();
-});
-define('resources/index',["exports"], function (exports) {
-  "use strict";
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.configure = configure;
-  function configure(config) {}
 });
 define('selectEquivalent/selectEquivalent',["exports", "aurelia-cookie"], function (exports, _aureliaCookie) {
     "use strict";
@@ -1500,6 +1491,15 @@ define('selectEquivalent2/selectEquivalent2',["exports", "aurelia-cookie", "aure
 
         return select;
     }();
+});
+define('resources/index',["exports"], function (exports) {
+  "use strict";
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.configure = configure;
+  function configure(config) {}
 });
 define('selectEquivalent3/selectEquivalent3',["exports", "aurelia-cookie", "aurelia-fetch-client"], function (exports, _aureliaCookie, _aureliaFetchClient) {
     "use strict";
@@ -1750,89 +1750,6 @@ define('selectEquivalent5/selectEquivalent5',["exports", "aurelia-cookie", "aure
         return select;
     }();
 });
-define('selectEquivalent7/selectEquivalent7',["exports", "aurelia-cookie", "aurelia-fetch-client"], function (exports, _aureliaCookie, _aureliaFetchClient) {
-    "use strict";
-
-    Object.defineProperty(exports, "__esModule", {
-        value: true
-    });
-    exports.select = undefined;
-
-    function _classCallCheck(instance, Constructor) {
-        if (!(instance instanceof Constructor)) {
-            throw new TypeError("Cannot call a class as a function");
-        }
-    }
-
-    var select = exports.select = function () {
-        function select() {
-            var _this = this;
-
-            _classCallCheck(this, select);
-
-            var client = new _aureliaFetchClient.HttpClient();
-            client.fetch("http://localhost:8080/pictures/fork").then(function (response) {
-                return response.json();
-            }).then(function (data) {
-                _this.location = data.path;
-            });
-        }
-
-        select.prototype.Right = function Right() {
-            this.isTrue = true;
-            this.isFalse = false;
-            this.gameCompleted = true;
-        };
-
-        select.prototype.NotRight = function NotRight() {
-            this.isFalse = true;
-            this.isTrue = false;
-        };
-
-        select.prototype.nextGame = function nextGame() {
-            var _this2 = this;
-
-            var oldScore = _aureliaCookie.AureliaCookie.get('score');
-            var score = parseInt(oldScore, 10) + 10;
-
-            _aureliaCookie.AureliaCookie.set('score', score, {
-                expiry: 1,
-                path: '',
-                domain: '',
-                secure: false
-            });
-
-            var username = _aureliaCookie.AureliaCookie.get('username');
-
-            var client2 = new _aureliaFetchClient.HttpClient();
-            client2.fetch("http://localhost:8080/users/" + username, {
-                'method': "GET"
-            }).then(function (response) {
-                return response.json();
-            }).then(function (data) {
-                console.log(data.username + " " + data.password + " " + data.e_mail + " " + data.score);
-                _this2.userData = data;
-
-                console.log("userData.score: " + _this2.userData.score);
-                _this2.userData.score = score;
-                console.log("new userData.score: " + _this2.userData.score);
-
-                var client = new _aureliaFetchClient.HttpClient();
-                client.fetch("http://localhost:8080/users/add", {
-                    'method': "POST",
-                    'body': (0, _aureliaFetchClient.json)(_this2.userData)
-                }).then(function (response) {
-                    return response.json();
-                }).then(function (data) {
-                    console.log("Server saatis: " + data.username + " " + data.password + " " + data.e_mail + " " + data.score);
-                });
-            });
-            window.location.href = 'http://localhost:9000/#/games';
-        };
-
-        return select;
-    }();
-});
 define('selectEquivalent6/selectEquivalent6',["exports", "aurelia-cookie", "aurelia-fetch-client"], function (exports, _aureliaCookie, _aureliaFetchClient) {
     "use strict";
 
@@ -1971,6 +1888,89 @@ define('typeEquivalent/typeEquivalent',["exports", "aurelia-cookie"], function (
         }
     };
 });
+define('selectEquivalent7/selectEquivalent7',["exports", "aurelia-cookie", "aurelia-fetch-client"], function (exports, _aureliaCookie, _aureliaFetchClient) {
+    "use strict";
+
+    Object.defineProperty(exports, "__esModule", {
+        value: true
+    });
+    exports.select = undefined;
+
+    function _classCallCheck(instance, Constructor) {
+        if (!(instance instanceof Constructor)) {
+            throw new TypeError("Cannot call a class as a function");
+        }
+    }
+
+    var select = exports.select = function () {
+        function select() {
+            var _this = this;
+
+            _classCallCheck(this, select);
+
+            var client = new _aureliaFetchClient.HttpClient();
+            client.fetch("http://localhost:8080/pictures/fork").then(function (response) {
+                return response.json();
+            }).then(function (data) {
+                _this.location = data.path;
+            });
+        }
+
+        select.prototype.Right = function Right() {
+            this.isTrue = true;
+            this.isFalse = false;
+            this.gameCompleted = true;
+        };
+
+        select.prototype.NotRight = function NotRight() {
+            this.isFalse = true;
+            this.isTrue = false;
+        };
+
+        select.prototype.nextGame = function nextGame() {
+            var _this2 = this;
+
+            var oldScore = _aureliaCookie.AureliaCookie.get('score');
+            var score = parseInt(oldScore, 10) + 10;
+
+            _aureliaCookie.AureliaCookie.set('score', score, {
+                expiry: 1,
+                path: '',
+                domain: '',
+                secure: false
+            });
+
+            var username = _aureliaCookie.AureliaCookie.get('username');
+
+            var client2 = new _aureliaFetchClient.HttpClient();
+            client2.fetch("http://localhost:8080/users/" + username, {
+                'method': "GET"
+            }).then(function (response) {
+                return response.json();
+            }).then(function (data) {
+                console.log(data.username + " " + data.password + " " + data.e_mail + " " + data.score);
+                _this2.userData = data;
+
+                console.log("userData.score: " + _this2.userData.score);
+                _this2.userData.score = score;
+                console.log("new userData.score: " + _this2.userData.score);
+
+                var client = new _aureliaFetchClient.HttpClient();
+                client.fetch("http://localhost:8080/users/add", {
+                    'method': "POST",
+                    'body': (0, _aureliaFetchClient.json)(_this2.userData)
+                }).then(function (response) {
+                    return response.json();
+                }).then(function (data) {
+                    console.log("Server saatis: " + data.username + " " + data.password + " " + data.e_mail + " " + data.score);
+                });
+            });
+            window.location.href = 'http://localhost:9000/#/games';
+        };
+
+        return select;
+    }();
+});
 define('aurelia-cookie/aurelia-cookie',["require", "exports"], function (require, exports) {
     "use strict";
     var AureliaCookie = (function () {
@@ -2068,8 +2068,8 @@ define('aurelia-cookie/aurelia-cookie',["require", "exports"], function (require
     exports.AureliaCookie = AureliaCookie;
 });
 
+define('text!app.html', ['module'], function(module) { module.exports = "<template><router-view></router-view><require from=\"app.css\"></require><div class=\"body\"><div class=\"header\"><img class=\"imageInput\" src=\"${EstlingoLogo}\" alt=\"Error loading image!\" width=\"150px\"></div><div class=\"menuBar\" if.bind=\"isLoggedIn\"><ul><li><a href=\"http://localhost:9000/#/home\">Home</a></li><li><a href=\"http://localhost:9000/#/games\">Games</a></li><li><a href=\"http://localhost:9000/#/about\">About</a></li><li><a href=\"http://localhost:9000/#/contact\">Contact</a></li><li><a class=\"active\" href=\"http://localhost:9000/#/home\">Logged in as: ${usernameFromCookie}</a></li><form id=\"logOutform\" submit.delegate=\"logOut()\"><div id=\"logOut\"><input style=\"float:right;margin:10px 10px 0 0;color:#f5f5f5\" type=\"submit\" value=\"Log out\"></div></form></ul></div><div class=\"footer\">Powered by the Estlingo group - Aet Telvik, Tauri Türkson, Sven Veskijärv</div></div></template>"; });
 define('text!app.css', ['module'], function(module) { module.exports = "html, body{\r\n    font-family: 'Open Sans', sans-serif;\r\n    font-size: 15px;\r\n    background-color: #f5f5f5;\r\n    height: 100%;\r\n    margin: 0;\r\n    padding: 0;\r\n}\r\n\r\ninput{\r\n    border: none;\r\n    outline: none;\r\n    background-color: transparent;\r\n    cursor: pointer;\r\n    font-size: 15px;\r\n}\r\n\r\n.header{\r\n    width: 100%;\r\n    background-color: #4099FF;\r\n    color: #f5f5f5;\r\n    padding: 5px 5px 0px 5px;\r\n    margin: 0px 0px 0px 0px;\r\n    box-sizing: border-box;\r\n    position: fixed;\r\n    top: 0;\r\n}\r\n\r\n.indexMain{\r\n    width: 900px;\r\n    height: auto;\r\n    margin: 0px auto 0px auto;\r\n    padding-top: 45px;\r\n}\r\n\r\n.main{\r\n    width: 900px;\r\n    min-height: 400px;\r\n    margin: 105px auto 0px auto;\r\n    padding: 10px 0px 0px 0px;\r\n    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.3), 0 8px 20px 0 rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.main2{\r\n    width: 900px;\r\n    min-height: 470px;\r\n    margin: 105px auto 0px auto;\r\n    padding: 10px 0px 0px 0px;\r\n    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.3), 0 8px 20px 0 rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.welcomeText{\r\n    width: 550px;\r\n    min-height: 400px;\r\n    float: left;\r\n    color: #f5f5f5;\r\n    margin: 10px 0px 10px 0px;\r\n    text-align: center;\r\n}\r\n\r\n.loginScreen{\r\n    width: 315px;\r\n    min-height: 400px;\r\n    float: right;\r\n    margin: 10px 0px 10px 0px;\r\n}\r\n\r\n.footer{\r\n    width: 100%;\r\n    background-color: #4099FF;\r\n    color: #f5f5f5;\r\n    padding: 9px 10px 9px 10px;\r\n    box-sizing: border-box;\r\n    margin: auto 0px 0px 0px;\r\n    position: fixed;\r\n    bottom: 0;\r\n    white-space: nowrap;\r\n    font-size: 10px;\r\n}\r\n\r\n.gamechoiceButton {\r\n    width: 100px;\r\n    height: 70px;\r\n    text-align: center;\r\n    margin: 0px 10px 0px 0px;\r\n    float: left;\r\n    color: black;\r\n}\r\n\r\n.gamechoiceButton:hover {\r\n    color: #f5f5f5;\r\n}\r\n\r\n.gameHeader {\r\n    width: 400px;\r\n    min-height: 50px;\r\n    float: left;\r\n    color: black;\r\n    margin: 5px 0px 5px 250px;\r\n    text-align: center;\r\n}\r\n\r\n.gameArea {\r\n    width: 550px;\r\n    min-height: 90px;\r\n    float: left;\r\n    color: #f5f5f5;\r\n    margin: 5px 0px 10px 170px;\r\n    text-align: center; \r\n}\r\n\r\n.blueBox{\r\n    background-color: #4099FF;\r\n    padding: 5px;\r\n}\r\n\r\n.greyBox{\r\n    width: auto;\r\n    background-color: #f5f5f5;\r\n    padding: 5px;\r\n    margin: 3px 3px 3px 3px;\r\n}\r\n\r\n.content{\r\n    margin: 5px 0px 5px 0px;\r\n    padding: 0px 5px 0px 5px;\r\n    float: top;\r\n}\r\n\r\n.contentGame{\r\n    margin: 5px 0px 5px 250px;\r\n    padding: 0px 5px 0px 5px;\r\n    float: top;\r\n}\r\n\r\n.gameChoice{\r\n    margin: 25px 25px 25px 25px;\r\n    padding: 0px 5px 0px 5px;\r\n    float: top;\r\n}\r\n\r\na:link {\r\n    text-decoration: none;\r\n}\r\n\r\n.choice {\r\n    margin: 5px 0px 5px 0px;\r\n    color: black;\r\n    cursor: pointer;\r\n}\r\n\r\n.choice2 {\r\n    margin: 5px 0px 5px 0px;\r\n    width: 90px;\r\n    text-decoration: none;\r\n    text-align: center;\r\n    color: black;\r\n    cursor: pointer;\r\n}\r\n\r\n.choice:hover {\r\n    color: #f5f5f5;\r\n    font-weight: bold;\r\n}\r\n\r\n.choice2:hover {\r\n    color: #f5f5f5;\r\n    font-weight: bold;\r\n}\r\n\r\n.answerLeft {\r\n    height: 200px;\r\n    width: 250px;\r\n    margin-left: 20px;\r\n    float: left;\r\n}\r\n\r\n.answerRight {\r\n    height: 200px;;\r\n    width: 250px;\r\n    margin-right: 20px;\r\n    float: right;\r\n}\r\n\r\n.answerLeft2 {\r\n    height: 200px;\r\n    width: 250px;\r\n    margin-left: 20px;\r\n    float: left;\r\n    text-align: right;\r\n}\r\n\r\n.answerRight2 {\r\n    height: 200px;;\r\n    width: 250px;\r\n    margin-right: 20px;\r\n    float: right;\r\n    text-align: right;\r\n}\r\n\r\n.nextGame {\r\n    margin-top: 20px;\r\n    margin-right: 0px;\r\n    float: right;\r\n    background-color: #4b4b4b;\r\n    cursor: pointer;\r\n}\r\n\r\n.BackToGames {\r\n    margin-top: 100px;\r\n    margin-right: -200px;\r\n    float: left;\r\n    background-color: #4b4b4b;\r\n    cursor: pointer;\r\n}\r\n\r\n\r\n.picture {\r\n    width:100px;\r\n    height:80px;\r\n}\r\n\r\ninput[type=text] {\r\n    border-radius: 3px;\r\n    background-color: lightgray;\r\n}\r\n\r\n.check {\r\n    width: 100px;\r\n    margin-left: 230px;\r\n    background-color: #4b4b4b;\r\n    margin-top: 15px;\r\n    cursor: pointer;\r\n}\r\n\r\n\r\n/*Menubar styles:*/\r\n.menuBar{\r\n    position: fixed;\r\n    top: 45px;\r\n}\r\n\r\nul {\r\n    list-style-type: none;\r\n    margin: 0px;\r\n    padding: 0px;\r\n    overflow: hidden;\r\n    background-color: #4099FF;\r\n    position: fixed;\r\n    width: 100%;\r\n}\r\n\r\nli {\r\n    float: left;\r\n}\r\n\r\nli a {\r\n    display: block;\r\n    color: white;\r\n    text-align: center;\r\n    padding: 14px 16px;\r\n    text-decoration: none;\r\n}\r\n\r\nli a:hover:not(.active) {\r\n    background-color: #55a4ff;\r\n}\r\n    \r\n.active {\r\n    background-color: #3584de;\r\n}"; });
-define('text!app.html', ['module'], function(module) { module.exports = "<template><router-view></router-view><require from=\"app.css\"></require><div class=\"body\"><div class=\"header\"><img class=\"imageInput\" src=\"${location}\" alt=\"Error loading image!\" width=\"150px\"></div><div class=\"menuBar\" if.bind=\"isLoggedIn\"><ul><li><a href=\"http://localhost:9000/#/home\">Home</a></li><li><a href=\"http://localhost:9000/#/games\">Games</a></li><li><a href=\"http://localhost:9000/#/about\">About</a></li><li><a href=\"http://localhost:9000/#/contact\">Contact</a></li><li><a class=\"active\" href=\"http://localhost:9000/#/home\">Logged in as: ${usernameFromCookie}</a></li><form id=\"logOutform\" submit.delegate=\"logOut()\"><div id=\"logOut\"><input style=\"float:right;margin:10px 10px 0 0;color:#f5f5f5\" type=\"submit\" value=\"Log out\"></div></form></ul></div><div class=\"footer\">Powered by the Estlingo group - Aet Telvik, Tauri Türkson, Sven Veskijärv</div></div></template>"; });
 define('text!nav-bar.html', ['module'], function(module) { module.exports = "<template bindable=\"router\" class=\"nav\"><p><a repeat.for=\"item of router.navigation\" href.bind=\"item.href\">${item.title}</a></p></template>"; });
 define('text!about/about.html', ['module'], function(module) { module.exports = "<template><div class=\"body\"><div class=\"main\"><div class=\"content\">${message}<br><br><img style=\"vertical-align:middle;padding:5px\" src=\"${location1}\" alt=\"Easy\" height=\"42\" width=\"42\">${easy}<br><img style=\"vertical-align:middle;padding:5px\" src=\"${location2}\" alt=\"Fast\" height=\"42\" width=\"42\">${fast}<br><img style=\"vertical-align:middle;padding:5px\" src=\"${location3}\" alt=\"Family\" height=\"42\" width=\"42\">${family}<br><img style=\"vertical-align:middle;padding:5px\" src=\"${location4}\" alt=\"Game\" height=\"42\" width=\"42\">${game}</div></div></div></template>"; });
 define('text!colours/colours.html', ['module'], function(module) { module.exports = "<template><div class=\"main\"><div class=\"content\"><div class=\"greyBox BackToGames\"><input type=\"button\" value=\"Back to selection\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" onclick='window.location.href=\"http://localhost:9000/#/typeEquivalent\"'></div><div class=\"gameHeader\"><h2>Colors</h2></div><div class=\"gameArea\"><div class=\"greyBox check\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" click.delegate=\"colours()\">Check!</div><div class=\"answerLeft2\"><br><form style=\"color:#000\"><label>White &nbsp;</label><input type=\"text\" value.bind=\"white\" style.bind=\"backgroundColor1\"><br><label>Black &nbsp;</label><input type=\"text\" value.bind=\"black\" style.bind=\"backgroundColor2\"><br><label>Red &nbsp;</label><input type=\"text\" value.bind=\"red\" style.bind=\"backgroundColor3\"><br><label>Blue &nbsp;</label><input type=\"text\" value.bind=\"blue\" style.bind=\"backgroundColor4\"><br></form></div><div class=\"answerRight3\"><br><form style=\"color:#000\"><label>Green &nbsp;</label><input type=\"text\" value.bind=\"green\" style.bind=\"backgroundColor5\"><br><label>Yellow &nbsp;</label><input type=\"text\" value.bind=\"yellow\" style.bind=\"backgroundColor6\"><br><label>Brown &nbsp;</label><input type=\"text\" value.bind=\"brown\" style.bind=\"backgroundColor7\"><br><label>Purple &nbsp;</label><input type=\"text\" value.bind=\"purple\" style.bind=\"backgroundColor8\"><br></form></div></div><div class=\"greyBox nextGame\" if.bind=\"isCompleted\"><input type=\"button\" value=\"To the next guess\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" click.delegate=\"nextGame()\"></div></div></div></template>"; });
@@ -2089,6 +2089,6 @@ define('text!selectEquivalent3/selectEquivalent3.html', ['module'], function(mod
 define('text!selectEquivalent4/selectEquivalent4.html', ['module'], function(module) { module.exports = "<template><div class=\"main\"><div class=\"content\"><div class=\"greyBox BackToGames\"><input type=\"button\" value=\"Back to selection\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" onclick='window.location.href=\"http://localhost:9000/#/selectEquivalent\"'></div><div class=\"gameHeader\"><h2>Select the right Estonian equivalent!</h2></div><div class=\"gameArea\"><div><img src=\"${location}\" alt=\"Potato\" style=\"width:100px;height:50\"></div><h3 style=\"color:green\" if.bind=\"isTrue\">CORRECT</h3><h3 style=\"color:red\" if.bind=\"isFalse\">FALSE</h3><div class=\"answerLeft\"><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Lusikas</div><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Maasikas</div><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Arvuti</div><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Vaarikas</div></div><div class=\"answerRight\"><div class=\"blueBox choice\" click.delegate=\"Right()\">Kartul</div><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Püksid</div><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Rihm</div><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Kell</div></div></div><div class=\"greyBox nextGame\" if.bind=\"gameCompleted\"><input type=\"button\" value=\"To the next guess\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" click.delegate=\"nextGame()\"></div></div></div></template>"; });
 define('text!selectEquivalent5/selectEquivalent5.html', ['module'], function(module) { module.exports = "<template><div class=\"main\"><div class=\"content\"><div class=\"greyBox BackToGames\"><input type=\"button\" value=\"Back to selection\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" onclick='window.location.href=\"http://localhost:9000/#/selectEquivalent\"'></div><div class=\"gameHeader\"><h2>Select the right Estonian equivalent!</h2></div><div class=\"gameArea\"><div><img src=\"${location}\" alt=\"Strawberry\" style=\"width:100px;height:50\"></div><h3 style=\"color:green\" if.bind=\"isTrue\">CORRECT</h3><h3 style=\"color:red\" if.bind=\"isFalse\">FALSE</h3><div class=\"answerLeft\"><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Vaarikas</div><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Tikker</div><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Kirss</div><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Banaan</div></div><div class=\"answerRight\"><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Kurk</div><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Ploom</div><div class=\"blueBox choice\" click.delegate=\"Right()\">Maasikas</div><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Rosmariin</div></div></div><div class=\"greyBox nextGame\" if.bind=\"gameCompleted\"><input type=\"button\" value=\"To the next guess\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" click.delegate=\"nextGame()\"></div></div></div></template>"; });
 define('text!selectEquivalent6/selectEquivalent6.html', ['module'], function(module) { module.exports = "<template><div class=\"main\"><div class=\"content\"><div class=\"greyBox BackToGames\"><input type=\"button\" value=\"Back to selection\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" onclick='window.location.href=\"http://localhost:9000/#/selectEquivalent\"'></div><div class=\"gameHeader\"><h2>Select the right Estonian equivalent!</h2></div><div class=\"gameArea\"><div><img src=\"${location}\" alt=\"Clock\" style=\"width:100px;height:50\"></div><h3 style=\"color:green\" if.bind=\"isTrue\">CORRECT</h3><h3 style=\"color:red\" if.bind=\"isFalse\">FALSE</h3><div class=\"answerLeft\"><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Kahvel</div><div class=\"blueBox choice\" click.delegate=\"Right()\">Kell</div><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Särk</div><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Pilt</div></div><div class=\"answerRight\"><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Päike</div><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Rebane</div><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Sidrun</div><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Kirss</div></div></div><div class=\"greyBox nextGame\" if.bind=\"gameCompleted\"><input type=\"button\" value=\"To the next guess\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" click.delegate=\"nextGame()\"></div></div></div></template>"; });
-define('text!typeEquivalent/typeEquivalent.html', ['module'], function(module) { module.exports = "<template><div class=\"body\"><div class=\"main\"><div class=\"content\"><div class=\"greyBox BackToGames\"><input type=\"button\" value=\"Back to games\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" onclick='window.location.href=\"http://localhost:9000/#/games\"'></div><div class=\"gameHeader\"><h2>Choose the topic:</h2>Earn some points to unlock more!</div><div class=\"gameArea\"><div class=\"picture\"></div><div class=\"answerLeft\"><a href=\"http://localhost:9000/#/colours\" style=\"text-decoration:none\" if.bind=\"colors\"><div class=\"blueBox choice\">${h1}</div></a><a href=\"http://localhost:9000/#/numbers\" style=\"text-decoration:none\" if.bind=\"numbers\"><div class=\"blueBox choice\">${h2}</div></a><a href=\"http://localhost:9000/#/days\" style=\"text-decoration:none\" if.bind=\"days\"><div class=\"blueBox choice\">${h3}</div></a></div><div class=\"answerRight\"><a href=\"http://localhost:9000/#/months\" style=\"text-decoration:none\" if.bind=\"months\"><div class=\"blueBox choice\">${h4}</div></a><a href=\"http://localhost:9000/#/human\" style=\"text-decoration:none\" if.bind=\"body\"><div class=\"blueBox choice\">${h5}</div></a><a href=\"http://localhost:9000/#/kitchen\" style=\"text-decoration:none\" if.bind=\"kitchen\"><div class=\"blueBox choice\">${h6}</div></a></div></div></div></div></div></template>"; });
 define('text!selectEquivalent7/selectEquivalent7.html', ['module'], function(module) { module.exports = "<template><div class=\"main\"><div class=\"content\"><div class=\"greyBox BackToGames\"><input type=\"button\" value=\"Back to selection\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" onclick='window.location.href=\"http://localhost:9000/#/selectEquivalent\"'></div><div class=\"gameHeader\"><h2>Select the right Estonian equivalent!</h2></div><div class=\"gameArea\"><div><img src=\"${location}\" alt=\"Fork\" style=\"width:100px;height:50\"></div><h3 style=\"color:green\" if.bind=\"isTrue\">CORRECT</h3><h3 style=\"color:red\" if.bind=\"isFalse\">FALSE</h3><div class=\"answerLeft\"><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Lusikas</div><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Taldrik</div><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Kauss</div><div class=\"blueBox choice\" click.delegate=\"Right()\">Kahvel</div></div><div class=\"answerRight\"><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Nuga</div><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Padi</div><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Külmkapp</div><div class=\"blueBox choice\" click.delegate=\"NotRight()\">Röster</div></div></div><div class=\"greyBox nextGame\" if.bind=\"gameCompleted\"><input type=\"button\" value=\"To the next guess\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" click.delegate=\"nextGame()\"></div></div></div></template>"; });
+define('text!typeEquivalent/typeEquivalent.html', ['module'], function(module) { module.exports = "<template><div class=\"body\"><div class=\"main\"><div class=\"content\"><div class=\"greyBox BackToGames\"><input type=\"button\" value=\"Back to games\" style=\"color:#f5f5f5;font-family:'Open Sans',sans-serif\" onclick='window.location.href=\"http://localhost:9000/#/games\"'></div><div class=\"gameHeader\"><h2>Choose the topic:</h2>Earn some points to unlock more!</div><div class=\"gameArea\"><div class=\"picture\"></div><div class=\"answerLeft\"><a href=\"http://localhost:9000/#/colours\" style=\"text-decoration:none\" if.bind=\"colors\"><div class=\"blueBox choice\">${h1}</div></a><a href=\"http://localhost:9000/#/numbers\" style=\"text-decoration:none\" if.bind=\"numbers\"><div class=\"blueBox choice\">${h2}</div></a><a href=\"http://localhost:9000/#/days\" style=\"text-decoration:none\" if.bind=\"days\"><div class=\"blueBox choice\">${h3}</div></a></div><div class=\"answerRight\"><a href=\"http://localhost:9000/#/months\" style=\"text-decoration:none\" if.bind=\"months\"><div class=\"blueBox choice\">${h4}</div></a><a href=\"http://localhost:9000/#/human\" style=\"text-decoration:none\" if.bind=\"body\"><div class=\"blueBox choice\">${h5}</div></a><a href=\"http://localhost:9000/#/kitchen\" style=\"text-decoration:none\" if.bind=\"kitchen\"><div class=\"blueBox choice\">${h6}</div></a></div></div></div></div></div></template>"; });
 //# sourceMappingURL=app-bundle.js.map

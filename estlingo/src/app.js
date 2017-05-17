@@ -18,11 +18,11 @@ export class App {
             this.usernameFromCookie = AureliaCookie.get('username');
         }
 
-        let client = new HttpClient();
-        client.fetch("http://localhost:8080/pictures/estlingo")
+        let clientX = new HttpClient();
+        clientX.fetch("http://localhost:8080/pictures/estlingo")
             .then (response => response.json())
             .then (data => {
-                this.location = data.path;
+                this.EstlingoLogo = data.path;
             })
     }
 
